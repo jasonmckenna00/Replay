@@ -1,4 +1,4 @@
-# class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base
 
 #     helper_methods :current_user, :logged_in?
 #     def current_user
@@ -19,5 +19,5 @@
 #     def logged_in?
 #         !!current_user
 #     end
-# end
+end
 
