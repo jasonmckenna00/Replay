@@ -1,11 +1,15 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import SignupContainer from '../components/session/signup_container'
+import {Link} from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
+import Navbar from './navbar';
+import Splashpage from './splashpage'
 
 const App = () =>(
     <div>
         inside app jsx
-        <SignupContainer />
+        <Navbar />
+        <Route exact path="/" component={Splashpage} />
+        
     </div>
 )
 

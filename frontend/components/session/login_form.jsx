@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter, Route, Link } from 'react-router-dom';
 
-class SignupForm extends React.Component{
+class LoginForm extends React.Component{
 
     constructor(props){
         super(props)
@@ -15,7 +16,7 @@ class SignupForm extends React.Component{
     handleSubmit(e){
         e.preventDefault()
         // debugger
-        this.props.createNewUser(this.state)
+        this.props.login(this.state)
             .then( () =>this.props.history.push('/'))
     }
 
@@ -24,14 +25,15 @@ class SignupForm extends React.Component{
     }
 
     render(){
-        debugger
+        
         const errorsLis = this.props.errors.map( (error,i) => {
             return  <li key= {i}> {error} </li>
         })
 
         return (
         <div>
-            <h1>Sign Up Form</h1>
+            <h1>Login Form</h1>
+            <h2>This is not the sign up form</h2>
             <ul>{errorsLis}</ul>
             <form onSubmit={this.handleSubmit}>
             <label> Username 
@@ -45,13 +47,15 @@ class SignupForm extends React.Component{
             <label> Password 
                 <input type="password" onChange={this.update('password')}/>   
             </label>
-            <button onClick={this.handleSubmit}>Sign Up</button>
+            <button onClick={this.handleSubmit}>Login</button>
 
 
             </form>
+            <br/>
+            <Link to='/signup'>Sign up</Link>
         </div>
         )
     }
 }
 
-export default SignupForm
+export default LoginForm
