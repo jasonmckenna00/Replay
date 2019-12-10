@@ -10,7 +10,8 @@ class LoginForm extends React.Component{
             email: "",
             password: ""
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoUser = this.demoUser.bind(this)
     }
 
     handleSubmit(e){
@@ -22,6 +23,11 @@ class LoginForm extends React.Component{
 
     update(field){
         return e => this.setState( {[field]: e.target.value})
+    }
+
+    demoUser(){
+        return this.props.login({username: 'DemoUser', email:'demo@trialaccount.com', password: 'hunter2'})
+            .then( () => this.props.history.push('/'))
     }
 
     render(){
@@ -53,6 +59,7 @@ class LoginForm extends React.Component{
             </form>
             <br/>
             <Link to='/signup'>Sign up</Link>
+            <button onClick={()=> this.demoUser()}>Try Demo User</button>
         </div>
         )
     }

@@ -28,7 +28,6 @@ export const receiveSessionErrors = errors => {
   
 }
 export const receiveUserErrors = errors => {
-    debugger 
     return ({
     type: RECEIVE_USER_ERRORS,
     errors
@@ -47,7 +46,6 @@ export const createNewUser = formUser => dispatch =>{
 
  
 export const login = formUser => dispatch => {
-    
     return(
     postSession(formUser).then( (user) => dispatch(receiveCurrentUser(user)), err => dispatch(receiveSessionErrors(err.responseJSON)))
 )}

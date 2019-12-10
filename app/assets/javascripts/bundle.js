@@ -134,7 +134,6 @@ var receiveSessionErrors = function receiveSessionErrors(errors) {
   };
 };
 var receiveUserErrors = function receiveUserErrors(errors) {
-  debugger;
   return {
     type: RECEIVE_USER_ERRORS,
     errors: errors
@@ -350,6 +349,7 @@ function (_React$Component) {
       password: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -374,8 +374,23 @@ function (_React$Component) {
       };
     }
   }, {
+    key: "demoUser",
+    value: function demoUser() {
+      var _this4 = this;
+
+      return this.props.login({
+        username: 'DemoUser',
+        email: 'demo@trialaccount.com',
+        password: 'hunter2'
+      }).then(function () {
+        return _this4.props.history.push('/');
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this5 = this;
+
       var errorsLis = this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: i
@@ -396,7 +411,11 @@ function (_React$Component) {
         onClick: this.handleSubmit
       }, "Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
-      }, "Sign up"));
+      }, "Sign up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this5.demoUser();
+        }
+      }, "Try Demo User"));
     }
   }]);
 
@@ -517,7 +536,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var errorsLis = this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: i
@@ -667,7 +685,6 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
-      debugger;
       return action.errors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
@@ -737,7 +754,6 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER_ERRORS"]:
-      debugger;
       return action.errors;
 
     default:
