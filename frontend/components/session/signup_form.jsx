@@ -34,22 +34,24 @@ class SignupForm extends React.Component{
             <h1>Sign Up Form</h1>
             <ul>{errorsLis}</ul>
             <form onSubmit={this.handleSubmit}>
+            <div>
+                <label> First Name 
+                    <input type="text" onChange={this.update('first_name')}/>   
+                </label>
+                <label> Last Name 
+                    <input type="text" onChange={this.update('last_name')}/>   
+                </label>
 
-            <label> First Name 
-                <input type="text" onChange={this.update('first_name')}/>   
-            </label>
-            <label> Last Name 
-                <input type="text" onChange={this.update('last_name')}/>   
-            </label>
+                <label> Email 
+                    <input type="text" onChange={this.update('email')}/>   
+                </label>
 
-            <label> Email 
-                <input type="text" onChange={this.update('email')}/>   
-            </label>
-
-            <label> Password 
-                <input type="password" onChange={this.update('password')}/>   
-            </label>
-            <button onClick={this.handleSubmit}>Sign Up</button>
+                <label> Password 
+                    <input type="password" onChange={this.update('password')}/>   
+                </label>
+                <button onClick={this.handleSubmit}>Sign Up</button>    
+            </div>
+            
 
 
             </form>

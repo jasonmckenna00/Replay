@@ -42,22 +42,34 @@ class LoginForm extends React.Component{
 
         return (
         <div className='login-form'>
-            <h1>Login Form</h1>
-            <h2>This is not the sign up form</h2>
+            <img src={window.google_logo} className='google_logo'/>
+            <h1 className='signin-header'>Sign in</h1>
+            <h2 className='signin-header-text'>to continue to Gmail</h2>
             <ul>{errorsLis}</ul>
             <form onSubmit={this.handleSubmit}>
-                <label> Email 
-                    <input type="email" onChange={this.update('email')}/>   
-                </label>
-
-                <label> Password 
+                <div className='form-input-container'> 
+                    <input type="email" 
+                    onChange={this.update('email')} 
+                    className='form-input'
+                    placeholder='Your email address'
+                    />   
+                </div>
+                <h2 onClick={()=> this.demoUser()} className='demo-user-button'>Try Demo User</h2>
+                {/* <label> Password 
                     <input type="password" onChange={this.update('password')}/>   
-                </label>
-                <button onClick={this.handleSubmit}>Login</button>
+                </label> */}
+                <br/>
+                
             </form>
-            <br/>
-            <Link to='/signup'>Sign Up</Link>
-            <button onClick={()=> this.demoUser()}>Try Demo User</button>
+            
+            <h3 className='guest-mode'>Not your computer? Use Guest mode to sign in privately.</h3>
+            <h3 className='guest-mode-link'> Learn More </h3>
+            <div >
+                
+            <Link to='/signup' className='create-account-link'>Create account</Link>
+            <h2 onClick={this.handleSubmit} className='next-button'>Next</h2>
+            </div>
+            
         </div>
         )
     }

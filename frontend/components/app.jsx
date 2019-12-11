@@ -8,10 +8,8 @@ import LoginContainer from '../components/session/login_container'
 const App = () =>(
     <>
 
-    <div>
         <Navbar />
         <Route exact path="/" component={Splashpage} />
-    </div>
         
 
     </>

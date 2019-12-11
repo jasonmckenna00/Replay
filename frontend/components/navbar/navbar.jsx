@@ -15,14 +15,14 @@ class Navbar extends React.Component{
         let tempClass = ((currPath === '/login') || (currPath === '/signup')) ? 'navbar-hidden' : '';
 
     return(
-        <div>
+        <>
             <Route path='/login' component={LoginContainer}/>
             <Route path='/signup' component={SignupContainer}/>
             <div className={`navbar ${tempClass}`} >
                 <div className='nav-buttons'>
                     <div className='login-button'>
                         <ul>
-                            <li className='login-button-circle'><button> <i class="fas fa-user-circle"></i></button></li> 
+                            <li className='login-button-circle'><button> <i className="fas fa-user-circle"></i></button></li> 
                             <li><Link to='/login' className='login-button-link'> Sign In</Link></li> 
                         </ul> 
                     </div>
@@ -30,7 +30,7 @@ class Navbar extends React.Component{
                     
                 {/* <Link to='/'>Youtube Logo</Link> */}
             </div>
-        </div>
+        </>
 
         
     )}

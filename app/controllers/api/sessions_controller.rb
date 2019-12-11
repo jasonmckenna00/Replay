@@ -10,7 +10,7 @@ class Api::SessionsController < ApplicationController
             render 'api/users/show';
         else 
             # debugger
-            render json: ['Invalid Credentials'], status: 401
+            render json: ["Couldn't find your google account"], status: 401
         end
     end
 

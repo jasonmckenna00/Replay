@@ -1,0 +1,126 @@
+.login-form{
+    width: 450px;
+    height: 500px;
+    border: 1px solid #f9f9f9;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-color: lightgrey;
+    border-radius: 10px;
+
+    
+}
+
+.google_logo{
+    display: block;
+    width: 75px;
+    height: 25px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 20px
+}
+
+.signin-header{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: sans-serif;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 15px;
+}
+
+.signin-header-text{
+    text-align: center;
+    font-weight: 500;
+    font-family: sans-serif;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 40px;
+    font-weight: 500;
+}
+
+.form-input{
+    display: block;
+    width: 350px;
+    font-size: medium;
+    padding: 15px 0px;
+    transform: translate(5px, 0px);
+    border: none
+}
+
+
+.form-input-container{
+    display: block;
+    margin: 0 auto;
+    height: 54px;
+    width: 370px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.demo-user-button{
+    color: #4f94ed;
+    font-family: sans-serif;
+    transform: translate(40px,10px);
+    font-weight: bold;
+}
+
+.demo-user-button:hover{
+    cursor:pointer;
+}
+
+.guest-mode{
+    width: 350px;
+    font-size: 13px;
+    padding-top: 40px;
+    padding-left: 40px;
+    color: darkgrey;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-stretch: ultra-condensed;
+    white-space: nowrap;
+}
+
+.guest-mode-link{
+    color: #4f94ed;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding-top: 5px;
+    transform: translate(40px,0px);
+    font-size: small;
+    margin: 1px;
+    width: fit-content;
+}
+
+.guest-mode-link:hover{
+    cursor: pointer;
+}
+
+.create-account-link{
+    color: #4f94ed;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-decoration: none;
+    padding-top: 20px;
+    margin-top: 5px;
+}
+
+.next-button{
+    display: inline-block;
+    width: 90px;
+    height: 35px;
+    background-color: #1A73E8;
+    font-weight: 500;
+    color: white;
+    border-radius: 4px;
+    font-family: sans-serif;
+    vertical-align: middle;
+}
+
+.next-button:hover{
+    cursor: pointer;
+}
