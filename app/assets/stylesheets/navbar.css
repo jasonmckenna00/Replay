@@ -1,0 +1,41 @@
+.navbar{
+    height: 56px;
+    width: 100%;
+    background-color: #ffffff;
+    font-family: Roboto, Arial, sans-serif;
+    display: grid;
+}
+
+
+
+.navbar-hidden{
+    display: none;
+}
+
+.nav-buttons button{
+ background-color: transparent;   
+ border: none;
+ width: 40px;
+ height: 40px;
+}
+
+.login-button{
+    position: relative;
+    display: flex;
+    width: 105px;
+    height: 40px;
+    top: 8px;
+    bottom: 48px;
+    transform: translateY(-50%);
+    margin: 10px 10px;
+    padding: 10px 15px;
+    border: 1px solid blue;
+}
+/* button containers are 40x40px */
+/* themselves are 24x24px */
+.login-button-circle{
+    height: 24px;
+    width: 24px;
+    
+
+}

@@ -6,13 +6,13 @@ class Api::UsersController < ApplicationController
       login(@user)
       render :show
     else 
-      # debugger
+      debugger
       render json: @user.errors.full_messages, status: 422
     end
   end
     
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:email, :password, :first_name, :last_name)
   end
     
 end

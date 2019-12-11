@@ -6,7 +6,6 @@ class LoginForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            username: "",
             email: "",
             password: ""
         }
@@ -26,7 +25,12 @@ class LoginForm extends React.Component{
     }
 
     demoUser(){
-        return this.props.login({username: 'DemoUser', email:'demo@trialaccount.com', password: 'hunter2'})
+        return this.props.login({
+                first_name: 'Demo',
+                 last_name: 'User',
+                 email:'demo@trialaccount.com', 
+                 password: 'hunter2'
+             })
             .then( () => this.props.history.push('/'))
     }
 
@@ -37,28 +41,22 @@ class LoginForm extends React.Component{
         })
 
         return (
-        <div>
+        <div className='login-form'>
             <h1>Login Form</h1>
             <h2>This is not the sign up form</h2>
             <ul>{errorsLis}</ul>
             <form onSubmit={this.handleSubmit}>
-            <label> Username 
-                <input type="text" onChange={this.update('username')}/>   
-            </label>
+                <label> Email 
+                    <input type="email" onChange={this.update('email')}/>   
+                </label>
 
-            <label> Email 
-                <input type="text" onChange={this.update('email')}/>   
-            </label>
-
-            <label> Password 
-                <input type="password" onChange={this.update('password')}/>   
-            </label>
-            <button onClick={this.handleSubmit}>Login</button>
-
-
+                <label> Password 
+                    <input type="password" onChange={this.update('password')}/>   
+                </label>
+                <button onClick={this.handleSubmit}>Login</button>
             </form>
             <br/>
-            <Link to='/signup'>Sign up</Link>
+            <Link to='/signup'>Sign Up</Link>
             <button onClick={()=> this.demoUser()}>Try Demo User</button>
         </div>
         )

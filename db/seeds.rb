@@ -7,13 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 admin = User.create({
-    username: 'admin', 
+    first_name: 'admin',
+    last_name: 'admin',
     email: 'admin', 
     password: 'password'
 })
 
 demo = User.create({
-    username: 'DemoUser', 
+    first_name: 'Demo',
+    last_name: 'User',
     email:'demo@trialaccount.com', 
     password: 'hunter2'
 })
