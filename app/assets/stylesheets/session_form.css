@@ -16,11 +16,11 @@
 
 .google_logo{
     display: block;
-    width: 75px;
-    height: 25px;
+    width: 100px;
+    height: auto;
     margin: 0 auto;
     padding-top: 50px;
-    padding-bottom: 20px
+    
 }
 
 .signin-header{
@@ -39,27 +39,32 @@
     font-family: sans-serif;
     margin: 0 auto;
     display: block;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     font-weight: 500;
 }
 
 .form-input{
     display: block;
-    width: 350px;
+    width: 334px;
     font-size: medium;
-    padding: 15px 0px;
+    padding: 19px 13px 13px;
     transform: translate(5px, 0px);
-    border: none
+    border: none;
+    background-color: transparent;
 }
 
 
 .form-input-container{
     display: block;
     margin: 0 auto;
-    height: 54px;
+    height: 50px;
     width: 370px;
     border: 1px solid lightgray;
     border-radius: 5px;
+}
+
+.form-input-container:focus{
+    border:1px solid blue
 }
 
 .demo-user-button{
@@ -67,17 +72,18 @@
     font-family: sans-serif;
     transform: translate(40px,10px);
     font-weight: bold;
+    width: fit-content;
 }
 
 .demo-user-button:hover{
     cursor:pointer;
 }
 
-.guest-mode{
+.learn-more{
     width: 350px;
     font-size: 13px;
-    padding-top: 40px;
-    padding-left: 40px;
+    padding-top: 20px;
+    transform: translate(40px,5px);
     color: darkgrey;
     font-family: sans-serif;
     font-weight: 600;
@@ -85,7 +91,7 @@
     white-space: nowrap;
 }
 
-.guest-mode-link{
+.learn-more-link{
     color: #4f94ed;
     font-family: sans-serif;
     font-weight: bold;
@@ -96,7 +102,7 @@
     width: fit-content;
 }
 
-.guest-mode-link:hover{
+.learn-more-link:hover{
     cursor: pointer;
 }
 
@@ -105,7 +111,7 @@
     font-weight: bold;
     font-family: sans-serif;
     text-decoration: none;
-    padding-top: 20px;
+    padding-top: 5px;
     margin-top: 5px;
 }
 
@@ -123,15 +129,14 @@
     justify-content: center
 }
 
-.next-button p{
-    
-}
+
 
 .next-button:hover{
     cursor: pointer;
 }
 
-.this-is-awful{
+.next-form-container{
     display: flex;
     justify-content: space-around;
+    padding-top: 60px;
 }

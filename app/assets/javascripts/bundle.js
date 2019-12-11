@@ -452,18 +452,18 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.google_logo,
+        src: window.replay_logo,
         className: "google_logo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "signin-header"
       }, "Sign in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "signin-header-text"
-      }, "to continue to Gmail"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errorsLis), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "to continue to RePlay"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errorsLis), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-input-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "email",
+        type: "text",
         onChange: this.update('email'),
         className: "form-input",
         placeholder: "Your email address"
@@ -473,11 +473,11 @@ function (_React$Component) {
         },
         className: "demo-user-button"
       }, "Try Demo User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "guest-mode"
+        className: "learn-more"
       }, "Not your computer? Use Guest mode to sign in privately."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "guest-mode-link"
+        className: "learn-more-link"
       }, " Learn More "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "this-is-awful"
+        className: "next-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
         className: "create-account-link"

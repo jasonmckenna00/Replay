@@ -39,16 +39,17 @@ class LoginForm extends React.Component{
         const errorsLis = this.props.errors.map( (error,i) => {
             return  <li key= {i}> {error} </li>
         })
+        
 
         return (
         <div className='login-form'>
-            <img src={window.google_logo} className='google_logo'/>
+            <img src={window.replay_logo} className='google_logo'/>
             <h1 className='signin-header'>Sign in</h1>
-            <h2 className='signin-header-text'>to continue to Gmail</h2>
+            <h2 className='signin-header-text'>to continue to RePlay</h2>
             <ul>{errorsLis}</ul>
             <form onSubmit={this.handleSubmit}>
                 <div className='form-input-container'> 
-                    <input type="email" 
+                    <input type="text" 
                     onChange={this.update('email')} 
                     className='form-input'
                     placeholder='Your email address'
@@ -62,10 +63,10 @@ class LoginForm extends React.Component{
                 
             </form>
             
-            <h3 className='guest-mode'>Not your computer? Use Guest mode to sign in privately.</h3>
-            <h3 className='guest-mode-link'> Learn More </h3>
+            <h3 className='learn-more'>Not your computer? Use Guest mode to sign in privately.</h3>
+            <h3 className='learn-more-link'> Learn More </h3>
     
-                <div className='this-is-awful'>
+                <div className='next-form-container'>
 
             <Link to='/signup' className='create-account-link'>Create account</Link>
             <h2 onClick={this.handleSubmit} className='next-button'><p>Next</p></h2>
