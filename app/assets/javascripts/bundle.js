@@ -476,13 +476,15 @@ function (_React$Component) {
         className: "guest-mode"
       }, "Not your computer? Use Guest mode to sign in privately."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "guest-mode-link"
-      }, " Learn More "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, " Learn More "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "this-is-awful"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
         className: "create-account-link"
       }, "Create account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         onClick: this.handleSubmit,
         className: "next-button"
-      }, "Next")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Next"))));
     }
   }]);
 

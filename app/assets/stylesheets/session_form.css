@@ -110,7 +110,6 @@
 }
 
 .next-button{
-    display: inline-block;
     width: 90px;
     height: 35px;
     background-color: #1A73E8;
@@ -119,8 +118,20 @@
     border-radius: 4px;
     font-family: sans-serif;
     vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.next-button p{
+    
 }
 
 .next-button:hover{
     cursor: pointer;
+}
+
+.this-is-awful{
+    display: flex;
+    justify-content: space-around;
 }

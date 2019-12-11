@@ -64,12 +64,13 @@ class LoginForm extends React.Component{
             
             <h3 className='guest-mode'>Not your computer? Use Guest mode to sign in privately.</h3>
             <h3 className='guest-mode-link'> Learn More </h3>
-            <div >
-                
+    
+                <div className='this-is-awful'>
+
             <Link to='/signup' className='create-account-link'>Create account</Link>
-            <h2 onClick={this.handleSubmit} className='next-button'>Next</h2>
-            </div>
+            <h2 onClick={this.handleSubmit} className='next-button'><p>Next</p></h2>
             
+                </div>
         </div>
         )
     }
