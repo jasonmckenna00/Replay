@@ -5,7 +5,7 @@ import { login } from '../../actions/session_actions';
 
 
 const msp = state =>({
-    errors: state.errors.session
+    errors: Object.values(state.errors.session)
 })
 
 const mdp = dispatch =>({
