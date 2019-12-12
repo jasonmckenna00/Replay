@@ -1,10 +1,10 @@
-import {postUser, postSession, deleteSession} from '../util/session'
-
+import {postUser, postSession, deleteSession} from '../util/session_util'
+ import * as userUtil from '../util/user_util'
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
-
+export const RECEIVE_USER_BY_EMAIL = 'RECEIVE_USER_BY_EMAIL'
 
 const receiveCurrentUser = (user) => {
     // debugger
@@ -35,6 +35,14 @@ export const receiveUserErrors = errors => {
   
 }
 
+const receiveUserByEmail = (user) => {
+
+    return ({
+        type: RECEIVE_USER_BY_EMAIL,
+        user
+    })
+}
+
 
 
 
@@ -53,3 +61,8 @@ export const login = formUser => dispatch => {
 export const logout = () => dispatch => (
     deleteSession().then( () => dispatch(logoutCurrentUser()))
 )
+
+export const fetchUserByEmail = (formEmail) => dispatch => {
+    return(
+    userUtil.fetchUserByEmail(formEmail).then( (user) => dispatch(receiveUserByEmail(user)), err => dispatch(receiveUserErrors(err.responseJSON)))
+)}

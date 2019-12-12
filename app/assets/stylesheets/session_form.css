@@ -43,6 +43,8 @@
     font-weight: 500;
 }
 
+
+
 .form-input{
     display: block;
     width: 334px;
@@ -113,6 +115,7 @@
     text-decoration: none;
     padding-top: 5px;
     margin-top: 5px;
+    font-size: small;
 }
 
 .next-button{
@@ -128,6 +131,31 @@
     align-items: center;
     justify-content: center
 }
+
+.user-name{
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+.user-email{
+    padding-top: 5px;
+    font-size: medium;
+    padding-bottom: 20px;
+}
+
+.user-email p{
+    border: 1px solid lightgray;
+    padding: 6px;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.user-email p:hover{
+    cursor: pointer;
+    background-color: darkgrey;
+}
+
 
 
 

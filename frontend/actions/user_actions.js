@@ -1,11 +1,12 @@
+// import * as UsersUtil from '../util/user_util';
+// export const RECEIVE_USERS = "RECEIVE_USERS";
 
-// export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
+// const receiveUsers = (users) => ({
+//     type: RECEIVE_USERS,
+//     users
+// })
 
-// export const receiveUserErrors = errors => {
-//     // debugger 
-//     return ({
-//     type: RECEIVE_USER_ERRORS,
-//     errors
-//   });
-  
-// }
+// export const fetchUsers = () => dispatch =>(
+//     UsersUtil.fetchUsers().then( users => dispatch(receiveUsers(users)))
+// )
+
