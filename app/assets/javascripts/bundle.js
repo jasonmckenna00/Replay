@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, RECEIVE_USER_ERRORS, RECEIVE_USER_BY_EMAIL, RESET_USER_STATE, CLEAR_ERRORS, receiveSessionErrors, receiveUserErrors, clearErrors, createNewUser, login, logout, fetchUserByEmail */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, RECEIVE_USER_ERRORS, RECEIVE_USER_BY_EMAIL, RESET_USER_STATE, CLEAR_ERRORS, receiveSessionErrors, receiveUserErrors, resetUserState, clearErrors, createNewUser, login, logout, fetchUserByEmail */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104,6 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSessionErrors", function() { return receiveSessionErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveUserErrors", function() { return receiveUserErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetUserState", function() { return resetUserState; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNewUser", function() { return createNewUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
@@ -162,7 +163,6 @@ var resetUserState = function resetUserState() {
     type: RESET_USER_STATE
   };
 };
-
 var clearErrors = function clearErrors() {
   return {
     type: CLEAR_ERRORS
@@ -388,6 +388,9 @@ var mdp = function mdp(dispatch) {
     },
     fetchUserByEmail: function fetchUserByEmail(email) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUserByEmail"])(email));
+    },
+    resetUserState: function resetUserState() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["resetUserState"])());
     }
   };
 };
@@ -449,6 +452,7 @@ function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this));
     _this.checkEmail = _this.checkEmail.bind(_assertThisInitialized(_this));
+    _this.backToLogin = _this.backToLogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -485,6 +489,11 @@ function (_React$Component) {
       }).then(function () {
         return _this4.props.history.push('/');
       });
+    }
+  }, {
+    key: "backToLogin",
+    value: function backToLogin() {
+      this.props.resetUserState();
     }
   }, {
     key: "emailError",
@@ -562,6 +571,8 @@ function (_React$Component) {
   }, {
     key: "passwordForm",
     value: function passwordForm() {
+      var _this6 = this;
+
       var errClass = this.passError() ? 'errors' : '';
       var _this$props$currUser$ = this.props.currUser[0],
           email = _this$props$currUser$.email,
@@ -572,7 +583,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "user-name"
       }, "Hi ", first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "user-email"
+        className: "user-email",
+        onClick: function onClick() {
+          return _this6.backToLogin();
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -586,9 +600,10 @@ function (_React$Component) {
         className: "invalid-message error-message "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.passError()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "next-form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/",
         className: "create-account-link"
-      }, "Forgot Password?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, "Back to home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         onClick: this.handleSubmit,
         className: "next-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Next")))));

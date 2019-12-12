@@ -11,7 +11,8 @@ class LoginForm extends React.Component{
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoUser = this.demoUser.bind(this)
-        this.checkEmail = this.checkEmail.bind(this)
+        this.checkEmail = this.checkEmail.bind(this);
+        this.backToLogin = this.backToLogin.bind(this)
     }
  
 
@@ -34,6 +35,10 @@ class LoginForm extends React.Component{
                  password: 'hunter2'
              })
             .then( () => this.props.history.push('/'))
+    }
+
+    backToLogin(){
+        this.props.resetUserState();
     }
 
 
@@ -116,7 +121,7 @@ class LoginForm extends React.Component{
 
             <div className='signin-header'>
                 <h2 className='user-name'>Hi {first_name}</h2>
-                <h2 className='user-email'><p>{email}</p></h2>
+                <h2 className='user-email' onClick={() => this.backToLogin()}><p>{email}</p></h2>
             </div>
             
             <form onSubmit={this.handleSubmit}>
@@ -133,7 +138,8 @@ class LoginForm extends React.Component{
                 </div>
 
                 <div className='next-form-container'>
-                    <p className='create-account-link'>Forgot Password?</p>
+                    <Link to='/' className='create-account-link'>Back to home</Link>
+                    {/* <p className='create-account-link'></p> */}
                     <h2 onClick={this.handleSubmit} className='next-button'><p>Next</p></h2>
                 </div>
             </form>

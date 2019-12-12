@@ -45,7 +45,7 @@ const receiveUserByEmail = (user) => {
     })
 }
 
-const resetUserState = () => {
+export const resetUserState = () => {
     return ({
         type: RESET_USER_STATE
     })

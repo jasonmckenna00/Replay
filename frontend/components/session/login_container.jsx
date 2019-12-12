@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import LoginForm from './login_form';
 import { login } from '../../actions/session_actions';
-import { fetchUserByEmail} from '../../actions/session_actions';
+import { fetchUserByEmail, resetUserState} from '../../actions/session_actions';
 
 
 
@@ -14,7 +14,8 @@ const msp = state =>({
 
 const mdp = dispatch =>({
     login: (user) => dispatch(login(user)),
-    fetchUserByEmail: (email) => dispatch(fetchUserByEmail(email))
+    fetchUserByEmail: (email) => dispatch(fetchUserByEmail(email)),
+    resetUserState: () => dispatch(resetUserState())
 })
 
 export default connect(msp,mdp)(LoginForm)

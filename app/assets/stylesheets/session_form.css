@@ -311,7 +311,8 @@
 .password-requirements{
     font-size: 12px;
     font-family: 'Roboto';
-    padding-bottom: 54px
+    padding-bottom: 54px;
+    margin-top: 3px
 }
 .password-requirements-container{
     width: 310px;
