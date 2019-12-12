@@ -13,6 +13,7 @@ class LoginForm extends React.Component{
         this.demoUser = this.demoUser.bind(this)
         this.checkEmail = this.checkEmail.bind(this)
     }
+ 
 
     handleSubmit(e){
         e.preventDefault()
@@ -36,33 +37,69 @@ class LoginForm extends React.Component{
     }
 
 
-    emailForm(){
-        const errorsLis = this.props.emailErrors.map( (error,i) => {
-            return  <li key= {i}> {error} </li>
-        })
+    emailError(){
+        const errors = this.props.emailErrors;
+        // debugger
+        let errMessage = ''
+        errors.forEach( error => {
+            if ((error.split(' ')[0] === "Couldn't")){
+                errMessage = "Couldn't find your RePlay Account";
+            }
+            //  else if (error.split(' ')[0] === 'Enter') {
+            //     errMessage = 'Enter an email address'
+            // };
+        }
+        )
+        return errMessage 
+    }
 
+    passError(){
+        const errors = this.props.passwordErrors;
+        // debugger
+        let errMessage = ''
+        errors.forEach( error => {
+            if ((error.split(' ')[0] === "Invalid")){
+                errMessage = "Wrong Password. Try again";
+            }
+            //  else if (error.split(' ')[0] === 'Enter') {
+            //     errMessage = 'Enter an email address'
+            // };
+        }
+        )
+        return errMessage 
+    }
+
+
+    emailForm(){
+        const errClass = this.emailError() ? 'errors' : '';
+        // debugger
         return <>
         
             <h1 className='signin-header'>Sign in</h1>
             <h2 className='signin-header-text'>to continue to RePlay</h2>
             <form >
-                <div className='form-input-container'> 
-                    <input type="text" 
-                    onChange={this.update('email')} 
-                    className='form-input'
-                    placeholder='Your email address'
-                    />   
+                <div>
+                    <div className='form-input-container'> 
+                        <input type="text" 
+                        onChange={this.update('email')} 
+                        className={`form-input ${errClass}`}
+                        placeholder='Your email address'
+                        />   
+                    </div>
+                    <h2 className='invalid-message error-message '><p>{this.emailError()}</p></h2>
+
                 </div>
-                {errorsLis}
                 <h2 onClick={()=> this.demoUser()} className='demo-user-button'>Try Demo User</h2>
                 <br/>
                 
             
-            
-                <h3 className='learn-more'>Not your computer? Use Guest mode to sign in privately.</h3>
-                <h3 className='learn-more-link'> Learn More </h3>
+                <div className='learn-more-container'>
+
+                    <h3 className='learn-more'>Not your computer? Use Guest mode to sign in privately.</h3>
+                    <h3 className='learn-more-link'> Learn More </h3>
+                </div>
         
-                <div className='next-form-container'>
+                <div className='next-form-container-email'>
                     <Link to='/signup' className='create-account-link'>Create account</Link>
                     <h2 onClick={this.checkEmail} className='next-button'><p>Next</p></h2>
                 </div>
@@ -71,9 +108,8 @@ class LoginForm extends React.Component{
     }
 
     passwordForm(){
-        const errorsLis = this.props.passwordErrors.map( (error,i) => {
-            return  <li key= {i}> {error} </li>
-        })
+        const errClass = this.passError() ? 'errors' : '';
+
         const {email, first_name} = this.props.currUser[0]
         // debugger
         return(<>
@@ -84,14 +120,18 @@ class LoginForm extends React.Component{
             </div>
             
             <form onSubmit={this.handleSubmit}>
-                <div className='form-input-container'> 
-                    <input type="password" 
-                    onChange={this.update('password')} 
-                    className='form-input'
-                    placeholder='Password'
-                    />   
+                <div>
+
+                    <div className='form-input-container'> 
+                        <input type="password" 
+                        onChange={this.update('password')} 
+                        className={`form-input ${errClass}`}
+                        placeholder='Password'
+                        />   
+                    </div>
+                    <h2 className='invalid-message error-message '><p>{this.passError()}</p></h2>
                 </div>
-                {errorsLis}
+
                 <div className='next-form-container'>
                     <p className='create-account-link'>Forgot Password?</p>
                     <h2 onClick={this.handleSubmit} className='next-button'><p>Next</p></h2>

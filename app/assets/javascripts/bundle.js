@@ -487,37 +487,70 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "emailError",
+    value: function emailError() {
+      var errors = this.props.emailErrors; // debugger
+
+      var errMessage = '';
+      errors.forEach(function (error) {
+        if (error.split(' ')[0] === "Couldn't") {
+          errMessage = "Couldn't find your RePlay Account";
+        } //  else if (error.split(' ')[0] === 'Enter') {
+        //     errMessage = 'Enter an email address'
+        // };
+
+      });
+      return errMessage;
+    }
+  }, {
+    key: "passError",
+    value: function passError() {
+      var errors = this.props.passwordErrors; // debugger
+
+      var errMessage = '';
+      errors.forEach(function (error) {
+        if (error.split(' ')[0] === "Invalid") {
+          errMessage = "Wrong Password. Try again";
+        } //  else if (error.split(' ')[0] === 'Enter') {
+        //     errMessage = 'Enter an email address'
+        // };
+
+      });
+      return errMessage;
+    }
+  }, {
     key: "emailForm",
     value: function emailForm() {
       var _this5 = this;
 
-      var errorsLis = this.props.emailErrors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i
-        }, " ", error, " ");
-      });
+      var errClass = this.emailError() ? 'errors' : ''; // debugger
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "signin-header"
       }, "Sign in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "signin-header-text"
-      }, "to continue to RePlay"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "to continue to RePlay"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-input-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.update('email'),
-        className: "form-input",
+        className: "form-input ".concat(errClass),
         placeholder: "Your email address"
-      })), errorsLis, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "invalid-message error-message "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.emailError()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         onClick: function onClick() {
           return _this5.demoUser();
         },
         className: "demo-user-button"
-      }, "Try Demo User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }, "Try Demo User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "learn-more-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "learn-more"
       }, "Not your computer? Use Guest mode to sign in privately."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "learn-more-link"
-      }, " Learn More "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "next-form-container"
+      }, " Learn More ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "next-form-container-email"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
         className: "create-account-link"
@@ -529,11 +562,7 @@ function (_React$Component) {
   }, {
     key: "passwordForm",
     value: function passwordForm() {
-      var errorsLis = this.props.passwordErrors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i
-        }, " ", error, " ");
-      });
+      var errClass = this.passError() ? 'errors' : '';
       var _this$props$currUser$ = this.props.currUser[0],
           email = _this$props$currUser$.email,
           first_name = _this$props$currUser$.first_name; // debugger
@@ -546,14 +575,16 @@ function (_React$Component) {
         className: "user-email"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-input-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         onChange: this.update('password'),
-        className: "form-input",
+        className: "form-input ".concat(errClass),
         placeholder: "Password"
-      })), errorsLis, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "invalid-message error-message "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.passError()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "next-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "create-account-link"

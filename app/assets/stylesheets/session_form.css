@@ -350,7 +350,17 @@
     transform: translate(5px, 5px)
 }
 
-.password-parent-container{
-
+.invalid-message{
+    transform: translate(50px, 10px);
+    margin-bottom: 10px;
 }
 
+.learn-more-container{
+    padding-top: 20px
+}
+
+.next-form-container-email{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 60px;
+}
