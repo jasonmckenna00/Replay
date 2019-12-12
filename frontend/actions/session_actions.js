@@ -6,6 +6,7 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const RECEIVE_USER_BY_EMAIL = 'RECEIVE_USER_BY_EMAIL'
 export const RESET_USER_STATE = 'RESET_USER_STATE'
+export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 const receiveCurrentUser = (user) => {
     // debugger
@@ -50,11 +51,17 @@ const resetUserState = () => {
     })
 }
 
+export const clearErrors = () => {
+    return({
+        type: CLEAR_ERRORS
+    })
+}
+
+
 
 
 
 export const createNewUser = formUser => dispatch =>{
-    
     return(
     postUser(formUser).then( (user) => dispatch(receiveCurrentUser(user)), err => dispatch(receiveUserErrors(err.responseJSON)))
 )}

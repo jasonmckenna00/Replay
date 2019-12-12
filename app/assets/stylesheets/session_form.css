@@ -27,7 +27,7 @@
     text-align: center;
     font-size: 25px;
     font-weight: 500;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
     display: block;
     padding-bottom: 15px;
@@ -35,9 +35,9 @@
 
 .signup-header{
     text-align: left;
-    font-size: 19px;
+    font-size: 25px;
     font-weight: 500;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
     display: block;
     padding-bottom: 15px;
@@ -46,7 +46,7 @@
 .signin-header-text{
     text-align: center;
     font-weight: 500;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
     display: block;
     padding-bottom: 30px;
@@ -56,7 +56,7 @@
 .signup-header-text{
     text-align: left;
     font-weight: 500;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
     display: block;
     padding-bottom: 30px;
@@ -66,12 +66,13 @@
 
 .form-input{
     display: block;
-    width: 334px;
+    width: 341px;
     font-size: medium;
     padding: 19px 13px 13px;
-    transform: translate(5px, 0px);
-    border: none;
+    
+    border: 1px solid lightgray;
     background-color: transparent;
+    border-radius: 4px;
 }
 
 
@@ -80,17 +81,17 @@
     margin: 0 auto;
     height: 50px;
     width: 370px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
+    /* border: 1px solid lightgray; */
+    /* border-radius: 5px; */
 }
 
-.form-input-container:focus{
+.form-input:focus{
     border:1px solid blue
 }
 
 .demo-user-button{
     color: #4f94ed;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     transform: translate(40px,10px);
     font-weight: bold;
     width: fit-content;
@@ -106,7 +107,7 @@
     padding-top: 20px;
     transform: translate(40px,5px);
     color: darkgrey;
-    font-family: sans-serif;
+    font-family: "Roboto";
     font-weight: 600;
     font-stretch: ultra-condensed;
     white-space: nowrap;
@@ -114,7 +115,7 @@
 
 .learn-more-link{
     color: #4f94ed;
-    font-family: sans-serif;
+    font-family: "Roboto";
     font-weight: bold;
     padding-top: 5px;
     transform: translate(40px,0px);
@@ -130,7 +131,7 @@
 .create-account-link{
     color: #4f94ed;
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: "Roboto";
     text-decoration: none;
     padding-top: 5px;
     margin-top: 5px;
@@ -144,7 +145,7 @@
     font-weight: 500;
     color: white;
     border-radius: 4px;
-    font-family: sans-serif;
+    font-family: "Roboto";
     vertical-align: middle;
     display: flex;
     align-items: center;
@@ -153,7 +154,7 @@
 
 .user-name{
     font-size: 24px;
-    font-family: sans-serif;
+    font-family: 'Roboto';
 }
 
 .user-email{
@@ -188,8 +189,10 @@
     padding-top: 60px;
 }
 
-
+/* ---------------------------------------------------*/
 /* sign up page */
+/* ---------------------------------------------------*/
+
 
 .signup-form{
     width: 750px;
@@ -203,83 +206,88 @@
     transform: translate(-50%, -50%);
     border-color: lightgrey;
     border-radius: 10px; 
+    display: flex;
 }
 
 .signup-form-left{
     width: 375px;
     height: 515px;
-    transform: translate(45px, 45px);
+    transform: translate(40px, 45px);
 
 }
 
 .logo-signup{
     display: block;
     width: 100px;
-    height: auto;
-    
-    
+    height: auto;    
+}
+
+.logo-shield{
+    display: block;
+    width: 225px;
+    height: auto;  
+    transform: translate(90px, 165px);
 }
 
 .name-container{
     width: 100%;
-    height: 35px;
-    margin: 0;
-    padding: 0;
-    padding-bottom: 25px;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
     display: flex;
 
 }
 
 .name-input{
     width: 165px;
+    height: 35px;
     justify-content: space-between;
     border: 1px solid lightgray;
-    border-radius: 5px;
+    border-radius: 4px;
     padding-left: 10px
 
 }
 
 .name-input-right{
     width: 165px;
+    height: 35px;
     justify-content: space-between;
     border: 1px solid lightgray;
-    border-radius: 5px;
+    border-radius: 4px;
     padding-left: 10px;
     margin-left: 20px;
 }
 .email-container{
     width: 100%;
     height: 35px;
-    margin: 0;
+    margin-top: 5px;
     padding: 0;
-    padding-bottom: 5px;
+    padding-bottom: 12px;
     display: flex;
 
 }
 .email-address{
     width: 100%;
     height: 35px;
-    margin: 0;
+    margin-top: 6px;
     padding: 0;
     display: flex;
     border: 1px solid lightgray;
-    border-radius: 7px;
+    border-radius: 4px;
     padding-left: 10px
 
 }
 
 .email-belongs-to{
-    font-size: x-small;
-    font-family: sans-serif;
-    padding-bottom: 54px
+    font-size: 12px;
+    font-family: "Roboto";
+    padding-bottom: 40px
 }
 
 .password-container{
     width: 100%;
     height: 35px;
-    margin: 0;
+    margin-top: 15px;
     padding: 0;
-    padding-bottom: 25px;
     display: flex;
 
 }
@@ -287,7 +295,7 @@
 .password-left{
     width: 140px;
     border: 1px solid lightgray;
-    border-radius: 5px;
+    border-radius: 4px;
     padding-left: 10px
 
 }
@@ -295,19 +303,54 @@
 .password-right{
     width: 140px;
     border: 1px solid lightgray;
-    border-radius: 5px;
+    border-radius: 4px;
     padding-left: 10px;
     margin-left: 20px;
 }
 
 .password-requirements{
-    font-size: x-small;
-    font-family: sans-serif;
+    font-size: 12px;
+    font-family: 'Roboto';
     padding-bottom: 54px
+}
+.password-requirements-container{
+    width: 310px;
 }
 
 .next-form-container-password{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding-top: 15px;
 }
+
+.errors{
+    border: 2px solid red;
+}
+
+.fname-err-message{
+    transform: translate( 0px, 0px);
+}
+
+.lname-err-message{
+    transform: translate( 0px, 0px);
+    margin-left: 20px;
+}
+.email-err-message{
+    padding-bottom: 40px;
+}
+
+.pass-err-message{
+    padding-bottom: 49px;
+}
+
+.error-message{
+    font-size: small;
+    color: red;
+    font-family: "Roboto";
+    transform: translate(5px, 5px)
+}
+
+.password-parent-container{
+
+}
+

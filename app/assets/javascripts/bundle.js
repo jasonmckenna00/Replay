@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, RECEIVE_USER_ERRORS, RECEIVE_USER_BY_EMAIL, RESET_USER_STATE, receiveSessionErrors, receiveUserErrors, createNewUser, login, logout, fetchUserByEmail */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, RECEIVE_USER_ERRORS, RECEIVE_USER_BY_EMAIL, RESET_USER_STATE, CLEAR_ERRORS, receiveSessionErrors, receiveUserErrors, clearErrors, createNewUser, login, logout, fetchUserByEmail */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -101,8 +101,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_USER_ERRORS", function() { return RECEIVE_USER_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_USER_BY_EMAIL", function() { return RECEIVE_USER_BY_EMAIL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RESET_USER_STATE", function() { return RESET_USER_STATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSessionErrors", function() { return receiveSessionErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveUserErrors", function() { return receiveUserErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNewUser", function() { return createNewUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
@@ -117,6 +119,7 @@ var RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 var RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 var RECEIVE_USER_BY_EMAIL = 'RECEIVE_USER_BY_EMAIL';
 var RESET_USER_STATE = 'RESET_USER_STATE';
+var CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 var receiveCurrentUser = function receiveCurrentUser(user) {
   // debugger
@@ -160,6 +163,11 @@ var resetUserState = function resetUserState() {
   };
 };
 
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
 var createNewUser = function createNewUser(formUser) {
   return function (dispatch) {
     return Object(_util_session_util__WEBPACK_IMPORTED_MODULE_0__["postUser"])(formUser).then(function (user) {
@@ -606,6 +614,9 @@ var mdp = function mdp(dispatch) {
   return {
     createNewUser: function createNewUser(formUser) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["createNewUser"])(formUser));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["clearErrors"])());
     }
   };
 };
@@ -671,6 +682,11 @@ function (_React$Component) {
   }
 
   _createClass(SignupForm, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this2 = this;
@@ -691,13 +707,117 @@ function (_React$Component) {
       };
     }
   }, {
+    key: "renderError",
+    value: function renderError(field) {
+      // debugger
+      var errorLis = this.props.errors.map(function (error, i) {
+        return error;
+      });
+
+      switch (field) {
+        case 'fname':
+          // debugger
+          return this.firstNameError(errorLis);
+
+        case 'lname':
+          return this.lastNameError(errorLis);
+
+        case 'email':
+          return this.emailError(errorLis);
+
+        case 'password':
+          return this.passwordError(errorLis);
+
+        default:
+          return '';
+      }
+    }
+  }, {
+    key: "firstNameError",
+    value: function firstNameError(errors) {
+      var errMessage = '';
+      errors.forEach(function (error) {
+        if (error.split(' ')[0] === 'First') errMessage = 'Enter first name';
+      }); // debugger
+
+      return errMessage;
+    }
+  }, {
+    key: "lastNameError",
+    value: function lastNameError(errors) {
+      var errMessage = '';
+      errors.forEach(function (error) {
+        if (error.split(' ')[0] === 'Last') errMessage = 'Enter last name';
+      });
+      return errMessage;
+    }
+  }, {
+    key: "passwordError",
+    value: function passwordError(errors) {
+      var errMessage = '';
+      errors.forEach(function (error) {
+        if (error.split(' ')[0] === 'Password') errMessage = 'Enter a password';
+      });
+      return errMessage;
+    }
+  }, {
+    key: "emailError",
+    value: function emailError(errors) {
+      var errMessage = '';
+      errors.forEach(function (error) {
+        if (error.split(' ')[0] === 'Email' && error.split(' ')[1] === 'has') {
+          errMessage = 'That username is taken. Try another.';
+        } else if (error.split(' ')[0] === 'Email' && error.split(' ')[1] === "can't") {
+          errMessage = 'Enter an email address';
+        }
+
+        ;
+      });
+      return errMessage;
+    }
+  }, {
+    key: "renderEmailConfirm",
+    value: function renderEmailConfirm() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "email-belongs-to"
+      }, " You'll need to confirm that this email belongs to you");
+    }
+  }, {
+    key: "renderEmailError",
+    value: function renderEmailError(emailErr) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "email-err-message error-message "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, emailErr));
+    }
+  }, {
+    key: "renderPassError",
+    value: function renderPassError(passErr) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "pass-err-message error-message "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, passErr));
+    }
+  }, {
+    key: "renderPassReq",
+    value: function renderPassReq() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "password-requirements-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "password-requirements"
+      }, " User 6 or more characters with a mix of letters, numbers & symbols"));
+    }
+  }, {
     key: "render",
     value: function render() {
-      var errorsLis = this.props.errors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i
-        }, " ", error, " ");
-      });
+      var fnameErr = this.renderError('fname');
+      var lnameErr = this.renderError('lname');
+      var passErr = this.renderError('password');
+      var emailErr = this.renderError('email');
+      var fnameClass = fnameErr ? 'errors' : '';
+      var lnameClass = lnameErr ? 'errors' : '';
+      var passClass = passErr ? 'errors' : '';
+      var emailClass = emailErr ? 'errors' : '';
+      var emailConfirmErr = emailErr ? this.renderEmailError(emailErr) : this.renderEmailConfirm();
+      var passConfirmErr = passErr ? this.renderPassError(passErr) : this.renderPassReq();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "signup-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -709,43 +829,41 @@ function (_React$Component) {
         className: "signup-header"
       }, "Create Your RePlay Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "signup-header-text"
-      }, "to continue to RePlay"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errorsLis), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "to continue to RePlay"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "name-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.update('first_name'),
         placeholder: "First name",
-        className: "name-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "name-input ".concat(fnameClass)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "fname-err-message error-message "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, fnameErr))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.update('last_name'),
         placeholder: "Last name",
-        className: "name-input-right"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "name-input-right ".concat(lnameClass)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "lname-err-message error-message "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, lnameErr)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "email-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.update('email'),
         placeholder: "Your Email Address",
-        className: "email-address"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "email-belongs-to"
-      }, " You'll need to confirm that this email belongs to you"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "email-address ".concat(emailClass)
+      })), emailConfirmErr), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "password-parent-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "password-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         onChange: this.update('password'),
         placeholder: "Password",
-        className: "password-left"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        placeholder: "Confirm",
-        className: "password-right"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "password-requirements"
-      }, " User 6 or more characters with a mix of letters, numbers and symbols"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "password-left ".concat(passClass)
+      })), passConfirmErr), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "next-form-container-password"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login",
@@ -757,7 +875,7 @@ function (_React$Component) {
         className: "signup-form-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.shield,
-        className: "logo-signup"
+        className: "logo-shield"
       }))));
     }
   }]);
@@ -913,6 +1031,9 @@ __webpack_require__.r(__webpack_exports__);
       return action.errors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
       return [];
 
     default:
