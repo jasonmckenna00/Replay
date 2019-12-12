@@ -5,6 +5,7 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 export const RECEIVE_USER_BY_EMAIL = 'RECEIVE_USER_BY_EMAIL'
+export const RESET_USER_STATE = 'RESET_USER_STATE'
 
 const receiveCurrentUser = (user) => {
     // debugger
@@ -43,6 +44,12 @@ const receiveUserByEmail = (user) => {
     })
 }
 
+const resetUserState = () => {
+    return ({
+        type: RESET_USER_STATE
+    })
+}
+
 
 
 
@@ -55,7 +62,9 @@ export const createNewUser = formUser => dispatch =>{
  
 export const login = formUser => dispatch => {
     return(
-    postSession(formUser).then( (user) => dispatch(receiveCurrentUser(user)), err => dispatch(receiveSessionErrors(err.responseJSON)))
+    postSession(formUser)
+    .then( (user) => dispatch(receiveCurrentUser(user)), err => dispatch(receiveSessionErrors(err.responseJSON)))
+    .then( () => dispatch(resetUserState()))
 )}
 
 export const logout = () => dispatch => (

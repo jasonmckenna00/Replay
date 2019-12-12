@@ -37,6 +37,9 @@ class LoginForm extends React.Component{
 
 
     emailForm(){
+        const errorsLis = this.props.emailErrors.map( (error,i) => {
+            return  <li key= {i}> {error} </li>
+        })
 
         return <>
         
@@ -50,10 +53,8 @@ class LoginForm extends React.Component{
                     placeholder='Your email address'
                     />   
                 </div>
+                {errorsLis}
                 <h2 onClick={()=> this.demoUser()} className='demo-user-button'>Try Demo User</h2>
-                {/* <label> Password 
-                    <input type="password" onChange={this.update('password')}/>   
-                </label> */}
                 <br/>
                 
             
@@ -70,11 +71,16 @@ class LoginForm extends React.Component{
     }
 
     passwordForm(){
+        const errorsLis = this.props.passwordErrors.map( (error,i) => {
+            return  <li key= {i}> {error} </li>
+        })
+        const {email, first_name} = this.props.currUser[0]
+        // debugger
         return(<>
 
             <div className='signin-header'>
-                <h2 className='user-name'>Hi Jason</h2>
-                <h2 className='user-email'><p>jasonmckenna00@gmail.com</p></h2>
+                <h2 className='user-name'>Hi {first_name}</h2>
+                <h2 className='user-email'><p>{email}</p></h2>
             </div>
             
             <form onSubmit={this.handleSubmit}>
@@ -85,6 +91,7 @@ class LoginForm extends React.Component{
                     placeholder='Password'
                     />   
                 </div>
+                {errorsLis}
                 <div className='next-form-container'>
                     <p className='create-account-link'>Forgot Password?</p>
                     <h2 onClick={this.handleSubmit} className='next-button'><p>Next</p></h2>
@@ -104,20 +111,15 @@ class LoginForm extends React.Component{
 
     render(){
         const display = this.props.currUser.length ? this.passwordForm() : this.emailForm()
-        const errorsLis = this.props.errors.map( (error,i) => {
-            return  <li key= {i}> {error} </li>
-        })
         
 
         return (
-        <div className='login-form'>
-            <img src={window.replay_logo} className='google_logo'/>
-            
-            <ul>{errorsLis}</ul>
+        <section className='login-form'>
+            <img src={window.replay_logo} className='logo-login'/>
             {display}
 
 
-        </div>
+        </section>
         )
     }
 }

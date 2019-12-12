@@ -7,7 +7,8 @@ import { fetchUserByEmail} from '../../actions/session_actions';
 
 
 const msp = state =>({
-    errors: Object.values(state.errors.session),
+    passwordErrors: Object.values(state.errors.session),
+    emailErrors: Object.values(state.errors.users),
     currUser: Object.values(state.entities.users)
 })
 
