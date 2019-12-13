@@ -1,9 +1,9 @@
-.navbar{
+.navbar-container{
     height: 56px;
     width: 100%;
     background-color: #ffffff;
-    font-family: Roboto, Arial, sans-serif;
-    display: grid;
+    font-family: "Roboto";
+    overflow: hidden;
 }
 
 
@@ -12,30 +12,126 @@
     display: none;
 }
 
-.nav-buttons button{
- background-color: transparent;   
- border: none;
- width: 40px;
- height: 40px;
+.navbar{
+    border: 1px solid black;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+   display: flex;
+}
+.fas{
+    /* box-sizing: border-box; */
+    font-size: 20px;
+    padding: 8px;
+    color: gray;
 }
 
-.login-button{
-    position: relative;
+.fas:hover{
+    cursor: pointer;
+}
+
+.fa-user-circle{
+    font-size: 25px;
+    color: #1a73e8
+}
+
+.fa-play-circle{
+    font-size: 32px;
+    color: #7E2115;
+    padding: 0;
+}
+.side-bar-button{
+    /* box-sizing: border-box; */
+    padding: 8px;
+    margin-right: 16px;
+}
+
+.search-bar-input{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    height: 32px;
+    width: 100%;
+    align-self: flex-start;
+
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+
+
+.logo-signup{
+
+    margin-top: 10px;
+}
+
+.search-bar{
+    justify-content: space-between;
     display: flex;
-    width: 105px;
-    height: 40px;
-    top: 8px;
-    bottom: 48px;
-    transform: translateY(-50%);
-    margin: 10px 10px;
-    padding: 10px 15px;
-    border: 1px solid blue;
+    width: 100%;
 }
-/* button containers are 40x40px */
-/* themselves are 24x24px */
-.login-button-circle{
-    height: 24px;
-    width: 24px;
+
+.fa-search{
+    border-left: 1px solid lightgray;
+    padding: 6px 20px;
+    align-self: center;
+}
+
+.fa-search:hover{
+    background-color: lightgray;
+}
+
+.search-bar-container{
+    border: 1px solid gray;
     
+    width: 640px;
+    height: 32px;
+    flex-shrink: 1;
+    margin: 0px 30px;
+    align-items: baseline;
+    display: flex;
+    /* justify-content: flex-end; */
+}
+.side-bar-and-replay-logo{
+    display: flex;
+    justify-self: start;
+    align-items: center;
+}
+.side-bar-and-replay-logo:hover{
 
 }
+
+.right-buttons{
+    justify-self: end;  
+    width: 250px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signin-button-container{
+    display: flex;
+    justify-content: space-around;
+    
+    align-items: center;
+    border: 1px solid #1a73e8;
+    color: #1a73e8;
+    
+}
+
+.signin-button-container:hover{
+    cursor: pointer;
+}
+
+.signin-button-link{
+    padding: 10px;
+    width: 56px;
+    text-decoration: none;
+    color: #1a73e8;
+}
+

@@ -2,9 +2,10 @@ import {connect} from 'react-redux';
 import Navbar from './navbar';
 
 
-const msp = (state, ownProps) => {
-    currPath: ownProps.history.location.pathname
-}
+const msp = (state, ownProps) =>{
+    return ( {
+    currUser: state.session.currentUser
+})}
 
 const mdp = dispatch =>({
 
