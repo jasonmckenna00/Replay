@@ -294,21 +294,19 @@ function (_React$Component) {
       dropdown: false
     };
     return _this;
-  }
+  } // componentDidUpdate(prev){
+  //     debugger
+  //     if (prev.history.location !== this.props.history.location) this.setState({dropdown: false}) 
+  // }
+
 
   _createClass(Navbar, [{
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.setState({
-        dropdown: false
-      });
-    }
-  }, {
     key: "dropDownMenu",
     value: function dropDownMenu() {
       var _this2 = this;
 
       // debugger
+      var currUser = Object.values(this.props.currUser)[0];
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dom"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -321,9 +319,9 @@ function (_React$Component) {
         className: "dropdown-header-userinfo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "dropdown-username"
-      }, this.props.currUser.firstName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }, currUser.firstName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "dropdown-email"
-      }, this.props.currUser.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, currUser.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-a-channel"
@@ -473,7 +471,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   // debugger
   return {
-    currUser: Object.values(state.session.currentUser)[0]
+    currUser: state.session.currentUser
   };
 };
 

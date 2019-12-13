@@ -143,6 +143,7 @@
     flex-direction: column;
     color: black;
     transform: translate(-15px, -5px);
+    z-index: 2;
 }
 
 .dropdown-header{
@@ -168,6 +169,7 @@
 
 .dom{
     display: flex;
+    
     justify-content: flex-end;
 }
 

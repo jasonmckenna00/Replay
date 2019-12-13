@@ -14,20 +14,23 @@ class Navbar extends React.Component{
 
     }
 
-    componentWillUnmount(){
-        this.setState({dropdown: false})
-    }
+    // componentDidUpdate(prev){
+    //     debugger
+    //     if (prev.history.location !== this.props.history.location) this.setState({dropdown: false}) 
+    // }
 
     dropDownMenu(){
         // debugger
+        const currUser = Object.values(this.props.currUser)[0]
+       
         return (
             <div className='dom'>
                 <div className='dropdown-container'>
                     <div className='dropdown-header'>
                         <i className="fas fa-user dropdown-user-icon"></i>
                         <div className='dropdown-header-userinfo'>
-                             <h2 className='dropdown-username'>{this.props.currUser.firstName}</h2>
-                            <h3 className='dropdown-email'>{this.props.currUser.email}</h3>
+                             <h2 className='dropdown-username'>{currUser.firstName}</h2>
+                            <h3 className='dropdown-email'>{currUser.email}</h3>
                         </div>
                     </div> 
                     <div className='dropdown-body'>
@@ -89,7 +92,8 @@ class Navbar extends React.Component{
     render() {
         const  currPath  = this.props.history.location.pathname
         let tempClass = ((currPath === '/login') || (currPath === '/signup')) ? 'navbar-hidden' : '';
-        const dropdown = (this.state.dropdown && this.props.currUser) ? this.dropDownMenu() : null
+        const dropdown = (this.state.dropdown && this.props.currUser) ? this.dropDownMenu() : null;
+        
     return(
         <>
             <Route path='/login' component={LoginContainer}/>
