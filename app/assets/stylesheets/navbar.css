@@ -144,6 +144,7 @@
     color: black;
     transform: translate(-15px, -5px);
     z-index: 2;
+    position: absolute;
 }
 
 .dropdown-header{
@@ -169,7 +170,7 @@
 
 .dom{
     display: flex;
-    
+    position: relative;
     justify-content: flex-end;
 }
 
