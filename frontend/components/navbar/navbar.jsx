@@ -19,19 +19,20 @@ class Navbar extends React.Component{
     }
 
     dropDownMenu(){
+        // debugger
         return (
             <div className='dom'>
                 <div className='dropdown-container'>
                     <div className='dropdown-header'>
                         <i className="fas fa-user dropdown-user-icon"></i>
                         <div className='dropdown-header-userinfo'>
-                            <h2 className='dropdown-username'>Jason McKenna</h2>
-                            <h3 className='dropdown-email'>jasonmckenna00@gmail.com</h3>
+                             <h2 className='dropdown-username'>{this.props.currUser.firstName}</h2>
+                            <h3 className='dropdown-email'>{this.props.currUser.email}</h3>
                         </div>
                     </div> 
                     <div className='dropdown-body'>
                         <div className='create-a-channel'>
-                            <i class="fas fa-portrait"></i>
+                            <i className="fas fa-portrait"></i>
                             <h2 >Create a channel</h2>
                         </div>
                         <div className='sign-out' onClick={ () => this.props.logout()}>

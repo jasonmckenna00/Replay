@@ -308,6 +308,7 @@ function (_React$Component) {
     value: function dropDownMenu() {
       var _this2 = this;
 
+      // debugger
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dom"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -320,14 +321,14 @@ function (_React$Component) {
         className: "dropdown-header-userinfo"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "dropdown-username"
-      }, "Jason McKenna"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }, this.props.currUser.firstName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "dropdown-email"
-      }, "jasonmckenna00@gmail.com"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.currUser.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dropdown-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-a-channel"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-portrait"
+        className: "fas fa-portrait"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create a channel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sign-out",
         onClick: function onClick() {
@@ -470,8 +471,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
+  // debugger
   return {
-    currUser: state.session.currentUser
+    currUser: Object.values(state.session.currentUser)[0]
   };
 };
 
