@@ -290,10 +290,54 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this, props));
     _this.signIn = _this.signIn.bind(_assertThisInitialized(_this));
+    _this.state = {
+      dropdown: false
+    };
     return _this;
   }
 
   _createClass(Navbar, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.setState({
+        dropdown: false
+      });
+    }
+  }, {
+    key: "dropDownMenu",
+    value: function dropDownMenu() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user dropdown-user-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-header-userinfo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "dropdown-username"
+      }, "Jason McKenna"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "dropdown-email"
+      }, "jasonmckenna00@gmail.com"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "create-a-channel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-portrait"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create a channel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sign-out",
+        onClick: function onClick() {
+          return _this2.props.logout();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-sign-out-alt"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign out")))));
+    }
+  }, {
     key: "signIn",
     value: function signIn() {
       return this.props.history.push('/login');
@@ -301,30 +345,58 @@ function (_React$Component) {
   }, {
     key: "loginStatus",
     value: function loginStatus() {
-      var _this2 = this;
+      if (this.props.currUser) return this.isLoggedIn();else return this.isLoggedOut();
+    }
+  }, {
+    key: "isLoggedOut",
+    value: function isLoggedOut() {
+      var _this3 = this;
 
-      if (this.props.currUser) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          "class": "fas fa-play-circle"
-        }));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signin-button-container",
+        onClick: function onClick() {
+          return _this3.signIn();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user-circle"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "signin-button-link"
+      }, "SIGN IN"));
+    }
+  }, {
+    key: "changeDropDown",
+    value: function changeDropDown() {
+      // debugger
+      if (this.state.dropdown) {
+        this.setState({
+          dropdown: false
+        });
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "signin-button-container",
-          onClick: function onClick() {
-            return _this2.signIn();
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-user-circle"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-          className: "signin-button-link"
-        }, "SIGN IN"));
+        this.setState({
+          dropdown: true
+        });
       }
+    }
+  }, {
+    key: "isLoggedIn",
+    value: function isLoggedIn() {
+      var _this4 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "logged-in",
+        onClick: function onClick() {
+          return _this4.changeDropDown();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-play-circle"
+      }));
     }
   }, {
     key: "render",
     value: function render() {
       var currPath = this.props.history.location.pathname;
       var tempClass = currPath === '/login' || currPath === '/signup' ? 'navbar-hidden' : '';
+      var dropdown = this.state.dropdown && this.props.currUser ? this.dropDownMenu() : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/login",
         component: _session_login_container__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -370,17 +442,12 @@ function (_React$Component) {
         className: "settings-icon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-ellipsis-v"
-      })), this.loginStatus()))));
+      })), this.loginStatus()))), dropdown);
     }
   }]);
 
   return Navbar;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); //<i class="fas fa-th"></i> // for apps
-// // user circle
-//<i class="fas fa-video"></i> // video cam
-// <i class="fas fa-bars"></i> // left nav bars
-//<i class="fas fa-ellipsis-v"></i> // 3 dots
-
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Navbar));
 
@@ -397,6 +464,8 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar */ "./frontend/components/navbar/navbar.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -407,10 +476,14 @@ var msp = function msp(state, ownProps) {
 };
 
 var mdp = function mdp(dispatch) {
-  return {};
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
+    }
+  };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, null)(_navbar__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_navbar__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
