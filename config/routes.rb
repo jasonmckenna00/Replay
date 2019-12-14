@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         get '/email' => 'sessions#email'
       end
     end
-    # resources :videos, only: [:index, :show, :create, :edit, :update, :destroy] do
+    resources :videos, only: [:index, :show, :create, :edit, :update, :destroy] #do
     #   resources :comments, only: [:create, :patch, :destroy]
     # end
     # resources :comments, only: [:show]

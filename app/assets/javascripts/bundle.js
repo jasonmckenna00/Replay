@@ -207,6 +207,108 @@ var fetchUserByEmail = function fetchUserByEmail(formEmail) {
 
 /***/ }),
 
+/***/ "./frontend/actions/video_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/video_actions.js ***!
+  \*******************************************/
+/*! exports provided: RECEIVE_VIDEO, RECEIVE_VIDEOS, RECEIVE_VIDEO_ERRORS, REMOVE_VIDEO, UPDATE_VIDEO, fetchVideos, fetchVideo, updateVideo, createVideo, deleteVideo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_VIDEO", function() { return RECEIVE_VIDEO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_VIDEOS", function() { return RECEIVE_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_VIDEO_ERRORS", function() { return RECEIVE_VIDEO_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_VIDEO", function() { return REMOVE_VIDEO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_VIDEO", function() { return UPDATE_VIDEO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchVideos", function() { return fetchVideos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchVideo", function() { return fetchVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateVideo", function() { return updateVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createVideo", function() { return createVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteVideo", function() { return deleteVideo; });
+/* harmony import */ var _util_video_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/video_util */ "./frontend/util/video_util.js");
+ // {getVideos,
+//     postVideo,
+//     updateVideo,
+//     getVideoById
+// } 
+
+var RECEIVE_VIDEO = 'RECEIVE_VIDEO';
+var RECEIVE_VIDEOS = 'RECEIVE_VIDEOS';
+var RECEIVE_VIDEO_ERRORS = 'RECEIVE_VIDEO_ERRORS';
+var REMOVE_VIDEO = 'REMOVE_VIDEO';
+var UPDATE_VIDEO = 'UPDATE_VIDEO';
+
+var receiveVideo = function receiveVideo(video) {
+  return {
+    type: RECEIVE_VIDEO,
+    video: video
+  };
+};
+
+var receiveVideos = function receiveVideos(videos) {
+  return {
+    type: RECEIVE_VIDEOS,
+    videos: videos
+  };
+};
+
+var receiveVideoErrors = function receiveVideoErrors(errors) {
+  return {
+    type: RECEIVE_VIDEO_ERRORS,
+    errors: errors
+  };
+};
+
+var removeVideo = function removeVideo(videoId) {
+  return {
+    type: REMOVE_VIDEO,
+    videoId: videoId
+  };
+};
+
+var fetchVideos = function fetchVideos() {
+  return function (dispatch) {
+    return _util_video_util__WEBPACK_IMPORTED_MODULE_0__["getVideos"]().then(function () {
+      return dispatch(receiveVideos(videos));
+    });
+  };
+};
+var fetchVideo = function fetchVideo(videoId) {
+  return function (dispatch) {
+    return _util_video_util__WEBPACK_IMPORTED_MODULE_0__["getVideoById"](videoId).then(function (video) {
+      return dispatch(receiveVideo(video));
+    });
+  };
+};
+var updateVideo = function updateVideo(video) {
+  return function (dispatch) {
+    return _util_video_util__WEBPACK_IMPORTED_MODULE_0__["getVideoById"](video.id).then(function (updatedVideo) {
+      return dispatch(receiveVideo(updatedVideo));
+    }, function (err) {
+      return dispatch(receiveVideoErrors(err.responseJSON));
+    });
+  };
+};
+var createVideo = function createVideo(video) {
+  return function (dispatch) {
+    return _util_video_util__WEBPACK_IMPORTED_MODULE_0__["postVideo"](video).then(function (createdVideo) {
+      return dispatch(receiveVideo(createdVideo));
+    }, function (err) {
+      return dispatch(receiveVideoErrors(err.responseJSON));
+    });
+  };
+};
+var deleteVideo = function deleteVideo(videoId) {
+  return function (dispatch) {
+    return _util_video_util__WEBPACK_IMPORTED_MODULE_0__["deleteVideo"].then(function () {
+      return dispatch(removeVideo(videoId));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -222,7 +324,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 /* harmony import */ var _splashpage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splashpage */ "./frontend/components/splashpage.jsx");
 /* harmony import */ var _session_signup_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session/signup_container */ "./frontend/components/session/signup_container.jsx");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.js");
+/* harmony import */ var _session_login_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session/login_container */ "./frontend/components/session/login_container.jsx");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.js");
+
 
 
 
@@ -236,9 +340,12 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _splashpage__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     path: "/signup",
     component: _session_signup_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
+    path: "/login",
+    component: _session_login_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }));
 };
 
@@ -296,7 +403,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this, props));
     _this.signIn = _this.signIn.bind(_assertThisInitialized(_this));
     _this.state = {
-      dropdown: false
+      dropdown: false // loggedin: !!this.props.currUser
+
     };
     return _this;
   }
@@ -374,20 +482,6 @@ function (_React$Component) {
       }, "SIGN IN"));
     }
   }, {
-    key: "changeDropDown",
-    value: function changeDropDown() {
-      // debugger
-      if (this.state.dropdown) {
-        this.setState({
-          dropdown: false
-        });
-      } else {
-        this.setState({
-          dropdown: true
-        });
-      }
-    }
-  }, {
     key: "isLoggedIn",
     value: function isLoggedIn() {
       var _this4 = this;
@@ -400,6 +494,20 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-play-circle"
       }));
+    }
+  }, {
+    key: "changeDropDown",
+    value: function changeDropDown() {
+      // debugger
+      if (this.state.dropdown) {
+        this.setState({
+          dropdown: false
+        });
+      } else {
+        this.setState({
+          dropdown: true
+        });
+      }
     }
   }, {
     key: "render",
@@ -725,8 +833,11 @@ function (_React$Component) {
         className: "learn-more-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "learn-more"
-      }, "Not your computer? Use Guest mode to sign in privately."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "learn-more-link"
+      }, "Not familiar with YouTube? Check out the original site!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "learn-more-link",
+        onClick: function onClick() {
+          return window.location = 'http://youtube.com';
+        }
       }, " Learn More ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "next-form-container-email"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -752,10 +863,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "user-name"
       }, "Hi ", first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "user-email",
-        onClick: function onClick() {
-          return _this6.backToLogin();
-        }
+        className: "user-email"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -770,13 +878,19 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.passError()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "next-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/",
-        className: "create-account-link"
-      }, "Back to home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        to: "/login",
+        className: "create-account-link",
+        onClick: function onClick() {
+          return _this6.backToLogin();
+        }
+      }, "Back to login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         onClick: this.handleSubmit,
         className: "next-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Next")))));
     }
+  }, {
+    key: "goToYoutube",
+    value: function goToYoutube() {}
   }, {
     key: "checkEmail",
     value: function checkEmail(e) {
@@ -786,12 +900,17 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this7 = this;
+
       var display = this.props.currUser.length ? this.passwordForm() : this.emailForm();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.replay_logo,
-        className: "logo-login"
+        className: "logo-login",
+        onClick: function onClick() {
+          return _this7.props.history.push('/');
+        }
       }), display);
     }
   }]);
@@ -1023,6 +1142,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var fnameErr = this.renderError('fname');
       var lnameErr = this.renderError('lname');
       var passErr = this.renderError('password');
@@ -1039,7 +1160,10 @@ function (_React$Component) {
         className: "signup-form-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.replay_logo,
-        className: "logo-signup"
+        className: "logo-signup",
+        onClick: function onClick() {
+          return _this4.props.history.push('/');
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "signup-header"
       }, "Create Your RePlay Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -1169,10 +1293,13 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _videos_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videos_reducer */ "./frontend/reducers/videos_reducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  videos: _videos_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),
@@ -1189,12 +1316,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _users_error_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users_error_reducer */ "./frontend/reducers/users_error_reducer.js");
+/* harmony import */ var _videos_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./videos_errors_reducer */ "./frontend/reducers/videos_errors_reducer.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  users: _users_error_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  users: _users_error_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  videos: _videos_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
@@ -1360,6 +1490,72 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./frontend/reducers/videos_errors_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/videos_errors_reducer.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/video_actions */ "./frontend/actions/video_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_VIDEO_ERRORS"]:
+      return action.errors;
+    // case CLEAR_ERRORS:
+    //     return [];
+
+    default:
+      return [];
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/videos_reducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/videos_reducer.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/video_actions */ "./frontend/actions/video_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_VIDEOS"]:
+      return action.videos;
+
+    case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_VIDEO"]:
+      return Object.assign({}, state, _defineProperty({}, action.video.id, action.video));
+
+    case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_VIDEO"]:
+      var newState = Object.assign({}, state);
+      delete newState[action.videoId];
+      return newState;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./frontend/replay.jsx":
 /*!*****************************!*\
   !*** ./frontend/replay.jsx ***!
@@ -1375,9 +1571,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _util_video_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/video_util */ "./frontend/util/video_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -1405,9 +1600,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }), root);
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logout"]; //
-
-  window.fetchEmail = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["fetchUserByEmail"];
+  window.getVideoById = _util_video_util__WEBPACK_IMPORTED_MODULE_4__["getVideoById"];
+  window.getVideos = _util_video_util__WEBPACK_IMPORTED_MODULE_4__["getVideos"];
 });
 
 /***/ }),
@@ -1560,6 +1754,62 @@ var fetchUserByEmail = function fetchUserByEmail(email) {
     data: {
       email: email
     }
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/video_util.js":
+/*!*************************************!*\
+  !*** ./frontend/util/video_util.js ***!
+  \*************************************/
+/*! exports provided: getVideoById, getVideos, postVideo, updateVideo, deleteVideo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getVideoById", function() { return getVideoById; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getVideos", function() { return getVideos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postVideo", function() { return postVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateVideo", function() { return updateVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteVideo", function() { return deleteVideo; });
+var getVideoById = function getVideoById(videoId) {
+  return $.ajax({
+    method: 'get',
+    url: "/api/videos/".concat(videoId)
+  });
+}; // export const fetchVideosByUser = (userId) => (
+//     $.ajax({
+//         method: 'get',
+//         url: ``
+//     })
+// )   may not need because user has videos association and can get by the video id
+
+var getVideos = function getVideos() {
+  return $.ajax({
+    method: 'get',
+    url: "/api/videos/"
+  });
+};
+var postVideo = function postVideo(video) {
+  return $.ajax({
+    method: 'post',
+    url: "/api/videos/",
+    data: {
+      video: video
+    }
+  });
+};
+var updateVideo = function updateVideo(video) {
+  return $.ajax({
+    method: "patch",
+    url: "/api/videos/".concat(video.id)
+  });
+};
+var deleteVideo = function deleteVideo(videoId) {
+  return $.ajax({
+    method: "delete",
+    url: "/api/videos/".concat(videoId)
   });
 };
 

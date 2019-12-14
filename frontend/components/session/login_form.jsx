@@ -23,6 +23,7 @@ class LoginForm extends React.Component{
             .then( () =>this.props.history.push('/'))
     }
 
+
     update(field){
         return e => this.setState( {[field]: e.target.value})
     }
@@ -100,8 +101,8 @@ class LoginForm extends React.Component{
             
                 <div className='learn-more-container'>
 
-                    <h3 className='learn-more'>Not your computer? Use Guest mode to sign in privately.</h3>
-                    <h3 className='learn-more-link'> Learn More </h3>
+                    <h3 className='learn-more'>Not familiar with YouTube? Check out the original site!</h3>
+                    <h3 className='learn-more-link' onClick={()=> window.location = 'http://youtube.com'}> Learn More </h3>
                 </div>
         
                 <div className='next-form-container-email'>
@@ -121,7 +122,7 @@ class LoginForm extends React.Component{
 
             <div className='signin-header'>
                 <h2 className='user-name'>Hi {first_name}</h2>
-                <h2 className='user-email' onClick={() => this.backToLogin()}><p>{email}</p></h2>
+                <h2 className='user-email'><p>{email}</p></h2>
             </div>
             
             <form onSubmit={this.handleSubmit}>
@@ -138,7 +139,7 @@ class LoginForm extends React.Component{
                 </div>
 
                 <div className='next-form-container'>
-                    <Link to='/' className='create-account-link'>Back to home</Link>
+                    <Link to='/login' className='create-account-link' onClick={() => this.backToLogin()}>Back to login</Link>
                     {/* <p className='create-account-link'></p> */}
                     <h2 onClick={this.handleSubmit} className='next-button'><p>Next</p></h2>
                 </div>
@@ -147,7 +148,9 @@ class LoginForm extends React.Component{
         )
     }
 
+    goToYoutube(){
 
+    }
     checkEmail(e){
         e.preventDefault;
         this.props.fetchUserByEmail(this.state.email)
@@ -161,7 +164,7 @@ class LoginForm extends React.Component{
 
         return (
         <section className='login-form'>
-            <img src={window.replay_logo} className='logo-login'/>
+            <img src={window.replay_logo} className='logo-login' onClick={() =>this.props.history.push('/')}/>
             {display}
 
 

@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {logout} from './actions/session_actions'
-import {fetchUserByEmail} from './actions/session_actions'
-
+import {getVideoById, getVideos} from './util/video_util'
 
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -29,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     ReactDOM.render(<Root store={store}/>, root)
     window.getState = store.getState
     window.dispatch = store.dispatch
-    window.logout = logout;
 
-    //
-    window.fetchEmail = fetchUserByEmail
+    window.getVideoById = getVideoById
+    window.getVideos = getVideos
+    
 
 })

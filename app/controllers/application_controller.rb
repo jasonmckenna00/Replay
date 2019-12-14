@@ -19,5 +19,10 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user
     end
+
+    # def ensure_user_login
+    #     if !logged_in?
+    #         render 
+    # end
 end
 

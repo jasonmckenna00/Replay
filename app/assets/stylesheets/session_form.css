@@ -23,6 +23,10 @@
     
 }
 
+.logo-login:hover{
+    cursor: pointer;
+}
+
 .signin-header{
     text-align: center;
     font-size: 25px;
@@ -172,7 +176,7 @@
 }
 
 .user-email p:hover{
-    cursor: pointer;
+    /* cursor: pointer; */
     background-color: darkgrey;
 }
 
@@ -220,6 +224,10 @@
     display: block;
     width: 100px;
     height: auto;    
+}
+
+.logo-signup:hover{
+    cursor: pointer;
 }
 
 .logo-shield{
@@ -280,7 +288,8 @@
 .email-belongs-to{
     font-size: 12px;
     font-family: "Roboto";
-    padding-bottom: 40px
+    padding-bottom: 32px;
+    margin-top: 8px;
 }
 
 .password-container{
@@ -311,8 +320,8 @@
 .password-requirements{
     font-size: 12px;
     font-family: 'Roboto';
-    padding-bottom: 54px;
-    margin-top: 3px
+    padding-bottom: 49px;
+    margin-top: 8px
 }
 .password-requirements-container{
     width: 310px;

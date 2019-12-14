@@ -118,7 +118,7 @@ class SignupForm extends React.Component{
         <>
             <section className='signup-form'>
                 <div className='signup-form-left'>
-                    <img src={window.replay_logo} className='logo-signup'/> 
+                    <img src={window.replay_logo} className='logo-signup' onClick={() =>this.props.history.push('/')}/> 
                         <h1 className='signup-header'>Create Your RePlay Account</h1>
                         <p className='signup-header-text'>to continue to RePlay</p>
                         

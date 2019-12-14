@@ -12,7 +12,7 @@ class Navbar extends React.Component{
         this.signIn = this.signIn.bind(this)
         this.state = {
             dropdown: false,
-            
+            // loggedin: !!this.props.currUser
         }
         
 
@@ -80,16 +80,6 @@ class Navbar extends React.Component{
         )
     }
 
-    changeDropDown(){
-        // debugger
-        if (this.state.dropdown){
-            this.setState({dropdown: false})
-        } else {
-            this.setState({dropdown: true})
-        }
-    }
-
-
     isLoggedIn(){
         return (
             <div className='logged-in' onClick={()=> this.changeDropDown()} > 
@@ -98,6 +88,14 @@ class Navbar extends React.Component{
         )
     }
 
+    changeDropDown(){
+            // debugger
+            if (this.state.dropdown){
+                this.setState({dropdown: false})
+            } else {
+                this.setState({dropdown: true})
+            }
+        }
 
 
     render() {
