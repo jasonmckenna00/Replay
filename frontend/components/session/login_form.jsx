@@ -23,7 +23,6 @@ class LoginForm extends React.Component{
             .then( () =>this.props.history.push('/'))
     }
 
-
     update(field){
         return e => this.setState( {[field]: e.target.value})
     }
