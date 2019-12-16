@@ -11,7 +11,7 @@ class VideoIndexItem extends React.Component{
         let {user} = this.props;
         // debugger
         if (!user){
-            debugger
+            // debugger
             user = this.props.fetchUser(user_id)
         } 
         if (this.props.loading.videoLoading || this.props.loading.userLoading) return <LoadingScreen />

@@ -14,15 +14,15 @@ class Api::VideosController < ApplicationController
     def create
         @video = Video.new(video_params)
         @video.user_id = current_user.id
-        debugger
+        # debugger
         # https://images2.minutemediacdn.com/image/upload/c_crop,h_972,w_1726,x_0,y_432/f_auto,q_auto,w_1100/v1575319984/shape/mentalfloss/50139-gettyimages-507587782.jpg
         
         
         if @video.save
             render :show
         else
-            
-            render json: @video.errors.full_messages
+            # debugger
+            render json: @video.errors.full_messages, status: 422
         end
     end
 

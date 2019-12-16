@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {getVideoById, getVideos} from './util/video_util'
+import {getVideoById, getVideos, postVideo} from './util/video_util'
 import {fetchAllUsers} from './actions/user_actions'
 
 
@@ -33,5 +33,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     window.getVideoById = getVideoById
     window.getVideos = getVideos
     window.fetchAllUsers = fetchAllUsers
+    window.postVideo = postVideo
 
 })
