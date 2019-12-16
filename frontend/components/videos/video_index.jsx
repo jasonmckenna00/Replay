@@ -2,6 +2,7 @@ import React from 'react';
 import NavbarContainer from '../navbar/navbar_container';
 import VideoIndexItem from './video_index_item'
 import LoadingScreen from '../loading_screen';
+import SideBarContainer from '../sidebar/side_bar_container'
 
 class VideoIndex extends React.Component{
     constructor(props){
@@ -27,9 +28,13 @@ class VideoIndex extends React.Component{
                                                 fetchUser={fetchUser}
                                                 loading={loading}/>)    
         return <>
-            
-            
-            <ul className='videos-container'> {videosLis} </ul>
+            <div className='splashpage'>
+                <SideBarContainer />
+                <div>
+                    <h2 className='video-index-header'> Recommended</h2>
+                    <ul className='videos-container'> {videosLis} </ul>
+                </div>
+            </div>
         </>
     }
 }

@@ -11,6 +11,7 @@ class Navbar extends React.Component{
     constructor(props){
         super(props)
         this.signIn = this.signIn.bind(this)
+        this.changeSideBar = this.changeSideBar.bind(this)
         this.state = {
             dropdown: false,
             // loggedin: !!this.props.currUser
@@ -99,6 +100,13 @@ class Navbar extends React.Component{
         }
 
 
+    changeSideBar(){
+        if (this.props.isOpen){
+            this.props.closeSideBar()
+        } else {
+            this.props.openSideBar();
+        }
+    }
     render() {
         const  currPath  = this.props.history.location.pathname
         let tempClass = ((currPath === '/login') || (currPath === '/signup')) ? 'navbar-hidden' : '';
@@ -118,7 +126,7 @@ class Navbar extends React.Component{
                     <div className='side-bar-and-replay-logo'>
 
                         <div className='side-bar-button'>
-                            <i className="fas fa-bars"></i>
+                            <i className="fas fa-bars" onClick={()=> this.changeSideBar()}></i>
                         </div>
                         <div className='replay-logo'>
                             <img src={window.replay_logo} className='logo-signup'/> 

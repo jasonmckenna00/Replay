@@ -1,0 +1,15 @@
+.sidebar-open-container{
+    display: flex;
+    width: 240px;
+    height: 300px;
+    padding: 12px 0px;
+    background-color:green;
+    z-index: 9999;
+}
+
+.sidebar-open{
+    width: 240px - 48px;
+    padding: 0px 24px;
+    height: 200px;
+    background-color: hotpink;
+}

@@ -8,6 +8,7 @@ import VideoIndexContainer from './videos/video_index_container.js';
 import NavbarContainer from './navbar/navbar_container';
 import VideoCreateFormContainer from './videos/video_create_form_container';
 import VideoShow from './videos/video_show';
+import SideBarContainer from './sidebar/side_bar_container';
 
 const App = () =>(
     <>
