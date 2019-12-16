@@ -1,0 +1,379 @@
+.login-form{
+    width: 450px;
+    height: 500px;
+    border: 1px solid #f9f9f9;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-color: lightgrey;
+    border-radius: 10px;
+
+    
+}
+
+.logo-login{
+    display: block;
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.logo-login:hover{
+    cursor: pointer;
+}
+
+.logo-login:hover{
+    cursor: pointer;
+}
+
+.signin-header{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 15px;
+}
+
+.signup-header{
+    text-align: left;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 15px;
+}
+
+.signin-header-text{
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 30px;
+    font-weight: 500;
+}
+
+.signup-header-text{
+    text-align: left;
+    font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 30px;
+    font-weight: 500;
+}
+
+
+.form-input{
+    display: block;
+    width: 341px;
+    font-size: medium;
+    padding: 19px 13px 13px;
+    
+    border: 1px solid lightgray;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+
+.form-input-container{
+    display: block;
+    margin: 0 auto;
+    height: 50px;
+    width: 370px;
+    /* border: 1px solid lightgray; */
+    /* border-radius: 5px; */
+}
+
+.form-input:focus{
+    border:1px solid blue
+}
+
+.demo-user-button{
+    color: #4f94ed;
+    font-family: 'Open Sans', sans-serif;
+    transform: translate(40px,10px);
+    font-weight: bold;
+    width: fit-content;
+}
+
+.demo-user-button:hover{
+    cursor:pointer;
+}
+
+.learn-more{
+    width: 350px;
+    font-size: 13px;
+    padding-top: 20px;
+    transform: translate(40px,5px);
+    color: darkgrey;
+    font-family: "Roboto";
+    font-weight: 600;
+    font-stretch: ultra-condensed;
+    white-space: nowrap;
+}
+
+.learn-more-link{
+    color: #4f94ed;
+    font-family: "Roboto";
+    font-weight: bold;
+    padding-top: 5px;
+    transform: translate(40px,0px);
+    font-size: small;
+    margin: 1px;
+    width: fit-content;
+}
+
+.learn-more-link:hover{
+    cursor: not-allowed;
+}
+
+.create-account-link{
+    color: #4f94ed;
+    font-weight: bold;
+    font-family: "Roboto";
+    text-decoration: none;
+    padding-top: 5px;
+    margin-top: 5px;
+    font-size: small;
+}
+
+.next-button{
+    width: 90px;
+    height: 35px;
+    background-color: #1A73E8;
+    font-weight: 500;
+    color: white;
+    border-radius: 4px;
+    font-family: "Roboto";
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.user-name{
+    font-size: 24px;
+    font-family: 'Roboto';
+}
+
+.user-email{
+    padding-top: 5px;
+    font-size: medium;
+    padding-bottom: 20px;
+}
+
+.user-email p{
+    border: 1px solid lightgray;
+    padding: 6px;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.user-email p:hover{
+    /* cursor: pointer; */
+    background-color: darkgrey;
+}
+
+
+
+
+.next-button:hover{
+    cursor: pointer;
+}
+
+.next-form-container{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 60px;
+}
+
+/* ---------------------------------------------------*/
+/* sign up page */
+/* ---------------------------------------------------*/
+
+
+.signup-form{
+    width: 750px;
+    height: 560px;
+    border: 1px solid #f9f9f9;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-color: lightgrey;
+    border-radius: 10px; 
+    display: flex;
+}
+
+.signup-form-left{
+    width: 375px;
+    height: 515px;
+    transform: translate(40px, 45px);
+
+}
+
+.logo-signup{
+    display: block;
+    width: 100px;
+    height: auto;    
+}
+
+.logo-signup:hover{
+    cursor: pointer;
+}
+
+.logo-shield{
+    display: block;
+    width: 225px;
+    height: auto;  
+    transform: translate(90px, 165px);
+}
+
+.name-container{
+    width: 100%;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    display: flex;
+
+}
+
+.name-input{
+    width: 165px;
+    height: 35px;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding-left: 10px
+
+}
+
+.name-input-right{
+    width: 165px;
+    height: 35px;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding-left: 10px;
+    margin-left: 20px;
+}
+.email-container{
+    width: 100%;
+    height: 35px;
+    margin-top: 5px;
+    padding: 0;
+    padding-bottom: 12px;
+    display: flex;
+
+}
+.email-address{
+    width: 100%;
+    height: 35px;
+    margin-top: 6px;
+    padding: 0;
+    display: flex;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding-left: 10px
+
+}
+
+.email-belongs-to{
+    font-size: 12px;
+    font-family: "Roboto";
+    padding-bottom: 32px;
+    margin-top: 8px;
+}
+
+.password-container{
+    width: 100%;
+    height: 35px;
+    margin-top: 15px;
+    padding: 0;
+    display: flex;
+
+}
+
+.password-left{
+    width: 140px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding-left: 10px
+
+}
+
+.password-right{
+    width: 140px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding-left: 10px;
+    margin-left: 20px;
+}
+
+.password-requirements{
+    font-size: 12px;
+    font-family: 'Roboto';
+    padding-bottom: 49px;
+    margin-top: 8px
+}
+.password-requirements-container{
+    width: 310px;
+}
+
+.next-form-container-password{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+.errors{
+    border: 2px solid red;
+}
+
+.fname-err-message{
+    transform: translate( 0px, 0px);
+}
+
+.lname-err-message{
+    transform: translate( 0px, 0px);
+    margin-left: 20px;
+}
+.email-err-message{
+    padding-bottom: 40px;
+}
+
+.pass-err-message{
+    padding-bottom: 49px;
+}
+
+.error-message{
+    font-size: small;
+    color: red;
+    font-family: "Roboto";
+    transform: translate(5px, 5px)
+}
+
+.invalid-message{
+    transform: translate(50px, 10px);
+    margin-bottom: 10px;
+}
+
+.learn-more-container{
+    padding-top: 20px
+}
+
+.next-form-container-email{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 60px;
+}
