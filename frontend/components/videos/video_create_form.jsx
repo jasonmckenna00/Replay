@@ -19,6 +19,10 @@ class VideoCreateForm extends React.Component{
         return this.setState({ video_url: e.target.files[0].name }) 
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors()
+    }
+
     handleThumbnailFile(e){
 
         return this.setState({ thumbnail_url: e.target.files[0].name })
@@ -27,6 +31,18 @@ class VideoCreateForm extends React.Component{
     update(field){
         return e => this.setState( {[field]: e.target.value})
     }
+
+    // renderError(field){
+    //     debugger
+    //     const errorLis = this.props.errors.map( (error,i) => {
+    //         return error
+    //     })
+
+    //     switch(field){
+    //         case 'title':
+    //             return
+    //     }
+    // }
 
 
     videoForm(){
@@ -52,6 +68,9 @@ class VideoCreateForm extends React.Component{
         this.props.createVideo(this.state)
             .then( () =>this.props.history.push('/'))
     }
+
+
+
 
     infoForm(){
         return <>
@@ -91,8 +110,10 @@ class VideoCreateForm extends React.Component{
                         <h2>Channel</h2>
                         <h3>Add your video to one or more channels. Channels can help viewers discover your content</h3>   
                     </div>
-
+                    <div className='video-form-footer-container'>
+                    <h2 onClick={()=>this.goBack()} className='next-button video-form-next-button'><p>Go Back</p></h2>
                     <h2 onClick={this.handleSubmit} className='next-button video-form-next-button'><p>Next</p></h2>
+                    </div>
                 </div>
                     
             </form>
@@ -100,37 +121,43 @@ class VideoCreateForm extends React.Component{
         </>
     }
 
+    errorMsg(){
+        return <div className='video-form-error-message'>
+            <h2>Make sure all fields are filled</h2>
+        </div>
+    }
 
+    leavePage(){
+        this.props.clearErrors()
+        this.props.history.push('/')
+    }
 
+    goBack(){
+        // debugger
+        this.props.clearVideoErrors()
+        this.setState({video_url: ''})
+    }
 
-
-    // <input type="file" 
-    //                 className='video-thumbnail-input' 
-    //                 onChange={this.handleThumbnailFile}
-    //                 /> 
-                    
-    //                 <textarea className='video-description'
-    //                 onChange={this.update('description')}  
-    //                 placeholder='Enter description'>
-    //                 </textarea>
-
-   
 
     render(){
         const createForm = this.state.video_url ? this.infoForm() :this.videoForm()
         // debugger
+        const errorLis = this.props.errors.map( (error,i) => {
+            return error
+        })
+        const renderErrorMsg = errorLis.length ? this.errorMsg() : null
         return <>
             <div className='video-create-container'>
                 <div className='video-file-form'>
                     <div className='video-file-header'>
                         <h2 className='video-file-header-text'>Upload Video</h2>
-                        <i className="fas fa-times" onClick={() => this.setState({})}></i>
+                        <i className="fas fa-times" onClick={() => this.leavePage()}></i>
                     </div>
                     <div className='video-file-body'>
-                        {/* {createForm} */}
-                        {this.infoForm()}
+                        {createForm}
+                        {/* {this.infoForm()} */}
                     </div>
-                    {/* <div className=''></div> */}
+                    {renderErrorMsg}
                 </div>
                 
             </div>

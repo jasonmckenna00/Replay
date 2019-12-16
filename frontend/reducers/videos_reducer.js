@@ -15,6 +15,7 @@ export default (state = {}, action) => {
             let newState = Object.assign({},state);
             delete newState[action.videoId];
             return newState;
+            
         default: return state;
     }
 }
