@@ -129,7 +129,7 @@ class Navbar extends React.Component{
                             <i className="fas fa-bars" onClick={()=> this.changeSideBar()}></i>
                         </div>
                         <div className='replay-logo'>
-                            <img src={window.replay_logo} className='logo-signup'/> 
+                            <img src={window.replay_logo} className='logo-signup' onClick={()=> this.props.history.push('/')}/> 
                         </div>
                     </div>
                     
