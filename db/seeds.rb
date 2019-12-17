@@ -20,8 +20,8 @@ demo = User.create({
     password: 'hunter2'
 })
 
-video1 = Video.create({ title: 'video1', description: 'my video 1',user_id: 1})
-        .thumbnail_url.attach(io: File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/hubble.jpg"), filename: 'hubble.jpg')
+video1 = Video.create({ title: 'video1', description: 'my video 1',user_id: 1}).thumbnail_url.attach(io: File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/hubble.jpg"), filename: 'hubble.jpg')
+        # .video_url.attach(io: File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/supersmash.mp4"), filename: 'supersmash.mp4')
 # video3 = Video.create({ title: 'video3', description: 'my video 3', video_url: 'link to video2', thumbnail_url: 'galaxy.jpg', user_id: 2})
 # video2 = Video.create({ title: 'video2', description: 'my video 2', video_url: 'link to video1', thumbnail_url: 'galaxy.jpg', user_id: 1})
 # video4 = Video.create({ title: 'video4', description: 'my video 4', video_url: 'link to video3', thumbnail_url: 'galaxy.jpg', user_id: 2})

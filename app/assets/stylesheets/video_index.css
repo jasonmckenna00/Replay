@@ -36,8 +36,13 @@
 
 .video-thumbnail{
     width: 100%;
-    height: 60%;
+    height: 100%;
     border: 1px solid black;
+}
+
+.video-thumbnail-link{
+    width: 100%;
+    height: 60%;
 }
 .video-footer-container{
     height: 40%;
