@@ -19,7 +19,7 @@ class VideoIndexItem extends React.Component{
         // const choppedEmail = 'fakeemail69'
 
         return <li className='video'>
-            <div className='video-thumbnail'></div>
+            <img src={this.props.video.thumbnailUrl} className='video-thumbnail' alt=""/>
             <div className='video-footer-container'>
                 <div className='user-pro-pic'></div>
                 <div className='video-details-container'>

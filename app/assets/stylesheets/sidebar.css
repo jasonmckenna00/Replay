@@ -1,4 +1,4 @@
-.sidebar-open-container{
+/* .sidebar-open-container{
     display: flex;
     width: 240px;
     height: 300px;
@@ -12,4 +12,15 @@
     padding: 0px 24px;
     height: 200px;
     background-color: hotpink;
+} */
+
+.sidebar-body{
+    background-color: white;
+}
+
+.sidebar-closed{
+    background-color: white;
+    width: 72px;
+    height: 100%;
+    display: flex;
 }
