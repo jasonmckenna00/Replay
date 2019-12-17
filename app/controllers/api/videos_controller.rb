@@ -1,7 +1,8 @@
 class Api::VideosController < ApplicationController
 
     def show
-        @video = Video.find_by(id: params[:id])
+        # debugger
+        @video = Video.find(params[:id])
         render :show
     end
 
@@ -12,16 +13,17 @@ class Api::VideosController < ApplicationController
     end
 
     def create
+        # debugger
         @video = Video.new(video_params)
         @video.user_id = current_user.id
         # debugger
         # https://images2.minutemediacdn.com/image/upload/c_crop,h_972,w_1726,x_0,y_432/f_auto,q_auto,w_1100/v1575319984/shape/mentalfloss/50139-gettyimages-507587782.jpg
+        # debugger
         
         
         if @video.save
             render :show
         else
-            # debugger
             render json: @video.errors.full_messages, status: 422
         end
     end
@@ -48,6 +50,6 @@ class Api::VideosController < ApplicationController
 
     private
     def video_params
-        params.require(:video).permit(:title, :description, :user_id, :thumbnail_url)
+        params.require(:video).permit(:title, :description, :user_id, :thumbnail_url, :video_url)
     end
 end

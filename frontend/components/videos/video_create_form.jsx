@@ -5,8 +5,8 @@ class VideoCreateForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            video_url: '',
-            thumbnail_url: '',
+            video_url: null,
+            thumbnail_url: null,
             title: '',
             description: '',
         }
@@ -16,7 +16,7 @@ class VideoCreateForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleVideoFile(e){
-        return this.setState({ video_url: e.target.files[0].name }) 
+        return this.setState({ video_url: e.target.files[0]}) 
     }
 
     componentWillUnmount(){
@@ -25,7 +25,7 @@ class VideoCreateForm extends React.Component{
 
     handleThumbnailFile(e){
 
-        return this.setState({ thumbnail_url: e.target.files[0].name })
+        return this.setState({ thumbnail_url: e.target.files[0] })
     }
 
     update(field){
@@ -65,7 +65,13 @@ class VideoCreateForm extends React.Component{
     handleSubmit(e){
         e.preventDefault()
         // debugger
-        this.props.createVideo(this.state)
+        const formData = new FormData();
+        formData.append('video[video_url]', this.state.video_url)
+        formData.append('video[thumbnail_url]', this.state.thumbnail_url)
+        formData.append('video[title]', this.state.title)
+        formData.append('video[description]', this.state.description)
+
+        this.props.createVideo(formData)
             .then( () =>this.props.history.push('/'))
     }
 

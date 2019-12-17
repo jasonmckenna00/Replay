@@ -20,18 +20,23 @@ export const getVideos = () => (
     })
 )
 
-export const postVideo = (video) => (
-    $.ajax({
+export const postVideo = (video) => {
+    // debugger
+    return( $.ajax({
         method: 'post',
         url: `/api/videos/`,
-        data: {video}
+        data: video,
+        contentType: false,
+        processData: false
     })
-)
+)}
 
 export const updateVideo = (video) => (
     $.ajax({
         method: `patch`,
-        url: `/api/videos/${video.id}`
+        url: `/api/videos/${video.id}`,
+        contentType: false,
+        processData: false
     })
 )
 
