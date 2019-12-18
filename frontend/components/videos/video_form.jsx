@@ -9,6 +9,7 @@ class VideoForm extends React.Component{
         this.handleThumbnailFile = this.handleThumbnailFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this)
+        this.deleteCurrVideo = this.deleteCurrVideo.bind(this)
     }
 
     handleVideoFile(e){
@@ -51,7 +52,7 @@ class VideoForm extends React.Component{
 
         const formData = new FormData();
         if (this.state.thumbnailUrl) formData.append('video[thumbnail_url]', this.state.thumbnailUrl)
-        
+
         if (this.state.videoUrl && (this.props.formType === 'Upload Video')){
             formData.append('video[video_url]', this.state.videoUrl)
         }
@@ -62,7 +63,8 @@ class VideoForm extends React.Component{
         this.props.submitVideo(formData,videoId)
             .then( (action) =>{
                 debugger
-                return this.props.history.push(`/videos/${action.payload.video.id}`)
+                if (this.props.formType === 'Upload Video') return this.props.history.push(`/videos/${action.payload.video.id}`)
+                else this.props.history.push(`/videos/${action.payload.video.id}`)
             })
             
             
@@ -73,9 +75,12 @@ class VideoForm extends React.Component{
 
 
     infoForm(){
-        // if (this.props.formType === 'Edit Video'){
-        //     return value={this.props.video}
-        // }
+        let optionButton;
+        if (this.props.formType === 'Edit Video'){
+           optionButton = <h2 onClick={()=>this.deleteCurrVideo(this.props.video.id)} className='next-button video-form-next-button'><p>Delete Video</p></h2>
+        } else {
+            optionButton = <h2 onClick={()=>this.goBack()} className='next-button video-form-next-button'><p>Go Back</p></h2>
+        }
 
         return <>
 
@@ -118,7 +123,7 @@ class VideoForm extends React.Component{
                         {/* <h3>Add your video to one or more channels. Channels can help viewers discover your content</h3>    */}
                     </div>
                     <div className='video-form-footer-container'>
-                    <h2 onClick={()=>this.goBack()} className='next-button video-form-next-button'><p>Go Back</p></h2>
+                    {optionButton}
                     <h2 onClick={this.handleSubmit} className='next-button video-form-next-button'><p>Next</p></h2>
                     </div>
                 </div>
@@ -145,6 +150,12 @@ class VideoForm extends React.Component{
         this.setState({videoUrl: ''})
     }
 
+    deleteCurrVideo(videoId){
+        this.props.deleteVideo(videoId).then( () => {
+            debugger
+            return this.props.history.push('/')
+        })
+    }
 
     render(){
         // debugger

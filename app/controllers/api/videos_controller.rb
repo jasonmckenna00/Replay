@@ -29,20 +29,33 @@ class Api::VideosController < ApplicationController
     end
 
     def update
-        @video = current_user.posted_videos.find(params[:id])
+        @video = current_user.posted_videos.find_by(id: params[:id])
 
         # debugger
         if @video.update(video_params)
             render :show
-        else
+        elsif @video == nil
+            render json: ["You cannot edit a video you didn't post"], status: 422
+            return
             # debugger
+        else
             render json: @video.errors.full_messages
         end
     end
 
     def destroy
-        @video = current_user.posted_videos.find(params[:id])
-        @video.destroy
+        # debugger
+        @video = current_user.posted_videos.find_by(id: params[:id])
+        
+        if @video
+            @video.destroy
+            render :show
+        else
+            debugger
+            render json: ["You cannot delete a video you didn't post"], status: 422
+            return
+        end
+        
     end
 
 

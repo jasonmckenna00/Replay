@@ -1,10 +1,10 @@
-import {connect} from 'react-redux'
-import {fetchVideo, updateVideo,deleteVideo} from '../../actions/video_actions'
-import {clearVideoErrors} from '../../actions/video_actions'
-import { clearErrors } from '../../actions/session_actions'
-import VideoForm from './video_form'
-import React from 'react'
-import { withRouter } from 'react-router-dom'
+import {connect} from 'react-redux';
+import {fetchVideo, updateVideo,deleteVideo} from '../../actions/video_actions';
+import {clearVideoErrors} from '../../actions/video_actions';
+import { clearErrors } from '../../actions/session_actions';
+import VideoForm from './video_form';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 
 class EditVideoForm extends React.Component{
@@ -16,7 +16,7 @@ class EditVideoForm extends React.Component{
 
     render(){
         // debugger
-        const {video, formType, submitVideo, deleteVideo, clearVideoErrors, clearErrors, errors} = this.props
+        const {video, formType, submitVideo, deleteVideo, clearVideoErrors, clearErrors, errors, history} = this.props
         if (!video) return null
         return (
             <VideoForm video={video} 
@@ -25,14 +25,15 @@ class EditVideoForm extends React.Component{
             deleteVideo={deleteVideo}
             clearVideoErrors= {clearVideoErrors}
             clearErrors= {clearErrors}
-            errors={errors}/>
+            errors={errors}
+            history={history}/>
         )
     }
 }
 
 
 const msp = (state, ownProps) => {
-
+    debugger
     let video = state.entities.videos[ownProps.match.params.videoId];
     if (video) (delete video.thumbnailUrl)
     return {
