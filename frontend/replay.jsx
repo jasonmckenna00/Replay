@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import {getVideoById, getVideos, postVideo} from './util/video_util'
+import {getVideos, postVideo, getVideo} from './util/video_util'
 import {fetchAllUsers} from './actions/user_actions'
+import {fetchUserById} from './util/user_util'
 
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -30,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     window.getState = store.getState
     window.dispatch = store.dispatch
 
-    window.getVideoById = getVideoById
+    window.fetchUserById = fetchUserById
     window.getVideos = getVideos
     window.fetchAllUsers = fetchAllUsers
     window.postVideo = postVideo
-
+    window.getVideo = getVideo
 })

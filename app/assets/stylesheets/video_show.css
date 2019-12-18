@@ -1,3 +1,5 @@
+
+
 .video-show-container{
     display: flex;
     width: 100%;
@@ -8,7 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 24px;
+    padding: 2% 7%;
     width: 100%;
     height: 100%;
     font-family: roboto;
@@ -24,7 +26,7 @@
 .video-show-right-container{
     border: 1px solid black;
     width: 25%;
-    height: 200px;
+    height: 100%
     display: flex;
     flex-direction: column;
     padding-left: 24px;
@@ -33,7 +35,13 @@
 .video-show-video-container{
     border: 1px solid black;
     width: 100%;
-    height: 600px;
+    height: auto;
+}
+
+.video-show-video{
+    width: 100%;
+    height: auto;
+    flex-shrink: 1;
 }
 
 .video-show-video-info-container{
@@ -153,4 +161,15 @@
     margin-left: 10px;
     border: none;
     border-bottom: 1px solid gray;
+}
+
+
+@media (max-width: 1200px) {
+    .video-group-container{
+        flex-direction: column;
+    }
+
+    .video-show-left-container{
+        width: 100%;
+    }
 }

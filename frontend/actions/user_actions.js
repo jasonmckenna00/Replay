@@ -1,7 +1,7 @@
 import * as UsersUtil from '../util/user_util';
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
-import { startLoadingAllUsers } from './loading_action';
+import { startLoadingAllUsers, startLoadingUser } from './loading_action';
 
 
 const receiveUser = (user) => ({
@@ -16,7 +16,7 @@ const receiveAllUsers = (users) => {
 })}
 
 export const fetchUser = (userId) => dispatch =>{
-    // dispatch(startLoadingAllVideos())
+    dispatch(startLoadingUser())
     // debugger
     return UsersUtil.fetchUserById(userId).then( user => dispatch(receiveUser(user)))
 }

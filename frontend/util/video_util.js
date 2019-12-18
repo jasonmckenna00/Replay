@@ -1,5 +1,5 @@
 
-export const getVideoById = (videoId) => (
+export const getVideo = (videoId) => (
     $.ajax({
         method: 'get',
         url: `/api/videos/${videoId}`
@@ -35,6 +35,7 @@ export const updateVideo = (video) => (
     $.ajax({
         method: `patch`,
         url: `/api/videos/${video.id}`,
+        data: video,
         contentType: false,
         processData: false
     })

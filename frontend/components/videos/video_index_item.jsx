@@ -12,11 +12,11 @@ class VideoIndexItem extends React.Component{
         const {title, user_id, id} = this.props.video;
         let {user} = this.props;
         // debugger
-        if (!user){
-            // debugger
-            user = this.props.fetchUser(user_id)
-        } 
-        if (this.props.loading.videoLoading || this.props.loading.userLoading) return <LoadingScreen />
+        // if (!user){
+        //     // debugger
+        //     user = this.props.fetchUser(user_id)
+        // } 
+        // if (this.props.loading.videoLoading || this.props.loading.userLoading) return <LoadingScreen />
         const choppedEmail = this.props.user.email.split('@')[0]
         // const choppedEmail = 'fakeemail69'
 

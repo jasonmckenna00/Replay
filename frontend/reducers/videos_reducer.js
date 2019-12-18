@@ -10,8 +10,8 @@ export default (state = {}, action) => {
         case RECEIVE_VIDEOS:
             return action.videos;
         case RECEIVE_VIDEO:
-            debugger
-            return Object.assign({},state, {[action.video.id]: action.video});
+            // debugger
+            return Object.assign({},state, {[action.payload.video.id]: action.payload.video});
         case REMOVE_VIDEO:
             let newState = Object.assign({},state);
             delete newState[action.videoId];

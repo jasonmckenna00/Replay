@@ -2,7 +2,7 @@ class Api::VideosController < ApplicationController
 
     def show
         # debugger
-        @video = Video.find(params[:id])
+        @video = Video.includes(:user).find(params[:id])
         render :show
     end
 

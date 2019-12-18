@@ -7,7 +7,7 @@ import LoginContainer from './session/login_container'
 import VideoIndexContainer from './videos/video_index_container.js';
 import NavbarContainer from './navbar/navbar_container';
 import VideoCreateFormContainer from './videos/video_create_form_container';
-import VideoShow from './videos/video_show';
+import VideoShowContainer from './videos/video_show_container';
 import SideBarContainer from './sidebar/side_bar_container';
 
 const App = () =>(
@@ -22,7 +22,7 @@ const App = () =>(
             <AuthRoute exact path="/login" component={LoginContainer}/>
             <AuthRoute exact path="/signup" component={SignupContainer}/>
             <ProtectedRoute path='/uploadvideo' component={VideoCreateFormContainer} />
-            <Route exact path='/videos/:videoId' component={VideoShow} />
+            <Route exact path='/videos/:videoId' component={VideoShowContainer} />
             <Route path="/" component={VideoIndexContainer}/>
         </Switch>
        

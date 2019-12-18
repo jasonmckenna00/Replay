@@ -13,11 +13,11 @@ export const REMOVE_VIDEO = 'REMOVE_VIDEO';
 export const UPDATE_VIDEO = 'UPDATE_VIDEO';
 export const CLEAR_VIDEO_ERRORS = 'CLEAR_VIDEO_ERRORS'
 
-const receiveVideo = (video) => {
-    debugger
+const receiveVideo = (payload) => {
+    // debugger
     return {
     type: RECEIVE_VIDEO,
-    video
+    payload
     }
 }
 
@@ -58,19 +58,22 @@ export const fetchAllVideos = () => dispatch => {
 
 export const fetchVideo = (videoId) => dispatch => {
     dispatch(startLoadingSingleVideo())
-    return VideoUtil.getVideoById(videoId)
-        .then( (video) => dispatch(receiveVideo(video)))
+    // debugger
+    return VideoUtil.getVideo(videoId).then( (video) => { 
+            // debugger
+            return dispatch(receiveVideo(video))
+        })
 }
 
 export const updateVideo = (video) => dispatch => {
     dispatch(startLoadingSingleVideo())
-    return VideoUtil.getVideoById(video.id)
+    return VideoUtil.getVideo(video.id)
         .then( (updatedVideo) => dispatch(receiveVideo(updatedVideo)),
              err => dispatch(receiveVideoErrors(err.responseJSON)))
 }
 
 export const createVideo = (video) => dispatch => {
-    debugger
+    // debugger
     // dispatch(startLoadingSingleVideo())
     return VideoUtil.postVideo(video)
         .then( (createdVideo) => dispatch(receiveVideo(createdVideo)), 

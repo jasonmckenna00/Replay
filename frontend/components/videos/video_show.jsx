@@ -1,18 +1,35 @@
 import React from 'react';
+import {Dimensions} from 'react-native'
 
+import { Player } from 'video-react';
 
 class VideoShow extends React.Component{
 
+
+    componentDidMount(){
+        this.props.fetchVideo(this.props.match.params.videoId)
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.videoId !== this.props.match.params.videoId) {
+          this.props.fetchVideo(this.props.match.params.videoId);
+        }
+    }
 
 
 
 
     render(){
+        // debugger
+        // if (this.props.loading.videoLoading || this.props.loading.userLoading) return <LoadingScreen />
+        if (!this.props.video) return null
         return <div className='video-show-container'>
             <div className='video-group-container'>
                 <div className='video-show-left-container'>
                     <div className='video-show-video-container'>
-                        <div className='video-show-video'></div>
+                        <video src={this.props.video.videoUrl} controls autoPlay className='video-show-video' alt="" />
+
+                        
                     </div>
                     <div className='video-show-video-info-container'>
                         <h2 className='video-show-title'>DEMO TITLE</h2>
@@ -50,7 +67,8 @@ class VideoShow extends React.Component{
                         <div className='comments-list'></div>
                     </div>
                 </div>
-                <div className='video-show-right-container'></div>
+                
+            <div className='video-show-right-container'></div>
             </div>
         </div>
     }
