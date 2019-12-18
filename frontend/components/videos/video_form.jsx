@@ -1,22 +1,18 @@
 import React from 'react'
 
 
-class VideoCreateForm extends React.Component{
+class VideoForm extends React.Component{
     constructor(props){
         super(props)
-        this.state = {
-            video_url: null,
-            thumbnail_url: null,
-            title: '',
-            description: '',
-        }
+        this.state = this.props.video
         this.handleVideoFile = this.handleVideoFile.bind(this);
         this.handleThumbnailFile = this.handleThumbnailFile.bind(this);
-
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.update = this.update.bind(this)
     }
+
     handleVideoFile(e){
-        return this.setState({ video_url: e.target.files[0]}) 
+        return this.setState({ videoUrl: e.target.files[0]}) 
     }
 
     componentWillUnmount(){
@@ -25,30 +21,18 @@ class VideoCreateForm extends React.Component{
 
     handleThumbnailFile(e){
 
-        return this.setState({ thumbnail_url: e.target.files[0] })
+        return this.setState({ thumbnailUrl: e.target.files[0] })
     }
 
     update(field){
         return e => this.setState( {[field]: e.target.value})
     }
 
-    // renderError(field){
-    //     debugger
-    //     const errorLis = this.props.errors.map( (error,i) => {
-    //         return error
-    //     })
-
-    //     switch(field){
-    //         case 'title':
-    //             return
-    //     }
-    // }
-
 
     videoForm(){
         return <>
                 <div className='video-url-upload-container'>
-                <label for='videoupload' className='video-upload-input' >
+                <label htmlFor='videoupload' className='video-upload-input' >
                     <i className="fas fa-photo-video"></i>
                     <h3>Upload video</h3> 
                 </label>
@@ -64,21 +48,35 @@ class VideoCreateForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault()
-        // debugger
+
         const formData = new FormData();
-        formData.append('video[video_url]', this.state.video_url)
-        formData.append('video[thumbnail_url]', this.state.thumbnail_url)
+        if (this.state.thumbnailUrl) formData.append('video[thumbnail_url]', this.state.thumbnailUrl)
+        
+        if (this.state.videoUrl && (this.props.formType === 'Upload Video')){
+            formData.append('video[video_url]', this.state.videoUrl)
+        }
         formData.append('video[title]', this.state.title)
         formData.append('video[description]', this.state.description)
-
-        this.props.createVideo(formData)
-            .then( () =>this.props.history.push('/'))
+        debugger
+        let videoId = this.state.id ? this.state.id : null
+        this.props.submitVideo(formData,videoId)
+            .then( (action) =>{
+                debugger
+                return this.props.history.push(`/videos/${action.payload.video.id}`)
+            })
+            
+            
+            
     }
 
 
 
 
     infoForm(){
+        // if (this.props.formType === 'Edit Video'){
+        //     return value={this.props.video}
+        // }
+
         return <>
 
             <form className='video-info-form-container'>
@@ -90,6 +88,7 @@ class VideoCreateForm extends React.Component{
                             className='video-form-title' 
                             onChange={this.update('title')}
                             placeholder='Add a title that describes your video'
+                            value={this.state.title}
                             />
                     </div>
 
@@ -97,14 +96,16 @@ class VideoCreateForm extends React.Component{
                         <h3>Description</h3>
                         <textarea className='video-description'
                             onChange={this.update('description')}  
-                            placeholder='Tell viewers about your video'>
+                            placeholder='Tell viewers about your video'
+                            value={this.state.description}>
+                               
                         </textarea>
                     </div>
 
                     <div className='video-form-thumbnail-container'>
                             <h2>Thumbnail</h2>
                             <h3>Select or upload a picture that shows what's in your video. A good thumbnail stands out and draws viewers' attention</h3>
-                            <label for='thumbnail' className='video-thumbnail-input' >
+                            <label htmlFor='thumbnail' className='video-thumbnail-input' >
                                 <i className="far fa-images"></i>
                                 <h3>Upload thumbnail</h3> 
                             
@@ -113,8 +114,8 @@ class VideoCreateForm extends React.Component{
                                 onChange={this.handleThumbnailFile}/> 
                     </div>
                     <div className='video-form-channel-container'>
-                        <h2>Channel</h2>
-                        <h3>Add your video to one or more channels. Channels can help viewers discover your content</h3>   
+                        {/* <h2>Channel</h2> */}
+                        {/* <h3>Add your video to one or more channels. Channels can help viewers discover your content</h3>    */}
                     </div>
                     <div className='video-form-footer-container'>
                     <h2 onClick={()=>this.goBack()} className='next-button video-form-next-button'><p>Go Back</p></h2>
@@ -141,12 +142,13 @@ class VideoCreateForm extends React.Component{
     goBack(){
         // debugger
         this.props.clearVideoErrors()
-        this.setState({video_url: ''})
+        this.setState({videoUrl: ''})
     }
 
 
     render(){
-        const createForm = this.state.video_url ? this.infoForm() :this.videoForm()
+        // debugger
+        const createForm = this.state.videoUrl ? this.infoForm() :this.videoForm()
         // debugger
         const errorLis = this.props.errors.map( (error,i) => {
             return error
@@ -156,7 +158,7 @@ class VideoCreateForm extends React.Component{
             <div className='video-create-container'>
                 <div className='video-file-form'>
                     <div className='video-file-header'>
-                        <h2 className='video-file-header-text'>Upload Video</h2>
+                        <h2 className='video-file-header-text'>{this.props.formType}</h2>
                         <i className="fas fa-times" onClick={() => this.leavePage()}></i>
                     </div>
                     <div className='video-file-body'>
@@ -173,4 +175,4 @@ class VideoCreateForm extends React.Component{
     }
 }
 
-export default VideoCreateForm
+export default VideoForm

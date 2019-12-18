@@ -6,9 +6,16 @@ import {fetchUser} from '../../actions/user_actions'
 
 const msp = (state, ownProps) => {
     // debugger
+    let video = state.entities.videos[ownProps.match.params.videoId]
+    let user =  video ? state.entities.users[video.user_id] : {}
+    video = video ? video : {}
+    user = user ? user : {}
+
     return({
-    video: state.entities.videos[ownProps.match.params.videoId],
-    loading: state.ui.loading
+    video, 
+    user,
+    loading: state.ui.loading,
+    currentUser: state.session.currentUser
     })   
 }
 

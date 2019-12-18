@@ -31,15 +31,16 @@ export const postVideo = (video) => {
     })
 )}
 
-export const updateVideo = (video) => (
-    $.ajax({
+export const updateVideo = (video,videoId) => {
+    return $.ajax({
         method: `patch`,
-        url: `/api/videos/${video.id}`,
+        url: `/api/videos/${videoId}`,
         data: video,
         contentType: false,
         processData: false
     })
-)
+}
+
 
 export const deleteVideo = (videoId) => (
     $.ajax({

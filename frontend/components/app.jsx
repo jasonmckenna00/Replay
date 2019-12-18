@@ -9,6 +9,7 @@ import NavbarContainer from './navbar/navbar_container';
 import VideoCreateFormContainer from './videos/video_create_form_container';
 import VideoShowContainer from './videos/video_show_container';
 import SideBarContainer from './sidebar/side_bar_container';
+import VideoEditFormContainer from './videos/video_edit_form_container';
 
 const App = () =>(
     <>
@@ -23,7 +24,8 @@ const App = () =>(
             <AuthRoute exact path="/signup" component={SignupContainer}/>
             <ProtectedRoute path='/uploadvideo' component={VideoCreateFormContainer} />
             <Route exact path='/videos/:videoId' component={VideoShowContainer} />
-            <Route path="/" component={VideoIndexContainer}/>
+            <Route path='/videos/:videoId/edit' component={VideoEditFormContainer} />
+            <Route exact path="/" component={VideoIndexContainer}/>
         </Switch>
        
     </>
