@@ -16,7 +16,8 @@ class Navbar extends React.Component{
             dropdown: false,
             // loggedin: !!this.props.currUser
         }
-        
+        this.dropRef = React.createRef()
+        this.handleDropDownBlurr = this.handleDropDownBlurr.bind(this)
 
     }
 
@@ -84,10 +85,22 @@ class Navbar extends React.Component{
 
     isLoggedIn(){
         return (
-            <div className='logged-in' onClick={()=> this.changeDropDown()}  onBlur={() => this.setState({dropdown: false})} > 
+            <div className='logged-in'  onClick={()=> this.changeDropDown()}  onBlur={this.handleDropDownBlurr(this.dropRef, () =>this.setState({dropdown: false}))} > 
                 <i className="fas fa-play-circle"></i>
             </div>
+    
         )
+    }
+
+    handleDropDownBlurr(ref, callback){
+        // debugger
+        return e => {
+            if (!ref.current.contains(e.relatedTarget)) {
+                callback()
+            }
+            
+            // this.setState({dropdown: false})
+        }
     }
 
     changeDropDown(){
@@ -107,11 +120,16 @@ class Navbar extends React.Component{
             this.props.openSideBar();
         }
     }
+
     render() {
         const  currPath  = this.props.history.location.pathname
         let tempClass = ((currPath === '/login') || (currPath === '/signup')) ? 'navbar-hidden' : '';
         // const dropdown = (this.state.dropdown && this.props.currUser) ? this.dropDownMenu() : null;
-        const ddComponent = <NavbarDropdown logout={this.props.logout} currUser={this.props.currUser} displayed={this.state.dropdown} />
+        const ddComponent = <NavbarDropdown 
+                            logout={this.props.logout} 
+                            currUser={this.props.currUser} 
+                            displayed={this.state.dropdown} tabIndex='0' />
+
         const dropdown = this.props.currUser ? ddComponent : null;
 
         
@@ -140,7 +158,7 @@ class Navbar extends React.Component{
                         </div>
                     </div>
 
-                    <div className='right-buttons'>
+                    <div className='right-buttons' ref={this.dropRef}>
                         <div className='camera-icon'>
                             <i className="fas fa-video" onClick={()=> this.props.history.push('/uploadvideo')}></i>
                         </div>

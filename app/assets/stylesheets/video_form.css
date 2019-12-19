@@ -132,9 +132,9 @@
     color: gray;
     line-height: 15px;
 }
-input[type="file"] {
+/* input[type="file"] {
     display: none;
-}
+} */
 .video-thumbnail-input{
     border: 1px solid #ccc;
     /* display: inline-block; */
@@ -205,3 +205,10 @@ input[type="file"] {
     margin-top: 35px;
 }
 
+.vid-errors{
+    border: 2px solid red;
+}
+
+.thumb-err-message{
+    font-size: 13px;
+}

@@ -16,7 +16,6 @@ class Api::VideosController < ApplicationController
 
         @video = Video.new(video_params)
         @video.user_id = current_user.id       
-        # debugger
         if @video.save
             render :show
         else
@@ -51,7 +50,6 @@ class Api::VideosController < ApplicationController
             @video.destroy
             render :show
         else
-            debugger
             render json: ["You cannot delete a video you didn't post"], status: 422
             return
         end

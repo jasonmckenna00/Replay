@@ -1,11 +1,10 @@
 class Video < ApplicationRecord
     validates :title, :description, presence: true
-    validate :video_url
-    validate :thumbnail_url
+    validate :ensure_thumbnail
+    validate :ensure_video
     # validates :video_url, uniqueness: true
 
     belongs_to :user
-
     has_one_attached :video_url
     has_one_attached :thumbnail_url
 
@@ -16,9 +15,9 @@ class Video < ApplicationRecord
     end
 
     def ensure_thumbnail
+        
         unless self.thumbnail_url.attached?
-            errors[:video] << 'Must attach a thumbnail'
-
+            errors[:videos] << 'Must attach a thumbnail'
         end
 
     end

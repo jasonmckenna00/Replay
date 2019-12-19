@@ -24,9 +24,9 @@ class NavbarDropdown extends React.Component{
         if (this.props.displayed){
         return (
          
-            <div className='dom'>
+            <div className='dom' >
                 <div className='dropdown-container'>
-                    <div className='dropdown-header'>
+                    <div className='dropdown-header' >
                         <i className="fas fa-user dropdown-user-icon"></i>
                         <div className='dropdown-header-userinfo'>
                             <h2 className='dropdown-username'>{currUser.first_name}</h2>
