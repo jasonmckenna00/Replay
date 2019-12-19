@@ -27,7 +27,7 @@ const receiveVideos = (videos) => ({
 })
 
 const receiveVideoErrors = (errors) => {
-    
+    debugger
     return {
     type: RECEIVE_VIDEO_ERRORS,
     errors

@@ -222,9 +222,9 @@ class VideoForm extends React.Component{
 
     render(){
         const createForm = this.state.videoUrl ? this.infoForm() :this.videoForm()
-        const errorLis = this.props.errors.map( (error,i) => {
-            return error
-        })
+        // const errorLis = this.props.errors.map( (error,i) => {
+        //     return error
+        // })
         // const renderErrorMsg = errorLis.length ? this.errorMsg() : null
 
         return <>

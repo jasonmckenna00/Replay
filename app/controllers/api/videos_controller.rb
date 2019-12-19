@@ -1,7 +1,7 @@
 class Api::VideosController < ApplicationController
 
     def show
-        @video = Video.includes(:user,:comments).find(params[:id])
+        @video = Video.includes([:user,:comments]).find(params[:id])
         render :show
     end
 
@@ -13,7 +13,7 @@ class Api::VideosController < ApplicationController
     def create
 
         @video = Video.new(video_params)
-        @video.user_id = current_user.id       
+        @video.user_id = current_user.id   
         if @video.save
             render :show
         else
