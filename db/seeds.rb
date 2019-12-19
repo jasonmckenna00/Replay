@@ -23,7 +23,7 @@ demo = User.create({
     password: 'hunter2'
 })
 
-video1 = Video.new!({ title: 'video1', description: 'my video 1',user_id: 32})
+video1 = Video.new({ title: 'video1', description: 'my video 1',user_id: 32})
     thumbnail1 = File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/hubble.jpg")
     video1.thumbnail_url.attach(io: thumbnail1, filename: 'hubble.jpg')
     video_url = File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/splash.mp4")
