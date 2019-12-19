@@ -4,7 +4,7 @@ import {logout} from '../../actions/session_actions'
 import {closeSideBar, openSideBar} from '../../actions/ui_actions'
 
 const msp = (state, ownProps) =>{
-    // debugger
+
     return ( {
     currUser: state.session.currentUser,
     isOpen: state.ui.sidebar.isOpen

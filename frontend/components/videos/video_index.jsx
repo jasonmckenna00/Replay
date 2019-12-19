@@ -23,13 +23,6 @@ class VideoIndex extends React.Component{
 
 
     render(){
-
-        // debugger
-        // if (this.props.loading.videoLoading || this.props.loading.userLoading) return <LoadingScreen />
-        // if (this.props.videos.length === 1){   
-        //     return null
-        // }
-        //     else {
             const { videos, users, fetchUser, loading } = this.props
             const videosLis = videos.map( video => <VideoIndexItem 
                                                     key={video.id} 

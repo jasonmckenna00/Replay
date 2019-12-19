@@ -17,7 +17,7 @@ const receiveAllUsers = (users) => {
 
 export const fetchUser = (userId) => dispatch =>{
     dispatch(startLoadingUser())
-    // debugger
+
     return UsersUtil.fetchUserById(userId).then( user => dispatch(receiveUser(user)))
 }
 

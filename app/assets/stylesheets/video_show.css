@@ -129,39 +129,6 @@
     border-bottom: 1px solid gray
 }
 
-.video-show-comment-container{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-}
-
-.video-show-comment-form{
-    width: 100%;
-    margin: 24px 0px 32px;
-    /* border: 1px solid black; */
-    flex-direction: column;
-}
-
-.comment-counter{
-    font-size:16px;
-    margin-bottom: 24px;
-}
-
-.comment-form{
-    display: flex;
-    width: 100%;
-    font-size: 10px;
-}
-
-.comment-form input{
-    padding-bottom: 4px;
-    /* border-bottom: 1px solid gray; */
-    background-color: transparent;
-    width: 100%;
-    margin-left: 10px;
-    border: none;
-    border-bottom: 1px solid gray;
-}
 
 
 @media (max-width: 1200px) {

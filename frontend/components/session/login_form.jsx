@@ -18,7 +18,6 @@ class LoginForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault()
-        // debugger
         this.props.login(this.state)
             .then( () =>this.props.history.push('/'))
     }
@@ -44,7 +43,6 @@ class LoginForm extends React.Component{
 
     emailError(){
         const errors = this.props.emailErrors;
-        // debugger
         let errMessage = ''
         errors.forEach( error => {
             if ((error.split(' ')[0] === "Couldn't")){
@@ -60,7 +58,6 @@ class LoginForm extends React.Component{
 
     passError(){
         const errors = this.props.passwordErrors;
-        // debugger
         let errMessage = ''
         errors.forEach( error => {
             if ((error.split(' ')[0] === "Invalid")){
@@ -77,7 +74,6 @@ class LoginForm extends React.Component{
 
     emailForm(){
         const errClass = this.emailError() ? 'errors' : '';
-        // debugger
         return <>
         
             <h1 className='signin-header'>Sign in</h1>
@@ -116,7 +112,6 @@ class LoginForm extends React.Component{
         const errClass = this.passError() ? 'errors' : '';
 
         const {email, first_name} = this.props.currUser[0]
-        // debugger
         return(<>
 
             <div className='signin-header'>

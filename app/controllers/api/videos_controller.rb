@@ -1,13 +1,11 @@
 class Api::VideosController < ApplicationController
 
     def show
-        # debugger
-        @video = Video.includes(:user).find(params[:id])
+        @video = Video.includes(:user,:comments).find(params[:id])
         render :show
     end
 
     def index
-        # debugger
         @videos = Video.all
         render :index
     end
@@ -30,20 +28,18 @@ class Api::VideosController < ApplicationController
     def update
         @video = current_user.posted_videos.find_by(id: params[:id])
 
-        # debugger
         if @video.update(video_params)
             render :show
         elsif @video == nil
             render json: ["You cannot edit a video you didn't post"], status: 422
             return
-            # debugger
+
         else
             render json: @video.errors.full_messages
         end
     end
 
     def destroy
-        # debugger
         @video = current_user.posted_videos.find_by(id: params[:id])
         
         if @video

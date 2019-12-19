@@ -19,7 +19,6 @@ class NavbarDropdown extends React.Component{
 
 
     render(){
-        // debugger
         const {currUser} = this.props
         if (this.props.displayed){
         return (

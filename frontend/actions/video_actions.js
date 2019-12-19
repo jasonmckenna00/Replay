@@ -14,7 +14,7 @@ export const UPDATE_VIDEO = 'UPDATE_VIDEO';
 export const CLEAR_VIDEO_ERRORS = 'CLEAR_VIDEO_ERRORS'
 
 const receiveVideo = (payload) => {
-    // debugger
+
     return {
     type: RECEIVE_VIDEO,
     payload
@@ -35,7 +35,7 @@ const receiveVideoErrors = (errors) => {
 }
 
 export const clearVideoErrors = () => {
-    // debugger
+
     return {
         type: CLEAR_VIDEO_ERRORS
     }

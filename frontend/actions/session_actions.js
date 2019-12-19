@@ -9,20 +9,17 @@ export const RESET_USER_UI_STATE = 'RESET_USER_UI_STATE'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 const receiveCurrentUser = (user) => {
-    // debugger
     return ({
     type: RECEIVE_CURRENT_USER,
     user
 })}
 
 const logoutCurrentUser = () =>{
-    // debugger
     return({
     type: LOGOUT_CURRENT_USER
 })}
 
-export const receiveSessionErrors = errors => {
-    // debugger 
+export const receiveSessionErrors = errors => { 
     return ({
     type: RECEIVE_SESSION_ERRORS,
     errors

@@ -21,15 +21,8 @@ class Navbar extends React.Component{
 
     }
 
-    // componentDidUpdate(prev){
-    //     // debugger
-    //     if ((prev.location.pathname !== this.props.history.location.pathname) && (this.state.dropdown )){
-    //         this.setState({dropdown: false})
-    //     }
-    // }
 
     dropDownMenu(){
-        // debugger
         const currUser = Object.values(this.props.currUser)[0]
        
         return (
@@ -93,7 +86,6 @@ class Navbar extends React.Component{
     }
 
     handleDropDownBlurr(ref, callback){
-        // debugger
         return e => {
             if (!ref.current.contains(e.relatedTarget)) {
                 callback()
@@ -104,7 +96,7 @@ class Navbar extends React.Component{
     }
 
     changeDropDown(){
-            // debugger
+
             if (this.state.dropdown){
                 this.setState({dropdown: false})
             } else {

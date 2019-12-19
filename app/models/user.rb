@@ -19,7 +19,6 @@ class User < ApplicationRecord
     end
 
     def self.find_by_email(email)
-        # debugger
         user = User.find_by(email: email)
         user ? user : nil
     end

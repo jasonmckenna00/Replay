@@ -7,6 +7,14 @@ end
 
 json.set! 'user' do 
        json.extract! @video.user, :id, :email, :first_name, :last_name
-    
+end
+
+
+json.set! 'comments' do 
+    @video.comments.map do |comment|
+        json.set! comment.id do
+            json.extract! comment, :id, :body, :user_id
+         end
+    end
 end
 
