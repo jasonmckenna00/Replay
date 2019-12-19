@@ -29,6 +29,12 @@ video1 = Video.create!({ title: 'video1', description: 'my video 1',user_id: dem
     video_url = File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/splash.mp4")
     video1.video_url.attach(io: video_url, filename: 'splash.mp4')
 
+# video2 = Video.create!({ title: 'video1', description: 'my video 1',user_id: demo.id})
+#     thumbnail1 = File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/hubble.jpg")
+#     video2.thumbnail_url.attach(io: thumbnail1, filename: 'hubble.jpg')
+#     video_url = File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/supersmash.mp4")
+#     video2.video_url.attach(io: video_url, filename: 'supersmash.mp4')
+
 
 
 

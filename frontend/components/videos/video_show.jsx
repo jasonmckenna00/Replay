@@ -5,6 +5,10 @@ class VideoShow extends React.Component{
 
     componentDidMount(){
         this.props.fetchVideo(this.props.match.params.videoId)
+            // .then( (video => {
+
+            // return this.props.video.comments
+        
     }
 
     componentDidUpdate(prevProps) {
@@ -19,6 +23,22 @@ class VideoShow extends React.Component{
         this.props.history.push(`/videos/${this.props.video.id}/edit`)
     }
 
+
+    commentsSection(){
+        return (
+            <div className='video-show-comment-container'>
+                <div className='video-show-comment-form'>
+                    <h2 className='comment-counter'>7 Comments</h2>
+                    <div className='comment-form'>
+                        <div className='video-show-pro-pic'></div>
+                        <input type="text" placeholder='Add a public comment...'/>
+                    </div>
+                </div>
+                <div className='comments-list'></div>
+            </div>
+        )
+    }
+
     render(){
         // debugger
         // if (this.props.loading.videoLoading || this.props.loading.userLoading) return <LoadingScreen />
@@ -31,10 +51,8 @@ class VideoShow extends React.Component{
         // if (this.props.currentUser)
         let editOrSub
         if (this.props.currentUser && (this.props.user.id === this.props.currentUser.id)){
-            // debugger
             editOrSub = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
         } else {
-            // debugger
             editOrSub = <h2 className='next-button subscribe-button '>Subscribe</h2>
             
         }
@@ -74,16 +92,7 @@ class VideoShow extends React.Component{
                         <p>{description}</p>
                         {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> */}
                     </div>
-                    <div className='video-show-comment-container'>
-                        <div className='video-show-comment-form'>
-                            <h2 className='comment-counter'>7 Comments</h2>
-                            <div className='comment-form'>
-                                <div className='video-show-pro-pic'></div>
-                                <input type="text" placeholder='Add a public comment...'/>
-                            </div>
-                        </div>
-                        <div className='comments-list'></div>
-                    </div>
+                    {this.commentsSection()}
                 </div>
                 
             <div className='video-show-right-container'></div>
