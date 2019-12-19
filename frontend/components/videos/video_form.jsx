@@ -67,7 +67,7 @@ class VideoForm extends React.Component{
         }
         
         
-        debugger
+        
         if (this.state.videoUrl && (this.props.formType === 'Upload Video')){
             formData.append('video[video_url]', this.state.videoUrl)
         }
@@ -215,7 +215,7 @@ class VideoForm extends React.Component{
 
     deleteCurrVideo(videoId){
         this.props.deleteVideo(videoId).then( () => {
-            debugger
+            
             return this.props.history.push('/')
         })
     }

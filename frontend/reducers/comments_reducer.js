@@ -15,7 +15,8 @@ export default (state = {}, action) => {
             delete newState[action.commentId]
             return newState;
         case RECEIVE_VIDEO: 
-            return action.payload.comments
+
+            return action.payload.comments;
         default: return state
     }   
 }

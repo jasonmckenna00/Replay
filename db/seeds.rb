@@ -46,9 +46,9 @@ video2 = Video.new({ title: 'video2', description: 'my video 2',user_id: demo.id
 
 video3 = Video.new({ title: 'video3', description: 'my video 3',user_id: demo.id})
     thumbnail1 = open("https://replay-videos-seeds.s3.amazonaws.com/yacht.jpg")
-    video2.thumbnail_url.attach(io: thumbnail1, filename: 'yacht.jpg')
+    video3.thumbnail_url.attach(io: thumbnail1, filename: 'yacht.jpg')
     video_url3 = open("https://replay-videos-seeds.s3.amazonaws.com/splash.mp4")
-    video2.video_url.attach(io: video_url3, filename: 'splash.mp4')
+    video3.video_url.attach(io: video_url3, filename: 'splash.mp4')
     video3.save!
 
 

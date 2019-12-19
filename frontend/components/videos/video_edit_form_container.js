@@ -33,7 +33,7 @@ class EditVideoForm extends React.Component{
 
 
 const msp = (state, ownProps) => {
-    debugger
+
     let video = state.entities.videos[ownProps.match.params.videoId];
     if (video) (delete video.thumbnailUrl)
     return {
