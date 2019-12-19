@@ -35,21 +35,21 @@ video1 = Video.new({ title: 'video1', description: 'my video 1',user_id: demo.id
     video1.thumbnail_url.attach(io: thumbnail1, filename: 'yacht.jpg')
     video_url1 = open("https://replay-videos-seeds.s3.amazonaws.com/splash.mp4")
     video1.video_url.attach(io: video_url1, filename: 'splash.mp4')
-    video1.save
+    video1.save!
 
 video2 = Video.new({ title: 'video2', description: 'my video 2',user_id: demo.id})
     thumbnail1 = open("https://replay-videos-seeds.s3.amazonaws.com/yacht.jpg")
     video2.thumbnail_url.attach(io: thumbnail1, filename: 'yacht.jpg')
     video_url2 = open("https://replay-videos-seeds.s3.amazonaws.com/splash.mp4")
     video2.video_url.attach(io: video_url2, filename: 'splash.mp4')
-    video2.save
+    video2.save!
 
 video3 = Video.new({ title: 'video3', description: 'my video 3',user_id: demo.id})
     thumbnail1 = open("https://replay-videos-seeds.s3.amazonaws.com/yacht.jpg")
     video2.thumbnail_url.attach(io: thumbnail1, filename: 'yacht.jpg')
     video_url3 = open("https://replay-videos-seeds.s3.amazonaws.com/splash.mp4")
     video2.video_url.attach(io: video_url3, filename: 'splash.mp4')
-    video3.save
+    video3.save!
 
 
 
