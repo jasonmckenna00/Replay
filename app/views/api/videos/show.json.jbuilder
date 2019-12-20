@@ -10,16 +10,16 @@ json.set! 'user' do
 end
 
 
-json.set! 'comments' do 
-
-    if @video.comments 
-        @video.comments.map do |comment|
-            json.set! comment.id do
-                json.extract! comment, :id, :body, :user_id
-            end
+json.comments do 
+    # json.set! :name, 'hello'
+    @video.comments.each do |comment|
+        json.set! comment.id do
+            json.extract! comment, :id, :body, :user_id
         end
-    
     end
 
+
 end
+
+
 

@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
+Comment.destroy_all
 Video.destroy_all
 User.destroy_all
 
@@ -54,3 +55,7 @@ video3 = Video.new({ title: 'video3', description: 'my video 3',user_id: demo.id
 
 
 
+comment1 = video1.comments.create!({body: 'test', user_id: demo.id})
+
+comment2 = video1.comments.create!({body: 'test2', user_id: demo.id})
+comment3 = video2.comments.create!({body: 'test3', user_id: demo.id})

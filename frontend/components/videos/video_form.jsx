@@ -41,14 +41,22 @@ class VideoForm extends React.Component{
         return <>
                 <div className='video-url-upload-container'>
                 {/* <label htmlFor='videoupload' className='video-upload-input' >
-                    <i className="fas fa-photo-video"></i>
+                    
                     <h3>Upload video</h3> 
 
                 </label> */}
-
-
+                    <div className='video-upload-drag-outer'>
+                        <div className='video-upload-drag-inner'>
+                            <input type="file" 
+                                onChange={this.handleVideoFile} 
+                                id='videoupload' 
+                                className='video-file-upload-button'/> 
+                                <i className="fas fa-upload"></i>
+                        </div>
+                            <h2 className='uploadvideotext'>Drag in your video</h2>
+                    </div>
+                    
                 
-                    <input type="file" onChange={this.handleVideoFile} id='videoupload'/> 
                 </div>
 
             
@@ -233,15 +241,9 @@ class VideoForm extends React.Component{
                     <div className='video-file-header'>
                         <h2 className='video-file-header-text'>{this.props.formType}</h2>
                         <i className="fas fa-times" onClick={() => this.leavePage()}></i>
-                    </div>
-                    <div className='video-file-body'>
+                    </div>                 
                         {createForm}
                         {/* {this.infoForm()} */}
-
-
-
-
-                    </div>
                 </div>
                 
             </div>

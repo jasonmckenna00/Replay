@@ -14,7 +14,6 @@ export const UPDATE_VIDEO = 'UPDATE_VIDEO';
 export const CLEAR_VIDEO_ERRORS = 'CLEAR_VIDEO_ERRORS'
 
 const receiveVideo = (payload) => {
-
     return {
     type: RECEIVE_VIDEO,
     payload
@@ -27,7 +26,6 @@ const receiveVideos = (videos) => ({
 })
 
 const receiveVideoErrors = (errors) => {
-    debugger
     return {
     type: RECEIVE_VIDEO_ERRORS,
     errors
@@ -77,8 +75,13 @@ export const updateVideo = (video,videoId) => dispatch => {
 
 export const createVideo = (video) => dispatch => {
     return VideoUtil.postVideo(video)
-        .then( (createdVideo) => dispatch(receiveVideo(createdVideo)), 
+        .then(
+            (createdVideo) => {
+                debugger
+                return dispatch(receiveVideo(createdVideo))
+            }, 
             err => dispatch(receiveVideoErrors(err.responseJSON)))
+            
 }
 
 export const deleteVideo = (videoId) => dispatch => {

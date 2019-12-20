@@ -13,9 +13,9 @@ export default (state = {}, action) => {
             let newState = Object.assign({}, state);
             delete newState[action.commentId]
             return newState;
-        // case RECEIVE_VIDEO: 
-        //     debugger
-        //     return action.payload.comments;
+        case RECEIVE_VIDEO: 
+            if (!action.payload.comments) return state
+            return action.payload.comments;
         default: return state
     }   
 }
