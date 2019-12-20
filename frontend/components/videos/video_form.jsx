@@ -28,7 +28,6 @@ class VideoForm extends React.Component{
     }
 
     handleThumbnailFile(e){
-
         return this.setState({ thumbnailUrl: e.target.files[0] })
     }
 
@@ -84,6 +83,7 @@ class VideoForm extends React.Component{
         let videoId = this.state.id ? this.state.id : null
         this.props.submitVideo(formData,videoId)
             .then( (action) =>{
+                debugger
                 if (this.props.formType === 'Upload Video') return this.props.history.push(`/videos/${action.payload.video.id}`)
                 else this.props.history.push(`/videos/${action.payload.video.id}`)
             })
@@ -183,16 +183,26 @@ class VideoForm extends React.Component{
                         <h2 className='descrip-err-message error-message '><p>{descripErr}</p></h2>
 
                     <div className='video-form-thumbnail-container'>
-                            <h2>Thumbnail</h2>
-                            <h3>Select or upload a picture that shows what's in your video. A good thumbnail stands out and draws viewers' attention</h3>
-                            <label htmlFor='thumbnail' className={`${thumbClass} video-thumbnail-input`}>
-                                <i className="far fa-images"></i>
-                                <h3>Upload thumbnail</h3> 
-                            
-                            </label>
-                                <input type="file" id='thumbnail'
-                                onChange={this.handleThumbnailFile}/>
-                            <h4 className='thumb-err-message error-message '><p>{thumbErr}</p></h4> 
+                            <div className='thumbnail-header-text'>
+                                <h2>Thumbnail</h2>
+                                <h3>Select or upload a picture that shows what's in your video. A good thumbnail stands out and draws viewers' attention</h3>
+                            </div>
+                            <div className='thumbnail-upload-file-container'>
+                                <div className='thumbnail-file'>
+
+                                        <label htmlFor='thumbnail' className={`${thumbClass} video-thumbnail-input`}>
+                                            <i className="far fa-images"></i>
+                                            <h3>Upload thumbnail</h3> 
+
+                                        </label>
+                                            <input type="file" id='thumbnail'
+                                            onChange={this.handleThumbnailFile}/>
+                                        <h4 className='thumb-err-message error-message '><p>{thumbErr}</p></h4> 
+                                </div>
+
+                                {/* <div className='thumbnail-preview'></div> */}
+                            </div>
+
                     </div>
                     <div className='video-form-channel-container'>
                         {/* <h2>Channel</h2> */}

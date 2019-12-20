@@ -115,7 +115,7 @@ class VideoShow extends React.Component{
                     </div>
                 </div>
                 
-            <div className='video-show-right-container'></div>
+            {/* <div className='video-show-right-container'></div> */}
             </div>
         </div>
     }

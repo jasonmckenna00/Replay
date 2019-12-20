@@ -253,3 +253,24 @@
 .thumb-err-message{
     font-size: 13px;
 }
+
+
+.thumbnail-header-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail-upload-file-container{
+    display: flex;
+}
+
+.thumbnail-file{
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail-preview{
+    height: 110px;
+    border: 1px solid black;
+    width: 100px;
+}

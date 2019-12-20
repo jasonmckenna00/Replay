@@ -17,7 +17,7 @@ class CommentIndexItem extends React.Component{
                     <h2 className='comment-user-name'>demoUser</h2>
                     <h2 className='comment-date-posted'>2 days ago</h2>
                 </div>
-                <h2 className='comment-body-text'> the begginning one of the best music on earth ever</h2>
+                    <h2 className='comment-body-text'>{this.props.comment.body}</h2>
                 <div className='comment-like-reply-container'>
                     <div className='comment-like-buttons'>
                         <i className="fas fa-thumbs-up comment-like"></i>
