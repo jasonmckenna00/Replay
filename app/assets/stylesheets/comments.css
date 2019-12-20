@@ -24,6 +24,7 @@
 
 .comment-form input{
     padding-bottom: 4px;
+    font-size: 16px;
     /* border-bottom: 1px solid gray; */
     background-color: transparent;
     width: 100%;
@@ -65,7 +66,7 @@
 
 .comment-user-name{
     color: #0d0d0d;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .comment-date-posted{
@@ -76,7 +77,7 @@
 
 .comment-body-text{
     width: 100%;
-    font-size: 14px;
+    font-size: 16px;
     margin: 14px 0px 10px;
     /* border: 1px solid black; */
 
@@ -93,4 +94,9 @@
 .comment-like-buttons{
     display: flex;
     align-items: center;
+}
+
+.fa-trash-alt{
+    padding: 0px;
+    align-self: center;
 }

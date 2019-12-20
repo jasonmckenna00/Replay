@@ -8,7 +8,7 @@ export default (state = {}, action) => {
         case RECEIVE_COMMENTS:
             return action.comments
         case RECEIVE_COMMENT:
-            return Object.assign({}, state, {[action.comment.id]: action.comment})
+            return Object.assign({}, state, action.comment)
         case REMOVE_COMMENT:
             let newState = Object.assign({}, state);
             delete newState[action.commentId]

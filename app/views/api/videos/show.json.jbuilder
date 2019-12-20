@@ -5,6 +5,8 @@ json.set! 'video' do
     json.thumbnailUrl url_for(@video.thumbnail_url)
 end
 
+
+
 json.set! 'user' do 
        json.extract! @video.user, :id, :email, :first_name, :last_name
 end
@@ -20,6 +22,8 @@ json.comments do
 
 
 end
+
+
 
 
 

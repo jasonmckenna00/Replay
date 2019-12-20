@@ -1,7 +1,11 @@
 import React from 'react';
 import CommentIndexItem from '../comments/comment_Index_Item'
 class VideoShow extends React.Component{
-
+    constructor(props){
+        super(props)
+        this.state = {body: ''}
+        this.handleComment = this.handleComment.bind(this)
+    }
 
     componentDidMount(){
         this.props.fetchVideo(this.props.match.params.videoId)
@@ -17,6 +21,15 @@ class VideoShow extends React.Component{
         }
     }
 
+    handleComment(e){
+        e.preventDefault();
+        this.props.createComment(this.state, this.props.video.id)
+        this.setState({body: ''})
+    }
+
+    update(field){
+        return e => this.setState( {[field]: e.target.value})
+    }
 
     goToEditPage(){
         // debugger
@@ -42,7 +55,7 @@ class VideoShow extends React.Component{
     render(){
         if (!this.props.video) return null
         if (!this.props.user) return null
-        const { video, user, comments, currentUser, fetchUser} = this.props
+        const { video, user, comments, currentUser, fetchUser, deleteComment} = this.props
 
         let editOrSub 
         const edit = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
@@ -60,11 +73,14 @@ class VideoShow extends React.Component{
             editOrSub = subscribe
         } 
 
-        const commentLis = comments.map( comment => {
+        const commentLis = comments.map( (comment,i) => {
             return <CommentIndexItem 
                     comment={comment}
-                    key={comment.id}
-                    fetchUser={fetchUser}/>
+                    key={i}
+                    fetchUser={fetchUser}
+                    deleteComment={deleteComment}
+                    currentUser={this.props.currentUser}
+                    video={video}/>
         })
 
         
@@ -109,11 +125,13 @@ class VideoShow extends React.Component{
                             <h2 className='comment-counter'>7 Comments</h2>
                                 <form className='comment-form'>
                                     <div className='video-show-pro-pic'><img src={window.peace}/></div>
-                                    <input type="text" placeholder='Add a public comment...'/>
-                                    <button type='submit'>Add Comment</button>
-                                </form>
+                                    <input type="text"
+                                         placeholder='Add a public comment...'
+                                         onChange={this.update('body')}/>
+                                    <button type='submit' onClick={this.handleComment}>Add Comment</button>
+                                </form >
                         </div>
-                            <div className='comments-list'>{commentLis}</div>
+                            <div className='comments-list' >{commentLis}</div>
                     </div>
                 </div>
                 

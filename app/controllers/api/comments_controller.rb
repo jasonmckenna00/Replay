@@ -12,9 +12,9 @@ class Api::CommentsController < ApplicationController
     def create 
         @comment = Comment.new(comment_params)
         @comment.user_id = current_user.id
+        @comment.video_id = params[:video_id]
         if @comment.save
             @video = Video.find(@comment.video_id)
-            @user = current_user
             render :show
         else
             render json: @comment.errors.full_messages, status: 422
@@ -26,7 +26,14 @@ class Api::CommentsController < ApplicationController
     end
 
     def destroy
-
+        @comment = current_user.comments.find(params[:id])
+        if @comment
+            @comment.destroy
+            render :show
+        else
+            render json: ["You cannot delete a comment you didn't post"], status: 422
+            return
+        end
     end
 
     private 
