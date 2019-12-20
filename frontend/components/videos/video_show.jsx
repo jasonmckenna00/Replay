@@ -90,7 +90,8 @@ class VideoShow extends React.Component{
                     <div className='video-show-user-desc-container'>
                         <div className='video-show-user-container'>
                             <div className='video-show-profile-info'>
-                                <div className='video-show-pro-pic'></div>
+                                <div className='video-show-pro-pic'><img src={window.peace}/></div>
+                                {/* <div className='user-pro-pic'></div> */}
                                 <div className='video-show-email-subscribers'>
                                     <h2 className='video-show-email'>{user.email}</h2>
                                     <h3 className='video-show-subscribers '>100 subscribers</h3>
@@ -107,7 +108,7 @@ class VideoShow extends React.Component{
                         <div className='video-show-comment-form'>
                             <h2 className='comment-counter'>7 Comments</h2>
                                 <div className='comment-form'>
-                                    <div className='video-show-pro-pic'></div>
+                                    <div className='video-show-pro-pic'><img src={window.peace}/></div>
                                     <input type="text" placeholder='Add a public comment...'/>
                                 </div>
                         </div>

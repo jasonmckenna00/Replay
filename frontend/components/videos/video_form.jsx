@@ -83,9 +83,8 @@ class VideoForm extends React.Component{
         let videoId = this.state.id ? this.state.id : null
         this.props.submitVideo(formData,videoId)
             .then( (action) =>{
-                debugger
                 if (this.props.formType === 'Upload Video') return this.props.history.push(`/videos/${action.payload.video.id}`)
-                else this.props.history.push(`/videos/${action.payload.video.id}`)
+                else this.props.history.push(`/videos/${videoId}`)
             })
             
             

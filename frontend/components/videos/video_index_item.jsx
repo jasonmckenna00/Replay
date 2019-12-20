@@ -27,7 +27,7 @@ class VideoIndexItem extends React.Component{
 
             
             <div className='video-footer-container'>
-                <div className='user-pro-pic'></div>
+                <div className='user-pro-pic'><img src={window.peace} className='peace-sign' /></div>
                 <div className='video-details-container'>
                     <div className='video-title'>{title}</div>
                     <div className='video-email'>{choppedEmail}</div>

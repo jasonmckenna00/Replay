@@ -103,7 +103,12 @@
 .video-show-pro-pic{
     height: 48px;
     width: 48px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    
+}
+
+.video-show-pro-pic img{
+    width: 100%;
 }
 
 .video-show-email-subscribers{

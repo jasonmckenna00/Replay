@@ -10,7 +10,7 @@ class CommentIndexItem extends React.Component{
     return <>
         <div className='comment-index-item'>
             <div className='comment-pro-pic-container'>
-                <div className='comment-pro-pic'></div>
+            <div className='video-show-pro-pic'><img src={window.peace}/></div>
             </div>
             <div className='comment-body-container'>
                 <div className='comment-user-name-container'>
