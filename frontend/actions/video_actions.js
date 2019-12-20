@@ -77,7 +77,7 @@ export const createVideo = (video) => dispatch => {
     return VideoUtil.postVideo(video)
         .then(
             (createdVideo) => {
-                debugger
+                
                 return dispatch(receiveVideo(createdVideo))
             }, 
             err => dispatch(receiveVideoErrors(err.responseJSON)))

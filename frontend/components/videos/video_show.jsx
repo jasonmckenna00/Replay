@@ -24,7 +24,7 @@ class VideoShow extends React.Component{
     handleComment(e){
         e.preventDefault();
         this.props.createComment(this.state, this.props.video.id)
-        this.setState({body: ''})
+        
     }
 
     update(field){
