@@ -107,10 +107,11 @@ class VideoShow extends React.Component{
                     <div className='video-show-comment-container'>
                         <div className='video-show-comment-form'>
                             <h2 className='comment-counter'>7 Comments</h2>
-                                <div className='comment-form'>
+                                <form className='comment-form'>
                                     <div className='video-show-pro-pic'><img src={window.peace}/></div>
                                     <input type="text" placeholder='Add a public comment...'/>
-                                </div>
+                                    <button type='submit'>Add Comment</button>
+                                </form>
                         </div>
                             <div className='comments-list'>{commentLis}</div>
                     </div>
