@@ -28,11 +28,16 @@
     /* border-bottom: 1px solid gray; */
     background-color: transparent;
     width: 100%;
+    height: auto;
     margin-left: 10px;
     border: none;
     border-bottom: 1px solid gray;
+    word-wrap: break-word;
 }
 
+.edit-comment-form{
+    margin-top: 10px;
+}
 .comment-index-item{
     display: flex;
     width: 100%;
@@ -45,10 +50,15 @@
     height: 100%;
 }
 .comment-pro-pic{
-    height: 48px;
-    width: 48px;
-    border: 1px solid black;
+    height: 40px;
+    width: 40px;
+    /* border: 1px solid black; */
 }
+
+.comment-pro-pic img{
+    width: 100%;
+}
+
 
 .comment-body-container{
     width: 100%;
@@ -97,6 +107,11 @@
 }
 
 .fa-trash-alt{
+    padding: 0px;
+    align-self: center;
+}
+
+.fa-edit{
     padding: 0px;
     align-self: center;
 }

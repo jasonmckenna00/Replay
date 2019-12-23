@@ -23,13 +23,18 @@ class CommentIndexItem extends React.Component{
         return e => this.setState( {body: e.target.value})
     }
 
+    cancelComment(){
+        this.setState({commentEditForm: false, body: this.props.comment.body})
+        
+    }
     editCommentForm(){
         return <>
-            <form onSubmit={this.handleComment}>
+            <form onSubmit={this.handleComment} className='comment-form edit-comment-form'>
                 <input type="text" 
                     onChange={this.update()}
                     value={this.state.body}/>
-                    <button type='submit'>Edit Comment</button>
+                    <button type='submit'>Save</button>
+                    <button onClick={()=> this.cancelComment()}>Cancel</button>
             </form>
         </>
     }
@@ -39,10 +44,10 @@ class CommentIndexItem extends React.Component{
         // const removeComment = this.props.currentUser ? :
         let removeComment 
         let editComment
-        if (currentUser){
+        if (currentUser && !this.state.commentEditForm){
             if (comment.user_id === parseInt(currentUser.id)){
                 removeComment = <i className="fas fa-trash-alt" onClick={() => deleteComment(video.id, comment.id)}></i>
-                editComment = <h2 className="fas fa-trash-alt" onClick={() => this.setState({commentEditForm: true})}>Edit</h2>
+                editComment = <i className="fas fa-edit" onClick={() => this.setState({commentEditForm: true})}></i>
 
             } else {
                removeComment = null
@@ -61,7 +66,7 @@ class CommentIndexItem extends React.Component{
     return <>
         <div className='comment-index-item'>
             <div className='comment-pro-pic-container'>
-            <div className='video-show-pro-pic'><img src={window.peace}/></div>
+            <div className='comment-pro-pic'><img src={window.peace}/></div>
             </div>
             <div className='comment-body-container'>
                 <div className='comment-user-name-container'>
@@ -78,8 +83,8 @@ class CommentIndexItem extends React.Component{
                     <div className='comment-reply-button'></div>
                 </div>
             </div>
-            {removeComment}
             {editComment}
+            {removeComment}
         </div>
 
     </>
