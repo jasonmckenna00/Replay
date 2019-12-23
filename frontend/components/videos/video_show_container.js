@@ -27,7 +27,6 @@ const mdp = dispatch => {
         fetchVideo: (videoId) => dispatch(fetchVideo(videoId)),
         fetchUser: (userId) => dispatch(fetchUser(userId)),
         fetchComments: (videoId) => dispatch(fetchComments(videoId)),
-        createComment: (comment, videoId) => dispatch(createComment(comment, videoId)),
         updateComment: (comment, videoId) => dispatch(updateComment(comment,videoId)),
         deleteComment: (videoId, commentId) => dispatch(deleteComment(videoId, commentId))
     }

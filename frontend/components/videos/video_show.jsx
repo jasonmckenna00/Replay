@@ -1,18 +1,11 @@
 import React from 'react';
 import CommentIndexItem from '../comments/comment_Index_Item'
+import CommentForm from '../comments/comment_form';
+import CommentFormContainer from '../comments/comment_form_container';
 class VideoShow extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {body: ''}
-        this.handleComment = this.handleComment.bind(this)
-    }
 
     componentDidMount(){
         this.props.fetchVideo(this.props.match.params.videoId)
-            // .then( (video => {
-
-            // return this.props.video.comments
-        
     }
 
     componentDidUpdate(prevProps) {
@@ -21,41 +14,15 @@ class VideoShow extends React.Component{
         }
     }
 
-    handleComment(e){
-        e.preventDefault();
-        if (this.props.currentUser){
-            return this.props.createComment(this.state, this.props.video.id)
-        } else {
-            this.props.history.push('/login')
-        }
-        
-        
-    }
 
     update(field){
         return e => this.setState( {[field]: e.target.value})
     }
 
     goToEditPage(){
-        // debugger
         this.props.history.push(`/videos/${this.props.video.id}/edit`)
     }
 
-
-    commentsSection(){
-        return (
-            <div className='video-show-comment-container'>
-                <div className='video-show-comment-form'>
-                    <h2 className='comment-counter'>7 Comments</h2>
-                    <div className='comment-form'>
-                        <div className='video-show-pro-pic'></div>
-                        <input type="text" placeholder='Add a public comment...'/>
-                    </div>
-                </div>
-                <div className='comments-list'></div>
-            </div>
-        )
-    }
 
     render(){
         if (!this.props.video) return null
@@ -126,21 +93,13 @@ class VideoShow extends React.Component{
                         {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> */}
                     </div>
                     <div className='video-show-comment-container'>
-                        <div className='video-show-comment-form'>
-                            <h2 className='comment-counter'>7 Comments</h2>
-                                <form className='comment-form'>
-                                    <div className='video-show-pro-pic'><img src={window.peace}/></div>
-                                    <input type="text"
-                                         placeholder='Add a public comment...'
-                                         onChange={this.update('body')}/>
-                                    <button type='submit' onClick={this.handleComment}>Add Comment</button>
-                                </form >
-                        </div>
+                            <h2 className='comment-counter'>{commentLis.length}</h2>
+                            <CommentFormContainer videoId={video.id}/>
                             <div className='comments-list' >{commentLis}</div>
                     </div>
                 </div>
                 
-            {/* <div className='video-show-right-container'></div> */}
+            <div className='video-show-right-container'></div>
             </div>
         </div>
     }
