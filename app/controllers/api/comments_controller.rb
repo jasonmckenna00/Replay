@@ -22,6 +22,18 @@ class Api::CommentsController < ApplicationController
     end
 
     def update
+        @comment = current_user.comments.find(params[:id])
+        if @comment
+           if @comment.update(comment_params)
+                render :show
+           else
+                render json: @comment.errors.full_messages, status: 422
+                return
+           end
+        else
+            render json: ["You cannot delete a comment you didn't post"], status: 422
+            return
+        end
 
     end
 

@@ -10,17 +10,20 @@ class CommentIndexItem extends React.Component{
         const {currentUser, deleteComment, comment, video} = this.props
         // const removeComment = this.props.currentUser ? :
         let removeComment 
-        
+        let editComment
         if (currentUser){
             if (comment.user_id === parseInt(currentUser.id)){
                 removeComment = <i className="fas fa-trash-alt" onClick={() => deleteComment(video.id, comment.id)}></i>
+                editComment = <h2 className="fas fa-trash-alt" onClick={() => updateComment(video.id, comment.id)}>Edit</h2>
+
             } else {
                removeComment = null
+               editComment = null
             }
         }
         else {
             removeComment = null
-
+            editComment = null
         } 
 
     return <>
@@ -44,6 +47,7 @@ class CommentIndexItem extends React.Component{
                 </div>
             </div>
             {removeComment}
+            {editComment}
         </div>
 
     </>

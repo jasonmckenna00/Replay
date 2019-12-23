@@ -70,21 +70,23 @@ class VideoForm extends React.Component{
         const formData = new FormData();
         if (this.state.thumbnailUrl) {
             formData.append('video[thumbnail_url]', this.state.thumbnailUrl)
-
         }
-        
-        
-        
+
         if (this.state.videoUrl && (this.props.formType === 'Upload Video')){
             formData.append('video[video_url]', this.state.videoUrl)
         }
+
         formData.append('video[title]', this.state.title)
         formData.append('video[description]', this.state.description)
         let videoId = this.state.id ? this.state.id : null
+        
         this.props.submitVideo(formData,videoId)
             .then( (action) =>{
-                if (this.props.formType === 'Upload Video') return this.props.history.push(`/videos/${action.payload.video.id}`)
-                else this.props.history.push(`/videos/${videoId}`)
+                if (this.props.formType === 'Upload Video'){
+                   return this.props.history.push(`/videos/${action.payload.video.id}`) 
+                } else {
+                    this.props.history.push(`/videos/${videoId}`)
+                }
             })
             
             

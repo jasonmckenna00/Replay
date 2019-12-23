@@ -24,11 +24,12 @@ demo = User.create({
     password: 'hunter2'
 })
 
-# video1 = Video.new({ title: 'video1', description: 'my video 1',user_id: 32})
+# video1 = Video.new({ title: 'video1', description: 'my video 1',user_id: User.first.id})
 #     thumbnail1 = File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/hubble.jpg")
 #     video1.thumbnail_url.attach(io: thumbnail1, filename: 'hubble.jpg')
 #     video_url = File.open("/home/jmckenna/Desktop/Youtube - Final Project/Used_photos/splash.mp4")
 #     video1.video_url.attach(io: video_url, filename: 'splash.mp4')
+#     video1.save!
 
 # ################################ aws seeds ################################
 video1 = Video.new({ title: 'video1', description: 'my video 1',user_id: demo.id})
@@ -55,7 +56,7 @@ video3 = Video.new({ title: 'video3', description: 'my video 3',user_id: demo.id
 
 
 
-comment1 = video1.comments.create!({body: 'test', user_id: demo.id})
+# comment1 = video1.comments.create!({body: 'test', user_id: demo.id})
 
-comment2 = video1.comments.create!({body: 'test2', user_id: demo.id})
-comment3 = video2.comments.create!({body: 'test3', user_id: demo.id})
+# comment2 = video1.comments.create!({body: 'test2', user_id: demo.id})
+# comment3 = video2.comments.create!({body: 'test3', user_id: demo.id})

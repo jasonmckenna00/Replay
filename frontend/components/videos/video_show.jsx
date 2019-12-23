@@ -23,7 +23,12 @@ class VideoShow extends React.Component{
 
     handleComment(e){
         e.preventDefault();
-        this.props.createComment(this.state, this.props.video.id)
+        if (this.props.currentUser){
+            return this.props.createComment(this.state, this.props.video.id)
+        } else {
+            this.props.history.push('/login')
+        }
+        
         
     }
 

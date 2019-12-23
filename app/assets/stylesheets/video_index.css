@@ -27,7 +27,7 @@
 
     /* width: 330px;
     height: 300px; */
-    border: 1px solid lightgray
+    /* border: 1px solid lightgray */
 }
 
 .video-index-header{
@@ -49,7 +49,7 @@
 .video-footer-container{
     height: 40%;
     width: 100%;
-    border: .2px solid gray;
+    /* border: .2px solid gray; */
     display: flex;
     flex-direction: row;
 }
@@ -71,7 +71,9 @@
 }
 
 .video-title{
-    font-size: 20px;
+    width: 100%;
+    font-size: 16px;
+    flex-wrap: wrap;
     margin: 12px 0 4px 0
 }
 
