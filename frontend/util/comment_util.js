@@ -26,7 +26,7 @@ export const deleteComment = (videoId, commentId) => {
 }
 
 export const patchComment = (comment, videoId) => {
-    
+    // debugger
     return $.ajax({
         method: 'patch',
         url: `/api/videos/${videoId}/comments/${comment.id}`,

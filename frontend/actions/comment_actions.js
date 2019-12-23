@@ -47,7 +47,7 @@ export const createComment = (comment,videoId) => dispatch => {
 }
 
 export const updateComment = (comment, videoId) => dispatch =>{
-
+    // debugger
     return CommentUtil.patchComment(comment, videoId).then( comment => {
 
         return dispatch(receiveComment(comment))
