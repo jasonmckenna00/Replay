@@ -5,7 +5,9 @@ import CommentFormContainer from '../comments/comment_form_container';
 class VideoShow extends React.Component{
 
     componentDidMount(){
-        this.props.fetchVideo(this.props.match.params.videoId)
+        Promise.all([this.props.fetchAllUsers(), 
+            this.props.fetchAllVideos()])
+                .then( () => this.props.fetchVideo(this.props.match.params.videoId))
     }
 
     componentDidUpdate(prevProps) {
@@ -25,16 +27,16 @@ class VideoShow extends React.Component{
 
 
     render(){
-        if (!this.props.video) return null
         if (!this.props.user) return null
+        if (!this.props.video) return null
         const { video, user, comments, currentUser, updateComment, deleteComment} = this.props
-
+        
         let editOrSub 
         const edit = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
         const subscribe = editOrSub = <h2 className='next-button subscribe-button '>Subscribe</h2>
-       
+        
 
-        if (this.props.currentUser){
+        if (currentUser){
             if (user.id === parseInt(currentUser.id)){
                 editOrSub = edit
             } else {
@@ -46,16 +48,18 @@ class VideoShow extends React.Component{
         } 
 
         const commentLis = comments.map( (comment,i) => {
-            return <CommentIndexItem 
+                    let commentAuthor = this.props.users[comment.user_id]
+            return <CommentIndexItem
                     comment={comment}
                     key={i}
                     updateComment={updateComment}
                     deleteComment={deleteComment}
-                    currentUser={this.props.currentUser}
+                    currentUser={currentUser}
+                    commentAuthor= {commentAuthor}
                     video={video}/>
         })
 
-        
+        // debugger
         // const choppedEmail = email.split('@')[0]
         return <div className='video-show-container'>
             <div className='video-group-container'>
@@ -69,7 +73,7 @@ class VideoShow extends React.Component{
                         <h2 className='video-show-title'>{video.title}</h2>
                         <div className='video-show-video-stats'>
                             <div className='video-play-info vpi-video'>
-                                <h2 className='video-views'>420 views •</h2>
+                                <h2 className='video-views'>40 views •</h2>
                                 <h2 className='video-posted'> 1 month ago</h2>
                             </div>
                             <div className='video-likes'></div>
@@ -78,7 +82,8 @@ class VideoShow extends React.Component{
                     <div className='video-show-user-desc-container'>
                         <div className='video-show-user-container'>
                             <div className='video-show-profile-info'>
-                                <div className='video-show-pro-pic'><img src={window.peace}/></div>
+                                {/* <div className='video-show-pro-pic'><img src={window.peace}/></div> */}
+                                <h2 className='pro-pic-initial'>{user.email}</h2>
                                 {/* <div className='user-pro-pic'></div> */}
                                 <div className='video-show-email-subscribers'>
                                     <h2 className='video-show-email'>{user.email}</h2>

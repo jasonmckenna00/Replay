@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import VideoShow from './video_show'
-import {fetchVideo} from '../../actions/video_actions'
-import {fetchUser} from '../../actions/user_actions'
+import {fetchAllVideos, fetchVideo} from '../../actions/video_actions'
+import {fetchUser, fetchAllUsers} from '../../actions/user_actions'
 import {fetchComments, createComment, updateComment, deleteComment} from '../../actions/comment_actions'
 
 const msp = (state, ownProps) => {
@@ -14,6 +14,7 @@ const msp = (state, ownProps) => {
     return({
     video, 
     user,
+    users: state.entities.users,
     loading: state.ui.loading,
     currentUser: state.session.currentUser,
     comments: Object.values(state.entities.comments)
@@ -24,8 +25,9 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     // debugger
     return {
+        fetchAllVideos: () => dispatch(fetchAllVideos()),
+        fetchAllUsers: () => dispatch(fetchAllUsers()),
         fetchVideo: (videoId) => dispatch(fetchVideo(videoId)),
-        fetchUser: (userId) => dispatch(fetchUser(userId)),
         fetchComments: (videoId) => dispatch(fetchComments(videoId)),
         updateComment: (comment, videoId) => dispatch(updateComment(comment,videoId)),
         deleteComment: (videoId, commentId) => dispatch(deleteComment(videoId, commentId))

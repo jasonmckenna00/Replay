@@ -8,7 +8,7 @@ export default (state = {}, action) => {
     Object.freeze(state);
     switch(action.type){
         case RECEIVE_VIDEOS:
-            return action.videos;
+            return Object.assign({}, state, action.videos);
         case RECEIVE_VIDEO:
             // debugger
             return Object.assign({},state, {[action.payload.video.id]: action.payload.video});

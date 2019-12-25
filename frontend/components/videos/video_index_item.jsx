@@ -11,14 +11,9 @@ class VideoIndexItem extends React.Component{
     
         const {title, user_id, id} = this.props.video;
         let {user} = this.props;
-        // debugger
-        // if (!user){
-        //     // debugger
-        //     user = this.props.fetchUser(user_id)
-        // } 
-        // if (this.props.loading.videoLoading || this.props.loading.userLoading) return <LoadingScreen />
+
         const choppedEmail = this.props.user.email.split('@')[0]
-        // const choppedEmail = 'fakeemail69'
+
 
         return <li className='video'>
             <Link to={`/videos/${id}`} className='video-thumbnail-link'>
@@ -32,7 +27,7 @@ class VideoIndexItem extends React.Component{
                     <div className='video-title'>{title}</div>
                     <div className='video-email'>{choppedEmail}</div>
                     <div className='video-play-info'>
-                       <h2 className='video-views'>420 views •</h2>
+                       <h2 className='video-views'>1000 views •</h2>
                        <h2 className='video-posted'> 1 month ago</h2>
                     </div>
                 </div>

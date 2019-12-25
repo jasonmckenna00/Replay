@@ -16,13 +16,13 @@ const receiveAllUsers = (users) => {
 })}
 
 export const fetchUser = (userId) => dispatch =>{
-    dispatch(startLoadingUser())
+    // dispatch(startLoadingUser())
 
     return UsersUtil.fetchUserById(userId).then( user => dispatch(receiveUser(user)))
 }
 
 export const fetchAllUsers = () => dispatch => {
-    dispatch(startLoadingAllUsers())
+    // dispatch(startLoadingAllUsers())
     return(
     UsersUtil.fetchAllUsers().then( users => dispatch(receiveAllUsers(users)))
 )}

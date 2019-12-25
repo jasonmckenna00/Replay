@@ -10,9 +10,7 @@ class VideoIndex extends React.Component{
     }
 
     componentDidMount(){
-        // debugger
         Promise.all([this.props.fetchAllUsers(), this.props.fetchAllVideos()])
-        // this.props.fetchAllVideos().then(()=> this.props.fetchAllUsers())
     }
 
     // componentDidUpdate(prevProps) {

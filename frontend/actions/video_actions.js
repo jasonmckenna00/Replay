@@ -48,14 +48,14 @@ const removeVideo = (videoId) => ({
 
 
 export const fetchAllVideos = () => dispatch => {
-    dispatch(startLoadingAllVideos())
+    // dispatch(startLoadingAllVideos())
     return VideoUtil.getVideos()
         .then( (videos) => dispatch(receiveVideos(videos)))
 }
 
 
 export const fetchVideo = (videoId) => dispatch => {
-    dispatch(startLoadingSingleVideo())
+    // dispatch(startLoadingSingleVideo())
     return VideoUtil.getVideo(videoId).then( (video) => { 
             return dispatch(receiveVideo(video))
         })
