@@ -59,8 +59,8 @@ class VideoShow extends React.Component{
                     video={video}/>
         })
 
+        const initial = user.first_name
         // debugger
-        // const choppedEmail = email.split('@')[0]
         return <div className='video-show-container'>
             <div className='video-group-container'>
                 <div className='video-show-left-container'>
@@ -83,7 +83,7 @@ class VideoShow extends React.Component{
                         <div className='video-show-user-container'>
                             <div className='video-show-profile-info'>
                                 {/* <div className='video-show-pro-pic'><img src={window.peace}/></div> */}
-                                <h2 className='pro-pic-initial'>{user.email}</h2>
+                                <h2 className='pro-pic-initial'>{initial}</h2>
                                 {/* <div className='user-pro-pic'></div> */}
                                 <div className='video-show-email-subscribers'>
                                     <h2 className='video-show-email'>{user.email}</h2>
