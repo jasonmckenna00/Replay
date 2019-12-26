@@ -6,5 +6,8 @@ class Comment < ApplicationRecord
         class_name: 'Video', 
         foreign_key: :video_id, 
         primary_key: :id
+
+    has_many :likes, :as => :likeable
+    
 end
 

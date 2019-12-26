@@ -1,12 +1,14 @@
 class Video < ApplicationRecord
     validates :title, :description, presence: true
-   validate :ensure_video
-    
+    validate :ensure_video
     validate :ensure_thumbnail
-    belongs_to :user
-    has_many :comments
+
     has_one_attached :video_url
     has_one_attached :thumbnail_url
+    belongs_to :user
+    has_many :comments
+    has_many :likes, :as => :likeable
+
 
     def ensure_video
         unless self.video_url.attached?

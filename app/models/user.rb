@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
     has_many :posted_videos, class_name: 'Video', primary_key: :id, foreign_key: :user_id
     has_many :comments
+    has_many :likes, :as => :likeable
 
 
 
