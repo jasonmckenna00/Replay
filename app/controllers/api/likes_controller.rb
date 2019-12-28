@@ -12,7 +12,8 @@ class Api::LikesController < ApplicationController
             @user = current_user
         if params[:comment_id].present?
             @comment = Comment.find(params[:comment_id])
-            if @comment.likes.build(user_id: @user.id, liked: params[:liked])
+            @comment.likes.new(user_id: @user.id, liked: params[:liked])
+              if @comment.save!   
                 @comment_like_counter = @comment.count_likes
                 # @video = Video.find(@comment.video_id)
                 # render `/api/videos/#{@comment.video_id}/comments/#{@comment.id}`

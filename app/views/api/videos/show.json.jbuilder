@@ -19,7 +19,7 @@ json.comments do
         json.set! comment.id do
             # debugger
             json.extract! comment, :id, :body, :user_id
-            # json.likes @comment_like_counter
+            json.likes comment.count_likes
         end
     end
 
