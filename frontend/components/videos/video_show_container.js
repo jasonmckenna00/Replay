@@ -3,6 +3,8 @@ import VideoShow from './video_show'
 import {fetchAllVideos, fetchVideo} from '../../actions/video_actions'
 import {fetchUser, fetchAllUsers} from '../../actions/user_actions'
 import {fetchComments, createComment, updateComment, deleteComment} from '../../actions/comment_actions'
+import {addCommentLike} from '../../actions/like_actions'
+
 
 const msp = (state, ownProps) => {
     // debugger
@@ -30,7 +32,9 @@ const mdp = dispatch => {
         fetchVideo: (videoId) => dispatch(fetchVideo(videoId)),
         fetchComments: (videoId) => dispatch(fetchComments(videoId)),
         updateComment: (comment, videoId) => dispatch(updateComment(comment,videoId)),
-        deleteComment: (videoId, commentId) => dispatch(deleteComment(videoId, commentId))
+        deleteComment: (videoId, commentId) => dispatch(deleteComment(videoId, commentId)),
+        addCommentLike: (comment) => dispatch(addCommentLike(comment))
+
     }
 }
 

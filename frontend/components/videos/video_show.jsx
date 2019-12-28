@@ -29,7 +29,7 @@ class VideoShow extends React.Component{
     render(){
         if (!this.props.user) return null
         if (!this.props.video) return null
-        const { video, user, comments, currentUser, updateComment, deleteComment} = this.props
+        const { video, user, comments, currentUser, updateComment, deleteComment, addCommentLike} = this.props
         
         let editOrSub 
         const edit = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
@@ -54,6 +54,7 @@ class VideoShow extends React.Component{
                     key={i}
                     updateComment={updateComment}
                     deleteComment={deleteComment}
+                    addCommentLike={addCommentLike}
                     currentUser={currentUser}
                     commentAuthor= {commentAuthor}
                     video={video}/>
@@ -84,7 +85,6 @@ class VideoShow extends React.Component{
                             <div className='video-show-profile-info'>
                                 {/* <div className='video-show-pro-pic'><img src={window.peace}/></div> */}
                                 <h2 className='pro-pic-initial'>{initial}</h2>
-                                {/* <div className='user-pro-pic'></div> */}
                                 <div className='video-show-email-subscribers'>
                                     <h2 className='video-show-email'>{user.email}</h2>
                                     <h3 className='video-show-subscribers '>100 subscribers</h3>

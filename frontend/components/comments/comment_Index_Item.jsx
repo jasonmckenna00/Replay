@@ -10,6 +10,7 @@ class CommentIndexItem extends React.Component{
             commentEditForm: false
         }
         this.handleComment = this.handleComment.bind(this)
+        this.handleLike = this.handleLike.bind(this)
     }
 
     // componentDidMount(){
@@ -19,15 +20,20 @@ class CommentIndexItem extends React.Component{
     handleComment(e){
         e.preventDefault()
         const {id, user_id} = this.props.comment
-        this.props.updateComment({id: id, user_id: user_id, body: this.state.body}, this.props.comment)
-        this.setState({commentEditForm: false})
+        this.props.updateComment({id: id, user_id: user_id, body: this.state.body}, this.props.comment);
+        this.setState({commentEditForm: false});
+    }
+
+    handleLike(e){
+        e.preventDefault();
+        this.props.addCommentLike(this.props.comment);
     }
     update(){
-        return e => this.setState( {body: e.target.value})
+        return e => this.setState( {body: e.target.value});
     }
 
     cancelComment(){
-        this.setState({commentEditForm: false, body: this.props.comment.body})   
+        this.setState({commentEditForm: false, body: this.props.comment.body});
     }
 
     editCommentForm(){
@@ -66,6 +72,7 @@ class CommentIndexItem extends React.Component{
         
         const commenter = `${commentAuthor.first_name} ${commentAuthor.last_name}`
         const letter = `${commentAuthor.first_name[0]}`
+        
     return <>
         <div className='comment-index-item'>
             <div className='comment-pro-pic-container'>
@@ -80,9 +87,9 @@ class CommentIndexItem extends React.Component{
                 {commentBody}
                 <div className='comment-like-reply-container'>
                     <div className='comment-like-buttons'>
-                        {/* <i className="fas fa-thumbs-up comment-like"></i>
-                        <h2>3</h2>
-                        <i className="fas fa-thumbs-down comment-like"></i> */}
+                        <i className="fas fa-thumbs-up comment-like" onClick={this.handleLike}></i>
+                        <h2></h2>
+                        <i className="fas fa-thumbs-down comment-like"></i>
                     </div>
                     <div className='comment-reply-button'></div>
                 </div>

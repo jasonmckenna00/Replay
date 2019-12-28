@@ -9,9 +9,16 @@ Rails.application.routes.draw do
       end
     end
     resources :videos, only: [:index, :show, :create, :edit, :update, :destroy] do 
-      resources :comments, only: [:create, :update, :destroy,:index]
+      resources :comments, only: [:create, :update, :destroy,:index] do 
+        resources :likes, only: [:index, :create]
+      end
+      resources :likes, only: [:index, :create]
     end
-    resources :likes, only: [:index, :create, :destroy]
+    resource :like, only: [] do
+      member do 
+        delete '/removelike' => 'likes#removelike'
+      end 
+    end
   end
 
   root "static_pages#root"

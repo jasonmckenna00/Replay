@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
     has_many :posted_videos, class_name: 'Video', primary_key: :id, foreign_key: :user_id
     has_many :comments
-    has_many :likes, :as => :likeable
+    has_many :likes
 
 
 
@@ -45,6 +45,12 @@ class User < ApplicationRecord
         self.session_token = User.generate_session_token
         self.save!
         self.session_token
+    end
+
+
+    def find_like
+        # debugger
+        self.likes.find_by({likeable_type: object.class.name, likeable_id: object.id})
     end
 
 end

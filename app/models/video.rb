@@ -7,7 +7,7 @@ class Video < ApplicationRecord
     has_one_attached :thumbnail_url
     belongs_to :user
     has_many :comments
-    has_many :likes, :as => :likeable
+    has_many :likes, as: :likeable, dependent: :destroy
 
 
     def ensure_video
@@ -23,5 +23,18 @@ class Video < ApplicationRecord
         end
 
     end
+
+    def count_likes
+        my_hash = {upvoted: 0, downvoted: 0}
+        self.likes.each do |like|
+            if like.liked
+                my_hash[:upvoted] += 1
+            else
+                my_hash[:downvoted] -= 1
+            end
+        end
+
+        return my_hash
+    end 
 end
 
