@@ -23,3 +23,11 @@ export const addCommentLike = (comment) => dispatch =>{
             return dispatch(receiveCommentLike(payload))
         })
 }
+
+export const addCommentDisLike = (comment) => dispatch =>{
+
+    return LikeUtil.addCommentDisLike(comment)
+        .then( payload => {
+            return dispatch(receiveCommentLike(payload))
+        })
+}

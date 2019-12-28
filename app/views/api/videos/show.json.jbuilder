@@ -10,6 +10,7 @@ end
 
 json.set! 'user' do 
        json.extract! @video.user, :id, :email, :first_name, :last_name
+    #    json.likes @video.user.liked_content
 end
 
 

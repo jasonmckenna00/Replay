@@ -7,7 +7,7 @@ class CommentIndexItem extends React.Component{
         super(props)
         this.state = {
             body: this.props.comment.body,
-            commentEditForm: false
+            commentEditForm: false,
         }
         this.handleComment = this.handleComment.bind(this)
         this.handleLike = this.handleLike.bind(this)

@@ -9,6 +9,15 @@ export const addCommentLike = comment => {
     })
 }
 
+export const addCommentDisLike = comment => {
+    // debugger
+    return $.ajax({
+        method: 'post',
+        url: `/api/videos/${comment.video_id}/comments/${comment.id}/likes`,
+        data: {id: comment.id, liked: false }
+    })
+}
+
 export const addVideoLike = video => {
 
     return $.ajax({
