@@ -15,12 +15,13 @@ end
 
 
 json.comments do 
-    # json.set! :name, 'hello'
     @video.comments.each do |comment|
         json.set! comment.id do
-            # debugger
             json.extract! comment, :id, :body, :user_id
-            json.likes comment.count_likes
+            json.likes do 
+                json.counter comment.count_likes
+                json.likers comment.likers
+            end
         end
     end
 

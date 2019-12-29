@@ -14,11 +14,6 @@ class Api::LikesController < ApplicationController
             @comment = Comment.find(params[:comment_id])
             @comment.likes.new(user_id: @user.id, liked: params[:liked])
               if @comment.save!   
-                @comment_like_counter = @comment.count_likes
-                # @video = Video.find(@comment.video_id)
-                # render `/api/videos/#{@comment.video_id}/comments/#{@comment.id}`
-                # render `/api/videos/#{@comment.video_id}/`
-                # render '/api/videos/show'
                 render :show
 
             end
@@ -42,9 +37,10 @@ class Api::LikesController < ApplicationController
 
     def removelike
         # debugger
-        @like = current_user.find_likes(params)
+        @like = current_user.find_like(params)
         @like.destroy
-        
+        @comment = Comment.find(@like.likeable_id)
+        render :show
     end
 
 

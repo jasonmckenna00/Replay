@@ -48,18 +48,23 @@ class User < ApplicationRecord
     end
 
 
-    def find_like
+    def find_like(object)
         # debugger
         self.likes.find_by({likeable_type: object.class.name, likeable_id: object.id})
     end
 
     def liked_content
+        video_hash = {}
+        comment_hash = {}
         videos_obj = self.likes.select{|like| like.likeable_type == "Video"}
-        video_ids = videos_obj.map{|obj| obj.id}
+        video_ids = videos_obj.map do |obj| 
+            video_hash[obj.likeable_id] = {id: obj.likeable_id, liked: obj.liked}
+        end
         comments_obj = self.likes.select{|like| like.likeable_type == "Comment"}
-        comment_ids = comments_obj.map{|obj| obj.id}
-
-        return [video_ids,comment_ids]
+        comment_ids = comments_obj.map do |obj| 
+            comment_hash[obj.likeable_id] = {id: obj.likeable_id, liked: obj.liked}
+        end
+        return [video_hash,comment_hash]
     end
 
 

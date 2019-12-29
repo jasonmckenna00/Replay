@@ -17,11 +17,8 @@ export default (state = {}, action) => {
     case RECEIVE_ALL_USERS:
         return action.users
     case RECEIVE_VIDEO:
-      // debugger
         if (!action.payload.user) return state
         return Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
-    // case RESET_USER_STATE:
-    //   return {}
     default:
       return state;
   }

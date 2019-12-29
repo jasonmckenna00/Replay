@@ -8,13 +8,15 @@ class CommentIndexItem extends React.Component{
         this.state = {
             body: this.props.comment.body,
             commentEditForm: false,
+            isLiked: false
         }
         this.handleComment = this.handleComment.bind(this)
         this.handleLike = this.handleLike.bind(this)
+        this.handleDisLike = this.handleDisLike.bind(this)
     }
 
     // componentDidMount(){
-    //     this.props.fetchUser(this.props.comment.user_id)
+    //     this.props.comment.likes.likers.some()
     // }
 
     handleComment(e){
@@ -26,7 +28,19 @@ class CommentIndexItem extends React.Component{
 
     handleLike(e){
         e.preventDefault();
+        if (this.state.isLiked){
+            debugger
+            this.props.deleteComment(this.props.comment)
+        }
         this.props.addCommentLike(this.props.comment);
+    }
+
+    handleDisLike(e){
+        e.preventDefault();
+        if (this.state.isLiked){
+            this.props.deleteComment(this.props.comment)
+        }
+        this.props.addCommentDisLike(this.props.comment);
     }
     update(){
         return e => this.setState( {body: e.target.value});
@@ -54,7 +68,7 @@ class CommentIndexItem extends React.Component{
         let removeComment 
         let editComment
         if (currentUser && !this.state.commentEditForm){
-            if (comment.user_id === parseInt(currentUser.id)){
+            if (comment.user_id === currentUser.id){
                 removeComment = <i className="fas fa-trash-alt" onClick={() => deleteComment(video.id, comment.id)}></i>
                 editComment = <i className="fas fa-edit" onClick={() => this.setState({commentEditForm: true})}></i>
             } else {
@@ -89,7 +103,7 @@ class CommentIndexItem extends React.Component{
                     <div className='comment-like-buttons'>
                         <i className="fas fa-thumbs-up comment-like" onClick={this.handleLike}></i>
                         <h2></h2>
-                        <i className="fas fa-thumbs-down comment-like"></i>
+                        <i className="fas fa-thumbs-down comment-like" onClick={this.handleDisLike}></i>
                     </div>
                     <div className='comment-reply-button'></div>
                 </div>
