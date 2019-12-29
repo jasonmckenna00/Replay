@@ -16,7 +16,10 @@ class CommentIndexItem extends React.Component{
     }
 
     // componentDidMount(){
-    //     this.props.comment.likes.likers.some()
+    //     if (!currentUser) return null
+    //     this.props.comment.likes.likers.some( liker => {
+    //         liker.user_id === this.props.currentUser.id
+    // })
     // }
 
     handleComment(e){

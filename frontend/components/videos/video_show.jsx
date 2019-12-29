@@ -62,7 +62,7 @@ class VideoShow extends React.Component{
                     video={video}/>
         })
 
-        const initial = user.first_name
+        const initial = user.first_name ? (user.first_name)[0] : null
         // debugger
         return <div className='video-show-container'>
             <div className='video-group-container'>
