@@ -8,7 +8,8 @@ class CommentIndexItem extends React.Component{
         this.state = {
             body: this.props.comment.body,
             commentEditForm: false,
-            isLiked: false
+            isLiked: false,
+            upVoted: null
         }
         this.handleComment = this.handleComment.bind(this)
         this.handleLike = this.handleLike.bind(this)
@@ -16,11 +17,11 @@ class CommentIndexItem extends React.Component{
     }
 
     componentDidMount(){
-        debugger
+        // debugger
         if (!this.props.currentUser) return null
         Object.values(this.props.comment.likes.likers).forEach( liker => {
             if (liker.user_id === this.props.currentUser.id){
-                this.setState({isLiked: true})
+                this.setState({isLiked: true, upVoted: liker.liked})
             }
         })   
     }
@@ -34,19 +35,22 @@ class CommentIndexItem extends React.Component{
 
     handleLike(e){
         e.preventDefault();
+        if (this.state.upVoted) return
         if (this.state.isLiked){
-            debugger
-            this.props.deleteComment(this.props.comment)
+            this.props.removeCommentLike(this.props.comment.id)
         }
         this.props.addCommentLike(this.props.comment);
+        this.setState({isLiked: true, upVoted: true})
     }
 
     handleDisLike(e){
         e.preventDefault();
+        if (this.state.upVoted === false) return
         if (this.state.isLiked){
-            this.props.deleteComment(this.props.comment)
+            this.props.removeCommentLike(this.props.comment.id)
         }
         this.props.addCommentDisLike(this.props.comment);
+        this.setState({isLiked: true, upVoted: false})
     }
     update(){
         return e => this.setState( {body: e.target.value});
@@ -108,7 +112,7 @@ class CommentIndexItem extends React.Component{
                 <div className='comment-like-reply-container'>
                     <div className='comment-like-buttons'>
                         <i className="fas fa-thumbs-up comment-like" onClick={this.handleLike}></i>
-                        <h2></h2>
+                        <h2>{this.props.comment.likes.counter}</h2>
                         <i className="fas fa-thumbs-down comment-like" onClick={this.handleDisLike}></i>
                     </div>
                     <div className='comment-reply-button'></div>

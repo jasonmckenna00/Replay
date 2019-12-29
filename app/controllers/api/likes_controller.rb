@@ -10,6 +10,7 @@ class Api::LikesController < ApplicationController
 
     def create
             @user = current_user
+            # debugger
         if params[:comment_id].present?
             @comment = Comment.find(params[:comment_id])
             @comment.likes.new(user_id: @user.id, liked: params[:liked])
@@ -36,8 +37,8 @@ class Api::LikesController < ApplicationController
     # end
 
     def removelike
-        debugger
-        @like = current_user.find_like(params)
+        # debugger
+        @like = current_user.find_like(params[:id],params[:type])
         @like.destroy
         @comment = Comment.find(@like.likeable_id)
         render :show

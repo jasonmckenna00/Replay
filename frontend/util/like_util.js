@@ -28,11 +28,10 @@ export const addVideoLike = video => {
     })
 }
 
-export const removeLike = object => {
-
+export const removeLike = (id, type) => {
     return $.ajax({
         method: 'delete',
         url: `/api/like/removelike`,
-        data: {object}
+        data: {id: id, type: type}
     })
 }

@@ -18,7 +18,6 @@ class Api::SessionsController < ApplicationController
         )
         if @user
             login(@user)
-            @user.liked_content
             render 'api/users/show';
         else 
 

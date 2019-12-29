@@ -3,6 +3,7 @@ class Api::CommentsController < ApplicationController
         @comment = Comment.find(params[:id])
         render :show
     end
+    
     def index 
         video = Video.find(params[:video_id])
         @comments = video.comments

@@ -8,9 +8,17 @@ export const RECEIVE_VIDEO_LIKE = 'RECEIVE_VIDEO_LIKE';
 export const REMOVE_VIDEO_LIKE = 'REMOVE_VIDEO_LIKE';
 
 const receiveCommentLike = payload =>{
-    debugger
+    // debugger
     return {
         type: RECEIVE_COMMENT_LIKE,
+        payload
+    }
+}
+
+const destroyCommentLike = payload =>{
+    // debugger
+    return {
+        type: REMOVE_COMMENT_LIKE,
         payload
     }
 }
@@ -32,11 +40,11 @@ export const addCommentDisLike = (comment) => dispatch =>{
         })
 }
 
-export const removeCommentLike = (object) => dispatch =>{
+export const removeCommentLike = (commentId) => dispatch =>{
 
-    return LikeUtil.removeLike(object)
+    return LikeUtil.removeLike(commentId, "Comment")
         .then( payload => {
 
-            return dispatch(receiveCommentLike(payload))
+            return dispatch(destroyCommentLike(payload))
         })
 }

@@ -35,7 +35,7 @@ const mdp = dispatch => {
         deleteComment: (videoId, commentId) => dispatch(deleteComment(videoId, commentId)),
         addCommentLike: (comment) => dispatch(addCommentLike(comment)),
         addCommentDisLike: (comment) => dispatch(addCommentDisLike(comment)),
-        removeCommentLike: comment => dispatch(removeCommentLike(comment))
+        removeCommentLike: commentId => dispatch(removeCommentLike(commentId))
 
 
     }
