@@ -15,12 +15,15 @@ class CommentIndexItem extends React.Component{
         this.handleDisLike = this.handleDisLike.bind(this)
     }
 
-    // componentDidMount(){
-    //     if (!currentUser) return null
-    //     this.props.comment.likes.likers.some( liker => {
-    //         liker.user_id === this.props.currentUser.id
-    // })
-    // }
+    componentDidMount(){
+        debugger
+        if (!this.props.currentUser) return null
+        Object.values(this.props.comment.likes.likers).forEach( liker => {
+            if (liker.user_id === this.props.currentUser.id){
+                this.setState({isLiked: true})
+            }
+        })   
+    }
 
     handleComment(e){
         e.preventDefault()

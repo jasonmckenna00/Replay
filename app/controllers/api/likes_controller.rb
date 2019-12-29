@@ -36,7 +36,7 @@ class Api::LikesController < ApplicationController
     # end
 
     def removelike
-        # debugger
+        debugger
         @like = current_user.find_like(params)
         @like.destroy
         @comment = Comment.find(@like.likeable_id)
