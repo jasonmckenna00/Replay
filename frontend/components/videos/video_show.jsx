@@ -29,18 +29,13 @@ class VideoShow extends React.Component{
         if (!this.props.user) return null
         if (!this.props.video) return null
         const { video, user, comments, currentUser, updateComment, deleteComment, addCommentLike, addCommentDisLike, removeCommentLike} = this.props
-        
         let editOrSub 
         const edit = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
-        const subscribe = editOrSub = <h2 className='next-button subscribe-button '>Subscribe</h2>
-        
+        const subscribe = <h2 className='next-button subscribe-button '>Subscribe</h2>
+    
 
         if (currentUser){
-            if (user.id === parseInt(currentUser.id)){
-                editOrSub = edit
-            } else {
-               editOrSub = subscribe
-            }
+            (user.id === parseInt(currentUser.id)) ? editOrSub = edit : editOrSub = subscribe;
         }
         else {
             editOrSub = subscribe
