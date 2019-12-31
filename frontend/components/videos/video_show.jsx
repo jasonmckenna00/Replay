@@ -1,7 +1,6 @@
 import React from 'react';
-import CommentIndexItem from '../comments/comment_Index_Item'
-import CommentForm from '../comments/comment_form';
 import CommentFormContainer from '../comments/comment_form_container';
+import CommentIndexItemContainer from '../comments/comment_index_item_container';
 class VideoShow extends React.Component{
 
     componentDidMount(){
@@ -49,15 +48,9 @@ class VideoShow extends React.Component{
 
         const commentLis = comments.map( (comment,i) => {
                     let commentAuthor = this.props.users[comment.user_id]
-            return <CommentIndexItem
+            return <CommentIndexItemContainer
                     comment={comment}
                     key={i}
-                    updateComment={updateComment}
-                    deleteComment={deleteComment}
-                    addCommentLike={addCommentLike}
-                    addCommentDisLike={addCommentDisLike}
-                    removeCommentLike={removeCommentLike}
-                    currentUser={currentUser}
                     commentAuthor= {commentAuthor}
                     video={video}/>
         })
