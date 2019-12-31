@@ -35,3 +35,5 @@
 12/28 9:40 -> got informtion passed to user, but accidentally sent to video_poster. need to change some jbuilder/ reducers on how info on the current user is passed up. Involves some auth changing and bootstrapping
 
 12/28 -> 19:52 -> maybe have each comment and each video keep track of user ids who liked them, then see if the current user is somebody who liked it
+
+12/29 17:00 -> got comment likes working well. Next steps are to add video likes and style

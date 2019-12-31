@@ -17,6 +17,12 @@ export default (state = {}, action) => {
             let newState = Object.assign({},state);
             delete newState[action.videoId];
             return newState;
+        case RECEIVE_VIDEO_LIKE:
+            if (!action.payload.video) return state
+            return Object.assign({}, state, {[action.payload.video.id]: action.payload.video})
+        case REMOVE_VIDEO_LIKE:
+            if (!action.payload.video) return state
+            return Object.assign({}, state, {[action.payload.video.id]: action.payload.video})
             
         default: return state;
     }

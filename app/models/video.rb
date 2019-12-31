@@ -30,10 +30,9 @@ class Video < ApplicationRecord
             if like.liked
                 my_hash[:upvoted] += 1
             else
-                my_hash[:downvoted] -= 1
+                my_hash[:downvoted] += 1
             end
         end
-
         return my_hash
     end 
 end

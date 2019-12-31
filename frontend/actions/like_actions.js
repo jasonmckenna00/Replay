@@ -23,6 +23,22 @@ const destroyCommentLike = payload =>{
     }
 }
 
+const receiveVideoLike = payload =>{
+    // debugger
+    return {
+        type: RECEIVE_VIDEO_LIKE,
+        payload
+    }
+}
+
+const destroyVideoLike = payload =>{
+    // debugger
+    return {
+        type: REMOVE_VIDEO_LIKE,
+        payload
+    }
+}
+
 
 export const addCommentLike = (comment) => dispatch =>{
 
@@ -46,5 +62,30 @@ export const removeCommentLike = (commentId) => dispatch =>{
         .then( payload => {
 
             return dispatch(destroyCommentLike(payload))
+        })
+}
+
+export const addVideoLike = (Video) => dispatch =>{
+
+    return LikeUtil.addVideoLike(Video)
+        .then( payload => {
+            return dispatch(receiveVideoLike(payload))
+        })
+}
+
+export const addVideoDisLike = (Video) => dispatch =>{
+
+    return LikeUtil.addVideoDisLike(Video)
+        .then( payload => {
+            return dispatch(receiveVideoLike(payload))
+        })
+}
+
+export const removeVideoLike = (VideoId) => dispatch =>{
+
+    return LikeUtil.removeLike(VideoId, "Video")
+        .then( payload => {
+
+            return dispatch(destroyVideoLike(payload))
         })
 }
