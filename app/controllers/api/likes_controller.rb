@@ -10,7 +10,7 @@ class Api::LikesController < ApplicationController
 
     def create
             @user = current_user
-            # debugger
+            
         if params[:comment_id].present?
             @comment = Comment.find(params[:comment_id])
             @comment.likes.new(user_id: @user.id, liked: params[:liked])
@@ -19,7 +19,7 @@ class Api::LikesController < ApplicationController
             end
 
         elsif params[:video_id].present?
-            @video = Video.find(:video_id)
+            @video = Video.find(params[:video_id])
             @video.likes.build(user_id: @user.id, liked: params[:liked])
             if @video.save!   
                 render :video

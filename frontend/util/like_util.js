@@ -23,7 +23,7 @@ export const addVideoLike = video => {
     return $.ajax({
         method: 'post',
         url: `/api/videos/${video.id}/likes`,
-        data: {video_id: video.id, liked: true}
+        data: {id: video.id, liked: true}
 
     })
 }
@@ -34,7 +34,7 @@ export const addVideoDisLike = video => {
     return $.ajax({
         method: 'post',
         url: `/api/videos/${video.id}/likes`,
-        data: {video_id: video.id, liked: false}
+        data: {id: video.id, liked: false}
 
     })
 }

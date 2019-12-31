@@ -57,7 +57,7 @@ export const addCommentDisLike = (comment) => dispatch =>{
 }
 
 export const removeCommentLike = (commentId) => dispatch =>{
-
+    debugger
     return LikeUtil.removeLike(commentId, "Comment")
         .then( payload => {
 
@@ -82,7 +82,7 @@ export const addVideoDisLike = (Video) => dispatch =>{
 }
 
 export const removeVideoLike = (VideoId) => dispatch =>{
-
+    debugger
     return LikeUtil.removeLike(VideoId, "Video")
         .then( payload => {
 
