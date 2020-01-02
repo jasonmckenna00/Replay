@@ -109,7 +109,7 @@ class VideoShow extends React.Component{
                             <div className='video-likes'>
                                 <i className={`fas fa-thumbs-up video-like-button ${upVoted}`} onClick={this.handleLike}></i>
                                 <h2>{upvotes}</h2>
-                                <i className={`fas fa-thumbs-up video-like-button ${downVoted}`} onClick={this.handleDisLike}></i>
+                                <i className={`fas fa-thumbs-down video-like-button ${downVoted}`} onClick={this.handleDisLike}></i>
                                 <h2>{downvotes}</h2>
 
                             </div>

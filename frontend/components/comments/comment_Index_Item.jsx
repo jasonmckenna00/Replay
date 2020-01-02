@@ -115,7 +115,7 @@ class CommentIndexItem extends React.Component{
                     <div className='comment-like-buttons'>
                         <i className={`fas fa-thumbs-up comment-like ${upVoted}`} onClick={this.handleLike}></i>
                         <h2>{this.props.comment.likes.counter}</h2>
-                        <i className={`fas fa-thumbs-up comment-like ${downVoted}`} onClick={this.handleDisLike}></i>
+                        <i className={`fas fa-thumbs-down comment-like ${downVoted}`} onClick={this.handleDisLike}></i>
                     </div>
                     <div className='comment-reply-button'></div>
                 </div>
