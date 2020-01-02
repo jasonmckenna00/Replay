@@ -13,7 +13,7 @@
 
 .comment-counter{
     font-size:16px;
-    margin-bottom: 24px;
+    margin: 24px 0px;
 }
 
 .comment-form{
@@ -57,6 +57,19 @@
     height: 40px;
     width: 40px;
     /* border: 1px solid black; */
+}
+
+.pro-pic-initial-comment{
+    display: flex;
+    border: 1px solid;
+    width: 40px;
+    height: 40px;
+    color: white;
+    background-color: purple;
+    font-weight: 500;
+    align-items: center;
+    border-radius: 100%;
+    justify-content: center;
 }
 
 .comment-pro-pic img{

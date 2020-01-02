@@ -151,7 +151,18 @@
 }
 
 
-
+.pro-pic-initial-video{
+    display: flex;
+    border: 1px solid;
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: purple;
+    font-weight: 500;
+    align-items: center;
+    border-radius: 100%;
+    justify-content: center;
+}
 @media (max-width: 1200px) {
     .video-group-container{
         flex-direction: column;
@@ -161,3 +172,4 @@
         width: 100%;
     }
 }
+

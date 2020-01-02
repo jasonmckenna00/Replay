@@ -12,7 +12,8 @@ class VideoIndexItem extends React.Component{
         const {title, user_id, id} = this.props.video;
         let {user} = this.props;
 
-        const choppedEmail = this.props.user.email.split('@')[0]
+        const name = user.first_name + ' ' + user.last_name
+        const initial = this.props.user.first_name[0]
 
 
         return <li className='video'>
@@ -22,28 +23,19 @@ class VideoIndexItem extends React.Component{
 
             
             <div className='video-footer-container'>
-                <div className='user-pro-pic'><img src={window.peace} className='peace-sign' /></div>
+                {/* <div className='user-pro-pic'><img src={window.peace} className='peace-sign' /></div> */}
+                <h2 className='pro-pic-initial'>{initial}</h2>
                 <div className='video-details-container'>
                     <div className='video-title'>{title}</div>
-                    <div className='video-email'>{choppedEmail}</div>
+                    <div className='video-username'>{name}</div>
                     <div className='video-play-info'>
                        <h2 className='video-views'>1000 views •</h2>
                        <h2 className='video-posted'> 1 month ago</h2>
                     </div>
                 </div>
             </div>
-            
-
-
-
-            {/* {title} */}
-            {/* {user_id} */}
         </li>
-        
     }
-
-
-
 }
 
 export default VideoIndexItem   

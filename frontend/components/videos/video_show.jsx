@@ -95,9 +95,7 @@ class VideoShow extends React.Component{
             <div className='video-group-container'>
                 <div className='video-show-left-container'>
                     <div className='video-show-video-container'>
-                        <video src={this.props.video.videoUrl} controls autoPlay className='video-show-video' alt="" />
-
-                        
+                        <video src={this.props.video.videoUrl} controls autoPlay className='video-show-video' alt="" />    
                     </div>
                     <div className='video-show-video-info-container'>
                         <h2 className='video-show-title'>{video.title}</h2>
@@ -119,9 +117,9 @@ class VideoShow extends React.Component{
                         <div className='video-show-user-container'>
                             <div className='video-show-profile-info'>
                                 {/* <div className='video-show-pro-pic'><img src={window.peace}/></div> */}
-                                <h2 className='pro-pic-initial'>{initial}</h2>
+                                <h2 className='pro-pic-initial-video'>{initial}</h2>
                                 <div className='video-show-email-subscribers'>
-                                    <h2 className='video-show-email'>{user.email}</h2>
+                                    <h2 className='video-show-email'>{user.first_name +' ' + user.last_name}</h2>
                                     <h3 className='video-show-subscribers '>100 subscribers</h3>
                                 </div>                      
                             </div>

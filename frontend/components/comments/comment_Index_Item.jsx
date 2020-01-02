@@ -103,7 +103,7 @@ class CommentIndexItem extends React.Component{
         <div className='comment-index-item'>
             <div className='comment-pro-pic-container'>
             {/* <div className='comment-pro-pic'><img src={window.peace}/></div> */}
-                <h2 className='pro-pic-initial'>{letter}</h2>
+                <h2 className='pro-pic-initial-comment'>{letter}</h2>
             </div>
             <div className='comment-body-container'>
                 <div className='comment-user-name-container'>

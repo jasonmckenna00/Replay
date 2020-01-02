@@ -80,7 +80,7 @@
     font-weight: 500;
 }
 
-.video-email{
+.video-username{
     /* border: 1px solid black; */
     font-size: 16px;
     margin: 3px 0px;
@@ -102,10 +102,21 @@
 }
 
 .pro-pic-initial{
+    display: flex;
     border: 1px solid;
-    padding: 10px 17px;
-    border-radius: 50%;
+    width: 45px;
+    height: 45px;
     color: white;
     background-color: purple;
     font-weight: 500;
+    align-items: center;
+    border-radius: 100%;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.comment-loggedout-pro-pic{
+    padding: 0px;
+    font-size: 45px;
+    color: purple;
 }

@@ -25,7 +25,7 @@ class CommentForm extends React.Component{
 
         return <div className='video-show-comment-form'>
                         <form className='comment-form' onSubmit={this.handleComment}>
-                            <div className='video-show-pro-pic'><img src={window.peace}/></div>
+                            <div className='video-show-pro-pic'><i className="fas fa-user-circle comment-loggedout-pro-pic"></i></div>
                             <input type="text"
                                     placeholder='Add a public comment...'
                                     onChange={this.update('body')}/>
