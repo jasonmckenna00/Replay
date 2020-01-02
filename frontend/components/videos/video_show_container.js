@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
     let user =  video ? state.entities.users[video.user_id] : {}
     video = video ? video : {}
     user = user ? user : {}
-
+    
     return({
     video, 
     user,

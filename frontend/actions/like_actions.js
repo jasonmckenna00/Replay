@@ -82,7 +82,7 @@ export const addVideoDisLike = (Video) => dispatch =>{
 }
 
 export const removeVideoLike = (VideoId) => dispatch =>{
-    debugger
+    // debugger
     return LikeUtil.removeLike(VideoId, "Video")
         .then( payload => {
 

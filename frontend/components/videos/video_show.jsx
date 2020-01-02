@@ -14,13 +14,15 @@ class VideoShow extends React.Component{
     componentDidMount(){
         Promise.all([this.props.fetchAllUsers(), this.props.fetchAllVideos()])
             .then( () => this.props.fetchVideo(this.props.match.params.videoId))
-            // .then( () => Object.values(this.props.video.likes.likers)
-            //     .forEach( liker => {
-            //         if (liker.user_id === this.props.currentUser.id){
-            //             this.setState({isLiked: true, upVoted: liker.liked})
-            //         }
-            //     })
-            // )   
+            .then( () => {
+                let that = this
+                return Object.values(this.props.video.likes.likers)
+                        .forEach( liker => {
+                            if (liker.user_id === that.props.currentUser.id){
+                                that.setState({isLiked: true, upVoted: liker.liked})
+                            }
+                        })
+            })   
     }
 
     componentDidUpdate(prevProps) {
@@ -54,7 +56,7 @@ class VideoShow extends React.Component{
         if (this.state.isLiked){
             this.props.removeVideoLike(this.props.video.id)
         }
-        this.props.addVideoLike(this.props.video);
+        this.props.addVideoDisLike(this.props.video);
         this.setState({isLiked: true, upVoted: false})
     }
 

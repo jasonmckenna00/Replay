@@ -29,10 +29,17 @@ class Api::LikesController < ApplicationController
 
     def removelike
         # debugger
-        @like = current_user.find_like(params[:id],params[:type])
-        @like.destroy
-        @comment = Comment.find(@like.likeable_id)
-        render :comment
+        if params[:type] == "Comment"
+            @like = current_user.find_like(params[:id],params[:type])
+            @like.destroy
+            @comment = Comment.find(@like.likeable_id)
+            render :comment
+        else
+            @like = current_user.find_like(params[:id],params[:type])
+            @like.destroy
+            @video = Video.find(@like.likeable_id)
+            render :video
+        end
     end
 
 
