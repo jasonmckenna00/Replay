@@ -87,6 +87,8 @@ class VideoShow extends React.Component{
         const initial = user.first_name ? (user.first_name)[0] : null;
         const upvotes = video.likes ? video.likes.upvotes : null;
         const downvotes = video.likes ? video.likes.downvotes : null;
+        const upVoted = this.state.upVoted ? 'upvoted' : '';
+        const downVoted = (this.state.upVoted === false )? 'downvoted' : '';
 
         // debugger
         return <div className='video-show-container'>
@@ -105,9 +107,9 @@ class VideoShow extends React.Component{
                                 <h2 className='video-posted'> 1 month ago</h2>
                             </div>
                             <div className='video-likes'>
-                                <i className="fas fa-thumbs-up comment-like" onClick={this.handleLike}></i>
+                                <i className={`fas fa-thumbs-up video-like-button ${upVoted}`} onClick={this.handleLike}></i>
                                 <h2>{upvotes}</h2>
-                                <i className="fas fa-thumbs-down comment-like" onClick={this.handleDisLike}></i>
+                                <i className={`fas fa-thumbs-up video-like-button ${downVoted}`} onClick={this.handleDisLike}></i>
                                 <h2>{downvotes}</h2>
 
                             </div>

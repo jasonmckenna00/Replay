@@ -94,8 +94,10 @@ class CommentIndexItem extends React.Component{
         let commentBody = this.state.commentEditForm ? this.editCommentForm()
                         : <h2 className='comment-body-text'>{comment.body}</h2>
         
-        const commenter = `${commentAuthor.first_name} ${commentAuthor.last_name}`
-        const letter = `${commentAuthor.first_name[0]}`
+        const commenter = `${commentAuthor.first_name} ${commentAuthor.last_name}`;
+        const letter = `${commentAuthor.first_name[0]}`;
+        const upVoted = this.state.upVoted ? 'upvoted' : '';
+        const downVoted = (this.state.upVoted === false )? 'downvoted' : '';
         
     return <>
         <div className='comment-index-item'>
@@ -111,9 +113,9 @@ class CommentIndexItem extends React.Component{
                 {commentBody}
                 <div className='comment-like-reply-container'>
                     <div className='comment-like-buttons'>
-                        <i className="fas fa-thumbs-up comment-like" onClick={this.handleLike}></i>
+                        <i className={`fas fa-thumbs-up comment-like ${upVoted}`} onClick={this.handleLike}></i>
                         <h2>{this.props.comment.likes.counter}</h2>
-                        <i className="fas fa-thumbs-down comment-like" onClick={this.handleDisLike}></i>
+                        <i className={`fas fa-thumbs-up comment-like ${downVoted}`} onClick={this.handleDisLike}></i>
                     </div>
                     <div className='comment-reply-button'></div>
                 </div>

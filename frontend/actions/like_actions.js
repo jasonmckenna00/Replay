@@ -57,7 +57,6 @@ export const addCommentDisLike = (comment) => dispatch =>{
 }
 
 export const removeCommentLike = (commentId) => dispatch =>{
-    debugger
     return LikeUtil.removeLike(commentId, "Comment")
         .then( payload => {
 

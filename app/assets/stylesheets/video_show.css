@@ -64,6 +64,7 @@
     /* border: 1px solid black; */
     display: flex;
     height: 40px;
+    justify-content: space-between;
 }
 
 .vpi-video{
@@ -73,10 +74,25 @@
 }
 
 .video-likes{
-    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: gray;
+    margin-right: 30px;
 
 }
 
+.video-like-button{
+    margin: 0px 10px;   
+}
+
+.upvoted{
+    color: green;
+}
+
+.downvoted{
+    color: red;
+}
 .video-show-user-desc-container{
     display: flex;
     width: 100%;
