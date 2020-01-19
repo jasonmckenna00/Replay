@@ -1,6 +1,7 @@
-import React from 'react'
-import LoadingScreen from '../loading_screen';
-import { withRouter, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import convertToOffset from '../../util/date_time_util';
+
 
 
 class VideoIndexItem extends React.Component{
@@ -9,7 +10,7 @@ class VideoIndexItem extends React.Component{
     render(){
         // debugger
     
-        const {title, user_id, id} = this.props.video;
+        const {title, user_id, id, views, created_at} = this.props.video;
         let {user} = this.props;
 
         const name = user.first_name + ' ' + user.last_name
@@ -29,8 +30,8 @@ class VideoIndexItem extends React.Component{
                     <div className='video-title'>{title}</div>
                     <div className='video-username'>{name}</div>
                     <div className='video-play-info'>
-                       <h2 className='video-views'>1000 views •</h2>
-                       <h2 className='video-posted'> 1 month ago</h2>
+                       <h2 className='video-views'>{views} views •</h2>
+                       <h2 className='video-posted'> {convertToOffset(created_at)}</h2>
                     </div>
                 </div>
             </div>

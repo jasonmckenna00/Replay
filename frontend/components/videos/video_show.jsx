@@ -1,7 +1,8 @@
 import React from 'react';
 import CommentFormContainer from '../comments/comment_form_container';
 import CommentIndexItemContainer from '../comments/comment_index_item_container';
-import VideoShowPreview from './video_show_preview'
+import VideoShowPreview from './video_show_preview';
+import convertToOffset from '../../util/date_time_util';
 
 class VideoShow extends React.Component{
     constructor(props){
@@ -110,8 +111,9 @@ class VideoShow extends React.Component{
                         <h2 className='video-show-title'>{video.title}</h2>
                         <div className='video-show-video-stats'>
                             <div className='video-play-info vpi-video'>
-                                <h2 className='video-views'>40 views •</h2>
-                                <h2 className='video-posted'> 1 month ago</h2>
+                                <h2 className='video-views'>{video.views} views •</h2>
+                                <h2 className='video-posted'> {convertToOffset(video.created_at)}</h2>
+                                {/* <h2> {convertToOffset(video.created_at)}</h2> */}
                             </div>
                             <div className='video-likes'>
                                 <i className={`fas fa-thumbs-up video-like-button ${upVoted}`} onClick={this.handleLike}></i>

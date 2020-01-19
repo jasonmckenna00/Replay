@@ -24,6 +24,8 @@ class Video < ApplicationRecord
 
     end
 
+    
+
     def count_likes
         upvotes = 0
         downvotes = 0

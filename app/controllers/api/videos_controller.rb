@@ -3,6 +3,8 @@ class Api::VideosController < ApplicationController
     def show
         @video = Video.includes([:user,{:comments => :likes},:likes])
             .find(params[:id])
+        @video.update(views: @video.views+1)
+        # debugger
         render :show
     end
 
