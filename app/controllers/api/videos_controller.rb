@@ -1,12 +1,14 @@
 class Api::VideosController < ApplicationController
 
     def show
-        @video = Video.includes([:user,{:comments => :likes},:likes]).find(params[:id])
+        @video = Video.includes([:user,{:comments => :likes},:likes])
+            .find(params[:id])
         render :show
     end
 
     def index
         @videos = Video.with_attached_thumbnail_url.all
+        @users = User.all
         render :index
     end
 

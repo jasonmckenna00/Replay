@@ -20,9 +20,9 @@ const receiveVideo = (payload) => {
     }
 }
 
-const receiveVideos = (videos) => ({
+const receiveVideos = (payload) => ({
     type: RECEIVE_VIDEOS,
-    videos
+    payload
 })
 
 const receiveVideoErrors = (errors) => {

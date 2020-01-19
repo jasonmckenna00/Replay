@@ -10,14 +10,15 @@ class VideoIndex extends React.Component{
     }
 
     componentDidMount(){
-        Promise.all([this.props.fetchAllUsers(), this.props.fetchAllVideos()])
+        // Promise.all([this.props.fetchAllUsers(), this.props.fetchAllVideos()])
+        this.props.fetchAllVideos()
     }
 
     // componentDidUpdate(prevProps) {
     //     if (prevProps.location.pathname !== this.props.history.location.pathname) {
     //         Promise.all([this.props.fetchAllUsers(), this.props.fetchAllVideos()]);
     //     }
-    //   }
+    //   }  
 
 
     render(){
@@ -26,7 +27,6 @@ class VideoIndex extends React.Component{
                                                     key={video.id} 
                                                     video={video} 
                                                     user={users[video.user_id]} 
-                                                    fetchUser={fetchUser}
                                                     loading={loading}/>)  
             // debugger  
             return <>

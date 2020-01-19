@@ -5,7 +5,7 @@ export default (state = {}, action) => {
     Object.freeze(state);
     switch(action.type){
         case RECEIVE_VIDEOS:
-            return Object.assign({}, state, action.videos);
+            return Object.assign({}, state, action.payload.videos);
         case RECEIVE_VIDEO:
             // debugger
             if (!action.payload.video) return state

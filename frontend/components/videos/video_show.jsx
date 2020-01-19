@@ -1,6 +1,8 @@
 import React from 'react';
 import CommentFormContainer from '../comments/comment_form_container';
 import CommentIndexItemContainer from '../comments/comment_index_item_container';
+import VideoShowPreview from './video_show_preview'
+
 class VideoShow extends React.Component{
     constructor(props){
         super(props)
@@ -12,7 +14,7 @@ class VideoShow extends React.Component{
         this.handleDisLike = this.handleDisLike.bind(this)
     }
     componentDidMount(){
-        Promise.all([this.props.fetchAllUsers(), this.props.fetchAllVideos()])
+        this.props.fetchAllVideos()
             .then( () => this.props.fetchVideo(this.props.match.params.videoId))
             .then( () => {
                 let that = this
@@ -62,8 +64,8 @@ class VideoShow extends React.Component{
 
     render(){
         // if (!!this.props.user) return null
-        if (!this.props.video) return null
-        const { video, user, comments, currentUser, updateComment, deleteComment, addCommentLike, addCommentDisLike, removeCommentLike} = this.props
+        if (!this.props.video || !this.props.users) return null
+        const { video, user, comments, currentUser, videos, users} = this.props
         let editOrSub 
         const edit = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
         const subscribe = <h2 className='next-button subscribe-button '>Subscribe</h2>
@@ -74,6 +76,13 @@ class VideoShow extends React.Component{
         } else {
             editOrSub = subscribe
         } 
+
+        
+        const videosLis = videos.map( video => <VideoShowPreview 
+            key={video.id} 
+            video={video} 
+            user={users[video.user_id]} 
+            />)  
 
         const commentLis = comments.map( (comment,i) => {
                     let commentAuthor = this.props.users[comment.user_id]
@@ -90,7 +99,7 @@ class VideoShow extends React.Component{
         const upVoted = this.state.upVoted ? 'upvoted' : '';
         const downVoted = (this.state.upVoted === false )? 'downvoted' : '';
 
-        // debugger
+        // console.log(videosLis)
         return <div className='video-show-container'>
             <div className='video-group-container'>
                 <div className='video-show-left-container'>
@@ -137,7 +146,10 @@ class VideoShow extends React.Component{
                     </div>
                 </div>
                 
-            <div className='video-show-right-container'></div>
+            <div className='video-show-right-container'>
+                <h2 className='up-next'>Up next</h2>
+                {videosLis}
+            </div>
             </div>
         </div>
     }
