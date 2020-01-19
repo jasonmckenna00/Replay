@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
     def show
-        @comment = Comment.find(params[:id])
+        @comment = Comment.includes(:likes).find(params[:id])
         render :show
     end
     

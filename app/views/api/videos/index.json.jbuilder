@@ -6,3 +6,4 @@
     json.thumbnailUrl url_for(video.thumbnail_url)
   end
 end
+

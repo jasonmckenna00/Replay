@@ -154,9 +154,9 @@ class Navbar extends React.Component{
                         <div className='camera-icon'>
                             <i className="fas fa-video" onClick={()=> this.props.history.push('/uploadvideo')}></i>
                         </div>
-                        <div className='apps-icon'>
+                        {/* <div className='apps-icon'>
                             <i className="fas fa-th"></i> 
-                        </div>
+                        </div> */}
                         <div className='settings-icon'>
                             
                             <i className="fas fa-ellipsis-v"></i>

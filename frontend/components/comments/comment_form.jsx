@@ -22,10 +22,11 @@ class CommentForm extends React.Component{
     }
 
     render(){
-
+        const propic = this.props.currentUser ? this.props.currentUser.first_name[0] :  <i className="fas fa-user-circle comment-loggedout-pro-pic"></i>
+        const propicClass = this.props.currentUser ? 'pro-pic-initial' : '';
         return <div className='video-show-comment-form'>
                         <form className='comment-form' onSubmit={this.handleComment}>
-                            <div className='video-show-pro-pic'><i className="fas fa-user-circle comment-loggedout-pro-pic"></i></div>
+                            <div className={`video-show-pro-pic ${propicClass}`}>{propic}</div>
                             <input type="text"
                                     placeholder='Add a public comment...'
                                     onChange={this.update('body')}/>
