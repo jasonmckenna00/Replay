@@ -31,7 +31,7 @@ Features
 Implimented own authentication process to ensure proper user credentials. Features validations on the User and Session models to secure user information without storing password information. The code snippet below pairs with a session controller which tracks session cookies to validate the user is logged in on refresh.
 
 
-```
+```Ruby
     validates :password, length:{minimum: 6, allow_nil: true}
     validates :first_name, :last_name, :session_token, :password_digest, :email, presence: true
     validates :email, :session_token,  uniqueness: true
@@ -69,7 +69,7 @@ Implimented own authentication process to ensure proper user credentials. Featur
 ### Polymorphic Associations with Likes
 YouTube allows users to like both videos and comments and was replicated in this project using a polymorphic Likes table. To use this, both comments and videos featured `has_many :likes, as :likeable` and were created depending on the parameters passed in. 
 
-```
+```Ruby
     def create
             @user = current_user
             
