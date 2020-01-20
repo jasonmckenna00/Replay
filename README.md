@@ -28,7 +28,7 @@ Features
 --------
 
 ### User authentication and validations
-Implimented own authentication process to ensure proper user credentials. Features validations on the User and Session models to secure user information without storing password information.
+Implimented own authentication process to ensure proper user credentials. Features validations on the User and Session models to secure user information without storing password information. The code snippet below pairs with a session controller which tracks session cookies to validate the user is logged in on refresh.
 
 
 ```
@@ -63,15 +63,35 @@ Implimented own authentication process to ensure proper user credentials. Featur
 
     def self.generate_session_token
         SecureRandom::urlsafe_base64(16)
-    end
-
-    def reset_session_token!
-        self.session_token = User.generate_session_token
-        self.save!
-        self.session_token
-    end
 
 ```
+
+### Polymorphic Associations with Likes
+YouTube allows users to like both videos and comments and was replicated in this project using a polymorphic Likes table. To use this, both comments and videos featured `has_many :likes, as :likeable` and were created depending on the parameters passed in. 
+
+```
+    def create
+            @user = current_user
+            
+        if params[:comment_id].present?
+            @comment = Comment.find(params[:comment_id])
+            @comment.likes.new(user_id: @user.id, liked: params[:liked])
+            if @comment.save!   
+                render :comment
+            end
+
+        elsif params[:video_id].present?
+            @video = Video.find(params[:video_id])
+            @video.likes.build(user_id: @user.id, liked: params[:liked])
+            if @video.save!   
+                render :video
+            end
+        end
+    end
+```
+The comment_id/video_id parameter was determined using unique routes determined by which AJAX request was used. After receiving the information, the build method is used to be instantiated from the passed in attributes. 
+
+
 
 ### User video upload/edit functionality
 
