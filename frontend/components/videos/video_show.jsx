@@ -79,11 +79,18 @@ class VideoShow extends React.Component{
         } 
 
         
-        const videosLis = videos.map( video => <VideoShowPreview 
-            key={video.id} 
-            video={video} 
-            user={users[video.user_id]} 
-            />)  
+        const videosLis = videos.map( video => {
+            if (video.id !== this.props.video.id){
+                return <VideoShowPreview 
+                        key={video.id} 
+                        video={video} 
+                        user={users[video.user_id]} 
+                        />  
+            }
+        })
+        
+        
+        
 
         const commentLis = comments.map( (comment,i) => {
                     let commentAuthor = this.props.users[comment.user_id]

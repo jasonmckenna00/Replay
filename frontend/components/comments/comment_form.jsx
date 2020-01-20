@@ -10,8 +10,8 @@ class CommentForm extends React.Component{
     handleComment(e){
         e.preventDefault();
         if (this.props.currentUser){
-            this.props.createComment(this.state, this.props.videoId)
             this.setState({body: ''})
+            this.props.createComment(this.state, this.props.videoId)
         } else {
             this.props.history.push('/login')
         }
@@ -29,7 +29,8 @@ class CommentForm extends React.Component{
                             <div className={`video-show-pro-pic ${propicClass}`}>{propic}</div>
                             <input type="text"
                                     placeholder='Add a public comment...'
-                                    onChange={this.update('body')}/>
+                                    onChange={this.update('body')}
+                                    value={this.state.body}/>
                             <button type='submit'>Add Comment</button>
                         </form >
                 </div>
