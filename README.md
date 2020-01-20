@@ -89,10 +89,16 @@ YouTube allows users to like both videos and comments and was replicated in this
         end
     end
 ```
-The comment_id/video_id parameter was determined using unique routes determined by which AJAX request was used. After receiving the information, the build method is used to be instantiated from the passed in attributes. 
+The comment_id/video_id parameter was determined using unique routes determined by which AJAX request was used. After receiving the information, the build method is used to be instantiated from the passed in attributes.
 
+![](app/assets/gifs/likegif2.gif)
 
 
 ### User video upload/edit functionality
+
+Users can post their own videos and content to their channel for others to view. Video files get submitted and then stored as a reference on AWS servers to make the content available on the cloud. Video submission forms come with error handling whenever the fields were improperly filled out. Once a video is submitted, the page will redirect to the video's show page where the user can opt to edit the video title, description, or thumbnail. The edit form also gives ability to delete the video as a whole.
+
+
+
 
 
