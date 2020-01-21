@@ -1,6 +1,6 @@
-# README
-RePlay
-======
+<p align="center">
+  <img width="300" height="180" src="/app/assets/images/replay_logo.png">
+</p>
 
 Replay is a video sharing website where users can upload videos and view content posted by others. Signed in users are allowed to leave comments or like a video while non-logged in users are limited to only viewing. Videos and comments are protected with user authentication to prevent users from editing/removing content that isn't theirs. The app utilizes the React-Redux cycle with a Ruby on Rails backend configuration for datebase validations. Videos and images are stored using AWS-S3 cloud-storage and the server is hosted by Heroku.
 
