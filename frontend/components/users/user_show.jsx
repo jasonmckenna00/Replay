@@ -1,5 +1,6 @@
 import React from 'react';
-import { fetchAllVideos } from '../../actions/video_actions';
+import UserShowIndexItem from './user_show_index_item';
+import convertToOffset from '../../util/date_time_util';
 
 class UserShow extends React.Component{
     constructor(props){
@@ -25,6 +26,29 @@ class UserShow extends React.Component{
                 <video src={firstVid.videoUrl} controls autoPlay className='video-show-video' alt="" />
                 :
                 <h2 className = 'no-video'> User doesn't have any videos</h2>;
+        
+        let firstVidTitle = '';
+        let firstVidViews = '';
+        let firstVidCreatedAt = '';
+        let firstVidDescription = '';
+
+        if (firstVid){
+            firstVidTitle = firstVid.title;
+            firstVidViews = firstVid.views;
+            firstVidCreatedAt = convertToOffset(firstVid.created_at);
+            firstVidDescription = firstVid.description;
+        }
+
+        
+        let videoLis = this.props.userVideos.map( (video,i) => {
+            if (i !== 0 ){
+                return <UserShowIndexItem key={i}/>
+
+            }
+
+        })
+        // 
+
         
         return <>
             <div className='user-show-container'>
@@ -52,16 +76,19 @@ class UserShow extends React.Component{
                             {/* <video src={firstVid.videoUrl} controls autoPlay className='video-show-video' alt="" /> */}
                         </div>
                         <div className='user-show-first-video-info'>
-                            <h2 className='user-show-first-video-title'>Demo Title</h2>
-                            <h3 className='user-show-first-video-stats'> 1,232 views * 2 months ago</h3>
+                            <h2 className='user-show-first-video-title'>{firstVidTitle}</h2>
+                            <h3 className='user-show-first-video-stats'> {firstVidViews + ' views' } • {firstVidCreatedAt}</h3>
                             <p className='user-show-first-video-description'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                            {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  */}
+                            {firstVidDescription}
                             </p>
                         </div>
                     </div>
 
                     <h3>Uploads</h3>
-                    <div className='user-show-video-index-container'></div>
+                    <div className='user-show-index-container'>
+                        {videoLis}
+                    </div>
                 </div>
             </div>
         </>
