@@ -10,6 +10,7 @@ import VideoCreateFormContainer from './videos/video_create_form_container';
 import VideoShowContainer from './videos/video_show_container';
 import SideBarContainer from './sidebar/side_bar_container';
 import VideoEditFormContainer from './videos/video_edit_form_container';
+import UserShowContainer from './users/user_show_container';
 
 const App = () =>(
     <>
@@ -25,6 +26,7 @@ const App = () =>(
             <ProtectedRoute path='/uploadvideo' component={VideoCreateFormContainer} />
             <Route exact path='/videos/:videoId' component={VideoShowContainer} />
             <Route exact path='/videos/:videoId/edit' component={VideoEditFormContainer} />
+            <Route exact path='/users/:userId' component={UserShowContainer} />
             <Route exact path="/" component={VideoIndexContainer}/>
         </Switch>
        

@@ -1,0 +1,144 @@
+.user-show-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user-show-header{
+    border: 1px solid black;
+    height: 150px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 0% 15%;
+    background-color: #f9f9f9;
+    padding-bottom: 15px;
+}
+
+.user-show-profile-info{
+    border: 1px solid black;
+    display: flex;
+    /* width: 200px; */
+    height: 80px;
+    font-family: Roboto;
+    align-self: center;
+}
+
+.user-show-pro-pic{
+    /* border: 1px solid black; */
+    width: 80px;
+    height: 80px;
+    /* border-radius: 50%; */
+}
+
+.user-show-pic{
+    padding: 0;
+    font-size: 80px;
+    color:#7E2115;
+}
+.user-show-pic:hover{
+    cursor: auto;
+}
+
+.user-show-user-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.user-show-username{
+    border: 1px solid black;
+    width: 100%;
+    font-size: 20px;
+    color: black;
+    font-weight: 500;
+}
+
+.user-show-subscriber-count{
+    border: 1px solid black;
+    width: 100%;
+    font-size: 15px;
+    color: gray;
+    margin-top: 5px
+}
+
+.user-show-subscribe-button-container{
+    border: 1px solid black;
+    display: flex;
+    align-self: center;
+    width: 105px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    background-color: #7E2115;
+}
+
+.user-show-subscribe-button-container:hover{
+    cursor: pointer;
+}
+.user-show-subscribe-button{
+    display: flex;
+    color: white;
+    font-family: roboto;
+} 
+
+.user-show-videos-container{
+    background-color: #f1f1f1;
+    display: flex;
+    width: 70%;
+    padding: 0% 15%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.user-show-first-video-container{
+    width: 100%;
+    border: 1px solid black;
+    height: 286px;
+    display: flex;
+    align-items: center;
+}
+
+.user-show-first-video{
+    border: 1px solid black;
+    width: 424px;
+    height: 238px;
+}
+
+.user-show-first-video-info{
+    display: flex;
+    border: 1px solid black;
+    margin-left: 25px;
+    width: 400px;
+    flex-direction: column;
+    height: 238px;
+    font-family: roboto;
+}
+
+.user-show-first-video-title{
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 15px;
+
+}
+.user-show-first-video-stats{
+    color: gray;
+    font-size: 13px;
+    padding-bottom: 15px;
+}
+
+.user-show-first-video-description{
+    font-size: 15px;
+    overflow: hidden;
+    line-height: 1.4
+}
+
+.no-video{
+    font-size: 20px;
+    font-family: Roboto;
+    color: gray;
+    text-align: center;
+}
