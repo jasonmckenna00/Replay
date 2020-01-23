@@ -28,7 +28,10 @@ class VideoIndexItem extends React.Component{
                 <h2 className='pro-pic-initial'>{initial}</h2>
                 <div className='video-details-container'>
                     <div className='video-title'>{title}</div>
-                    <div className='video-username'>{name}</div>
+                    <Link to={`/users/${user.id}`} >
+                        <div className='video-username'>{name}</div>
+                    </Link>
+
                     <div className='video-play-info'>
                        <h2 className='video-views'>{views} views •</h2>
                        <h2 className='video-posted'> {convertToOffset(created_at)}</h2>

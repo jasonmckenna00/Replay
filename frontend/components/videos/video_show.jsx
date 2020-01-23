@@ -3,6 +3,7 @@ import CommentFormContainer from '../comments/comment_form_container';
 import CommentIndexItemContainer from '../comments/comment_index_item_container';
 import VideoShowPreview from './video_show_preview';
 import convertToOffset from '../../util/date_time_util';
+import {Link} from 'react-router-dom';
 
 class VideoShow extends React.Component{
     constructor(props){
@@ -19,6 +20,7 @@ class VideoShow extends React.Component{
             .then( () => this.props.fetchVideo(this.props.match.params.videoId))
             .then( () => {
                 let that = this
+                if (!this.props.currentUser) return
                 return Object.values(this.props.video.likes.likers)
                         .forEach( liker => {
                             if (liker.user_id === that.props.currentUser.id){
@@ -137,7 +139,9 @@ class VideoShow extends React.Component{
                                 {/* <div className='video-show-pro-pic'><img src={window.peace}/></div> */}
                                 <h2 className='pro-pic-initial-video'>{initial}</h2>
                                 <div className='video-show-email-subscribers'>
-                                    <h2 className='video-show-email'>{user.first_name +' ' + user.last_name}</h2>
+                                    <Link to={`/users/${user.id}`} className='video-thumbnail-link'>
+                                        <h2 className='video-show-email'>{user.first_name +' ' + user.last_name}</h2>
+                                    </Link>
                                     <h3 className='video-show-subscribers '>100 subscribers</h3>
                                 </div>                      
                             </div>

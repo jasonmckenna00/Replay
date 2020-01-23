@@ -121,3 +121,8 @@
     font-size: 45px;
     color: purple;
 }
+
+.video-details-container a{
+    text-decoration: none;
+    color: black;
+}

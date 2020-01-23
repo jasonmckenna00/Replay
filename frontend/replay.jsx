@@ -27,13 +27,6 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
     const root = document.getElementById('root');
-    ReactDOM.render(<Root store={store}/>, root)
-    window.getState = store.getState
-    window.dispatch = store.dispatch
+    ReactDOM.render(<Root store={store} className='root'/>, root)
 
-    window.fetchUserById = fetchUserById
-    window.getVideos = getVideos
-    window.fetchAllUsers = fetchAllUsers
-    window.postVideo = postVideo
-    window.getVideo = getVideo
 })

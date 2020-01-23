@@ -42,7 +42,11 @@ class UserShow extends React.Component{
         
         let videoLis = this.props.userVideos.map( (video,i) => {
             if (i !== 0 ){
-                return <UserShowIndexItem key={i}/>
+                return <UserShowIndexItem 
+                key={i}
+                video={video}
+                convertToOffset={convertToOffset}
+                />
 
             }
 
@@ -85,7 +89,7 @@ class UserShow extends React.Component{
                         </div>
                     </div>
 
-                    <h3>Uploads</h3>
+                    <h3 className='user-show-uploads'>Uploads</h3>
                     <div className='user-show-index-container'>
                         {videoLis}
                     </div>

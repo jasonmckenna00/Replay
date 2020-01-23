@@ -30,14 +30,21 @@ footer, header, hgroup, menu, nav, section {
 }
 
 html {
-    background-color: #f9f9f9;
+	background-color: #f9f9f9;
+	height: 100%;
 }
 body {
 	line-height: 1;
+	height: 100%;
+}
+
+.root{
+	height: 100%;
 }
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
