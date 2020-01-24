@@ -14,10 +14,12 @@ class Navbar extends React.Component{
         this.changeSideBar = this.changeSideBar.bind(this)
         this.state = {
             dropdown: false,
+            // search: ''
             // loggedin: !!this.props.currUser
         }
         this.dropRef = React.createRef()
-        this.handleDropDownBlurr = this.handleDropDownBlurr.bind(this)
+        this.handleDropDownBlurr = this.handleDropDownBlurr.bind(this);
+        this.handleSearch = this.props.handleSearch.bind(this)
 
     }
 
@@ -113,6 +115,16 @@ class Navbar extends React.Component{
         }
     }
 
+
+    handleSearch(e){
+        e.preventDefault();
+        debugger
+        //e.currentTarget.children[0].value
+        const searchInfo = e.target.value;
+        this.props.searchVideos(searchInfo)
+
+    }
+
     render() {
         const  currPath  = this.props.history.location.pathname
         let tempClass = ((currPath === '/login') || (currPath === '/signup')) ? 'navbar-hidden' : '';
@@ -144,10 +156,10 @@ class Navbar extends React.Component{
                     </div>
                     
                     <div className='search-bar-container'>
-                        <div className='search-bar'>
+                        <form className='search-bar' onSubmit={this.handleSearch}>
                             <input type="text" className='search-bar-input' placeholder='Search'/>
                             <i className="fas fa-search"></i>
-                        </div>
+                        </form>
                     </div>
 
                     <div className='right-buttons' ref={this.dropRef}>

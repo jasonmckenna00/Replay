@@ -1,7 +1,7 @@
 class Api::VideosController < ApplicationController
 
     def show
-        @video = Video.includes([:user,{:comments => :likes},:likes])
+        @video = Video.includes(:user,{:comments => :likes},:likes, :thumbnail_url_attachment, :thumbnail_url_blob)
             .find(params[:id])
         @video.update(views: @video.views+1)
         # debugger
@@ -9,7 +9,7 @@ class Api::VideosController < ApplicationController
     end
 
     def index
-        @videos = Video.with_attached_thumbnail_url.all
+        @videos = Video.includes(:thumbnail_url_attachment, :thumbnail_url_blob)
         @users = User.all
         render :index
     end
@@ -56,8 +56,10 @@ class Api::VideosController < ApplicationController
         
     end
 
+    def search
+        @videos = Video.joins(:user).where('users.first_name LIKE ? OR videos.title LIKE ?', '%Demo%', '%Smash%')
 
-
+    end
     private
     def video_params
         params.require(:video).permit(:id, :title, :description, :user_id, :thumbnail_url, :video_url)

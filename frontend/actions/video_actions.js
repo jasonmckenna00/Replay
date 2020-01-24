@@ -11,7 +11,8 @@ export const RECEIVE_VIDEOS = 'RECEIVE_VIDEOS';
 export const RECEIVE_VIDEO_ERRORS = 'RECEIVE_VIDEO_ERRORS'
 export const REMOVE_VIDEO = 'REMOVE_VIDEO';
 export const UPDATE_VIDEO = 'UPDATE_VIDEO';
-export const CLEAR_VIDEO_ERRORS = 'CLEAR_VIDEO_ERRORS'
+export const CLEAR_VIDEO_ERRORS = 'CLEAR_VIDEO_ERRORS';
+export const SEARCH_VIDEO_CONTENT = 'SEARCH_VIDEO_CONTENT'
 
 const receiveVideo = (payload) => {
     return {
@@ -38,6 +39,14 @@ export const clearVideoErrors = () => {
         type: CLEAR_VIDEO_ERRORS
     }
 }
+
+const searchVideoContent = (searchVids) => {
+    return {
+        type: SEARCH_VIDEO_CONTENT,
+        searchVids
+    }
+}
+
 
 const removeVideo = (videoId) => ({
     type: REMOVE_VIDEO,
@@ -85,6 +94,11 @@ export const createVideo = (video) => dispatch => {
 }
 
 export const deleteVideo = (videoId) => dispatch => {
+    return VideoUtil.deleteVideo(videoId)
+        .then( () => dispatch(removeVideo(videoId)), err => dispatch(receiveVideoErrors(err.responseJSON)))
+}
 
-    return VideoUtil.deleteVideo(videoId).then( () => dispatch(removeVideo(videoId)), err => dispatch(receiveVideoErrors(err.responseJSON)))
+export const searchVideos = (searchInfo) => dispatch => {
+    return VideoUtil.searchVideos(searchInfo)
+        .then( searchVids => dispatch(searchVideoContent(searchVids)))
 }

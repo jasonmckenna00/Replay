@@ -13,6 +13,10 @@ Rails.application.routes.draw do
         resources :likes, only: [:index, :create]
       end
       resources :likes, only: [:index, :create]
+
+      member do 
+        get '/search' => 'videos#search'
+      end
     end
     resource :like, only: [] do
       member do 

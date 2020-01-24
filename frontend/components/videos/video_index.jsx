@@ -22,19 +22,26 @@ class VideoIndex extends React.Component{
 
 
     render(){
-            const { videos, users, fetchUser, loading } = this.props
+            const { videos, users, searchVids, loading, searched } = this.props
             const videosLis = videos.map( video => <VideoIndexItem 
                                                     key={video.id} 
                                                     video={video} 
                                                     user={users[video.user_id]} 
                                                     loading={loading}/>)  
+
+            const searchLis = searchVids.map ( video => <VideoIndexItem 
+                                                    key={video.id} 
+                                                    video={video} 
+                                                    user={users[video.user_id]} 
+                                                    loading={loading}/>)  
             // debugger  
+            const videoOutput = searched ? searchLis : videosLis;
             return <>
                 <div className='splashpage'>
                     {/* <SideBarContainer /> */}
                     <div>
                         <h2 className='video-index-header'> Recommended</h2>
-                        <ul className='videos-container'> {videosLis} </ul>
+                        <ul className='videos-container'> {videoOutput} </ul>
                     </div>
                 </div>
             </>

@@ -48,5 +48,13 @@ export const deleteVideo = (videoId) => {
         url: `/api/videos/${videoId}`
     })
 }
+
+export const searchVideos = (searchInfo)=>{
+    $.ajax({
+        method: 'get',
+        url: '/api/videos/search/',
+        data: searchInfo
+    })
+}
    
 
