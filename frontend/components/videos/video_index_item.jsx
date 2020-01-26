@@ -8,8 +8,6 @@ class VideoIndexItem extends React.Component{
 
 
     render(){
-        // debugger
-    
         const {title, user_id, id, views, created_at} = this.props.video;
         let {user} = this.props;
 

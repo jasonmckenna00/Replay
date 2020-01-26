@@ -50,10 +50,10 @@ export const deleteVideo = (videoId) => {
 }
 
 export const searchVideos = (searchInfo)=>{
-    $.ajax({
+    return $.ajax({
         method: 'get',
         url: '/api/videos/search/',
-        data: searchInfo
+        data: {searchInfo}
     })
 }
    

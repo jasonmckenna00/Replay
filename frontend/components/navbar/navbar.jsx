@@ -14,12 +14,12 @@ class Navbar extends React.Component{
         this.changeSideBar = this.changeSideBar.bind(this)
         this.state = {
             dropdown: false,
-            // search: ''
+            search: ''
             // loggedin: !!this.props.currUser
         }
         this.dropRef = React.createRef()
         this.handleDropDownBlurr = this.handleDropDownBlurr.bind(this);
-        this.handleSearch = this.props.handleSearch.bind(this)
+        this.handleSearch = this.handleSearch.bind(this)
 
     }
 
@@ -87,6 +87,10 @@ class Navbar extends React.Component{
         )
     }
 
+    update(field){
+        return e => this.setState( {[field]: e.target.value})
+    }
+
     handleDropDownBlurr(ref, callback){
         return e => {
             if (!ref.current.contains(e.relatedTarget)) {
@@ -118,10 +122,9 @@ class Navbar extends React.Component{
 
     handleSearch(e){
         e.preventDefault();
-        debugger
-        //e.currentTarget.children[0].value
-        const searchInfo = e.target.value;
-        this.props.searchVideos(searchInfo)
+        // const searchInfo = e.currentTarget.children[0].value;
+        this.props.searchVideos(this.state.search)
+        this.setState({search: ''})
 
     }
 
@@ -157,8 +160,12 @@ class Navbar extends React.Component{
                     
                     <div className='search-bar-container'>
                         <form className='search-bar' onSubmit={this.handleSearch}>
-                            <input type="text" className='search-bar-input' placeholder='Search'/>
-                            <i className="fas fa-search"></i>
+                            <input type="text" 
+                                className='search-bar-input' 
+                                placeholder='Search' 
+                                value={this.state.search}
+                                onChange={this.update('search')}/>
+                            <i className="fas fa-search" onClick={this.handleSearch}></i>
                         </form>
                     </div>
 

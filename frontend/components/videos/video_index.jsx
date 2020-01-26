@@ -28,12 +28,15 @@ class VideoIndex extends React.Component{
                                                     video={video} 
                                                     user={users[video.user_id]} 
                                                     loading={loading}/>)  
-
-            const searchLis = searchVids.map ( video => <VideoIndexItem 
-                                                    key={video.id} 
-                                                    video={video} 
-                                                    user={users[video.user_id]} 
-                                                    loading={loading}/>)  
+            const searchLis = searchVids.map ( (video,i) => {
+                return <VideoIndexItem 
+                            key={i} 
+                            video={video} 
+                            user={users[video.user_id]} 
+                            loading={loading}/>  
+                })
+            
+            
             // debugger  
             const videoOutput = searched ? searchLis : videosLis;
             return <>

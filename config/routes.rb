@@ -8,22 +8,38 @@ Rails.application.routes.draw do
         get '/email' => 'sessions#email'
       end
     end
+
+
     resources :videos, only: [:index, :show, :create, :edit, :update, :destroy] do 
       resources :comments, only: [:create, :update, :destroy,:index] do 
         resources :likes, only: [:index, :create]
       end
       resources :likes, only: [:index, :create]
-
-      member do 
+      collection do 
         get '/search' => 'videos#search'
       end
+
     end
+
     resource :like, only: [] do
       member do 
         delete '/removelike' => 'likes#removelike'
       end 
     end
+
+
+    # resources :videos, only: [] do
+    #   collection do 
+    #     get '/search' => 'videos#search'
+    #   end
+    # end
+
+
+
   end
+
+
+ 
 
   root "static_pages#root"
 end
