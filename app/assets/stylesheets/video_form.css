@@ -2,7 +2,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    
+    margin: 0 auto;
     background-color: white;
 }
 
@@ -37,7 +37,7 @@
     justify-content: left;
     align-items: center;
 }
-.video-upload-drag-outer{
+/* .video-upload-drag-outer{
     width: 70%;
     height: 70%;
     align-items: center;
@@ -45,32 +45,30 @@
     display: flex;
     border-radius: 20px;
     flex-direction: column;
-}
-.video-upload-drag-inner{
+} */
+/* .video-upload-drag-inner{
     width: 40%;
     height: 90%;
     border: 11px dotted gray;
     border-radius: 20px;
     position: relative;
-}
+} */
 
-.uploadvideotext{
+/* .uploadvideotext{
     margin-top: 20px;
     font-size: 30px;
     font-family: roboto
-}
+} */
 
 .video-info-form-container{
     display: flex;
 }
 
 .video-form-details-container{
-    
     width: 536px;
-    height: 100%;
+    /* height: 100%; */
     padding: 50px 48px 24px;
     display: flex;
-
     flex-direction: column;
 }
 
@@ -113,9 +111,9 @@
     font-size: 100px;
 }
 
-.video-upload-drag-inner:hover{
+/* .video-upload-drag-inner:hover{
     border-color: red;
-}
+} */
 
 
 .video-form-description-container{
@@ -147,6 +145,7 @@
     width: 100%;
     margin-top: 10px;
     
+    font-family: roboto;
     display: flex;
     flex-direction: column;
 }
@@ -155,7 +154,6 @@
     font-size: 18px;
     margin: 0;
     font-weight: bold;
-    
     
 }
 
@@ -218,20 +216,21 @@
 }
 
 
-.video-url-upload-container{
+/* .video-url-upload-container{
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
     height: 70%;
 
-}
+} */
 
-.video-file-upload-button{
+
+/* .video-file-upload-button{
     width: 100%;
     height: 100%;
     opacity: 0;
-}
+} */
 
 .video-upload-input{
     border: 1px solid black;
@@ -271,6 +270,47 @@
 
 .thumbnail-preview{
     height: 110px;
-    border: 1px solid black;
-    width: 100px;
+    /* border: 1px solid black; */
+    width: 200px;
 }
+
+.url-preview{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.video-url-upload-container{
+    width: 328px;
+    /* height: 100%; */
+    padding-top: 60px;
+    display: flex;
+    /* border:1px solid black; */
+    flex-direction: column;
+    font-family: roboto;
+}
+
+.video-url-input{
+    flex-direction: column;
+    width: 75%;
+    height: 150px;
+    display: flex;
+    border: 1px solid gray;
+    margin-top: 12px;
+    color: gray;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.video-url-input i{
+    font-size: 50px;
+}
+
+.video-header-text h2{
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+}
+

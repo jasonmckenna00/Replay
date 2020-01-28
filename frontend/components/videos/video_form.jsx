@@ -13,14 +13,16 @@ class VideoForm extends React.Component{
     }
 
     handleVideoFile(e){
-        // debugger
-        const vid = e.target.files[0].name.split('.')
-        // if (vid[vid.length-1] !== 'mp4'){
-        //     return <h2>Must Upload an mp4 file</h2>
-        // } else {
-
-            return this.setState({ videoUrl: e.target.files[0]}) 
-    //     }
+    
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({ videoUrl: file, videoPreview: fileReader.result })
+        }
+        if (file){
+            fileReader.readAsDataURL(file);
+        }
+   
     }
 
     componentWillUnmount(){
@@ -28,7 +30,15 @@ class VideoForm extends React.Component{
     }
 
     handleThumbnailFile(e){
-        return this.setState({ thumbnailUrl: e.target.files[0] })
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+
+            this.setState({ thumbnailUrl: file, thumbnailPreview: fileReader.result })
+        }
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
     }
 
     update(field){
@@ -37,25 +47,24 @@ class VideoForm extends React.Component{
 
 
     videoForm(){
-        return <>
-                <div className='video-url-upload-container'>
-                {/* <label htmlFor='videoupload' className='video-upload-input' >
-                    
-                    <h3>Upload video</h3> 
+        const videoPreview = this.state.videoPreview ? 
+                    <video src={this.state.videoPreview} controls autoPlay 
+                    className='video-show-video' alt="" /> : 
+                    <>
+                        <i className="fas fa-file-video"></i>
+                        <h3>Upload video</h3> 
+                    </>
 
-                </label> */}
-                    <div className='video-upload-drag-outer'>
-                        <div className='video-upload-drag-inner'>
-                            <input type="file" 
-                                onChange={this.handleVideoFile} 
-                                id='videoupload' 
-                                className='video-file-upload-button'/> 
-                                <i className="fas fa-upload"></i>
-                        </div>
-                            <h2 className='uploadvideotext'>Drag in your video</h2>
+        return <>
+                <div className='video-url-upload-container '>
+                    <div className='video-header-text'>
+                        <h2>Video</h2>
                     </div>
-                    
-                
+                    <label htmlFor='video' className={`video-url-input`}>
+                            {videoPreview}
+                    </label>
+                    <input type="file" id='video' onChange={e => this.handleVideoFile(e)}/>
+                    {/* <div className='video-url'></div> */}
                 </div>
 
             
@@ -66,7 +75,6 @@ class VideoForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault()
-
         const formData = new FormData();
         if (this.state.thumbnailUrl) {
             formData.append('video[thumbnail_url]', this.state.thumbnailUrl)
@@ -139,10 +147,12 @@ class VideoForm extends React.Component{
 
     infoForm(){
         let optionButton;
+        let videoForm = null;
         if (this.props.formType === 'Edit Video'){
            optionButton = <h2 onClick={()=>this.deleteCurrVideo(this.props.video.id)} className='next-button video-form-next-button'><p>Delete Video</p></h2>
         } else {
             optionButton = <h2 onClick={()=>this.goBack()} className='next-button video-form-next-button'><p>Go Back</p></h2>
+            videoForm = this.videoForm()
         }
 
 
@@ -153,8 +163,9 @@ class VideoForm extends React.Component{
         const titleClass = titleErr ? 'vid-errors' : ''
         const descripClass = descripErr ? 'vid-errors' : ''
         const thumbClass = thumbErr ? 'vid-errors' : ''
-
-
+        const thumbnailPreview = this.state.thumbnailPreview ? 
+                    <img src={this.state.thumbnailPreview} className='url-preview'/> : null
+        
         return <>
 
             <form className='video-info-form-container'>
@@ -172,7 +183,7 @@ class VideoForm extends React.Component{
                             <h2 className='title-err-message error-message '><p>{titleErr}</p></h2>
 
                     <div className={`${descripClass} video-form-description-container `}>
-                        <h3>Description</h3>
+                        <h3>Description (required)</h3>
                         <textarea className={`video-description `}
                             onChange={this.update('description')}  
                             placeholder='Tell viewers about your video'
@@ -201,20 +212,25 @@ class VideoForm extends React.Component{
                                         <h4 className='thumb-err-message error-message '><p>{thumbErr}</p></h4> 
                                 </div>
 
-                                {/* <div className='thumbnail-preview'></div> */}
+                                <div className='thumbnail-preview'>
+                                    {thumbnailPreview}
+                                </div>
                             </div>
 
                     </div>
-                    <div className='video-form-channel-container'>
-                        {/* <h2>Channel</h2> */}
-                        {/* <h3>Add your video to one or more channels. Channels can help viewers discover your content</h3>    */}
-                    </div>
+                    {/* <div className='video-form-channel-container'>
+                    </div> */}
                     <div className='video-form-footer-container'>
                     {optionButton}
                     <h2 onClick={this.handleSubmit} className='next-button video-form-next-button'><p>Next</p></h2>
                     </div>
                 </div>
                     
+                {/* ------------------------- */}
+                {videoForm}
+
+
+
             </form>
             
         </>
@@ -240,7 +256,7 @@ class VideoForm extends React.Component{
     }
 
     render(){
-        const createForm = this.state.videoUrl ? this.infoForm() :this.videoForm()
+        // const createForm = this.state.videoUrl ? this.infoForm() :this.videoForm()
         // const errorLis = this.props.errors.map( (error,i) => {
         //     return error
         // })
@@ -253,7 +269,7 @@ class VideoForm extends React.Component{
                         <h2 className='video-file-header-text'>{this.props.formType}</h2>
                         <i className="fas fa-times" onClick={() => this.leavePage()}></i>
                     </div>                 
-                        {createForm}
+                        {this.infoForm()}
                         {/* {this.infoForm()} */}
                 </div>
                 

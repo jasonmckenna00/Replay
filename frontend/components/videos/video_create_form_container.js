@@ -7,7 +7,12 @@ const msp = state => {
     return {
         errors: state.errors.videos,
         formType: 'Upload Video',
-        video:  {videoUrl: null, thumbnailUrl: null, title: '', description: '', }
+        video:  {videoUrl: null, 
+                thumbnailUrl: null, 
+                title: '', 
+                description: '', 
+                thumbnailPreview: null,
+                videoPreview: null}
     }
 }
 
