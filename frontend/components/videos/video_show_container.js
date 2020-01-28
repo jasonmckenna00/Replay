@@ -7,7 +7,7 @@ import {addVideoLike, addVideoDisLike, removeVideoLike} from '../../actions/like
 
 
 const msp = (state, ownProps) => {
-    // debugger
+    // 
     let video = state.entities.videos[ownProps.match.params.videoId]
     let user =  video ? state.entities.users[video.user_id] : {}
     video = video ? video : {}
@@ -26,7 +26,7 @@ const msp = (state, ownProps) => {
 
 
 const mdp = dispatch => {
-    // debugger
+    // 
     return {
         fetchAllVideos: () => dispatch(fetchAllVideos()),
         fetchAllUsers: () => dispatch(fetchAllUsers()),

@@ -3,7 +3,7 @@ import VideoIndex from './video_index'
 import * as VidActions from '../../actions/video_actions'
 import * as UserActions from '../../actions/user_actions'
 const msp = state => {
-    // debugger
+    // 
     const searchVids = Object.values(state.ui.searchVids)
     return({
     videos: Object.values(state.entities.videos),

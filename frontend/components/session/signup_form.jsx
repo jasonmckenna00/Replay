@@ -19,7 +19,7 @@ class SignupForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault()
-        // debugger
+        // 
         this.props.createNewUser(this.state)
             .then( () =>this.props.history.push('/'))
     }
@@ -29,13 +29,13 @@ class SignupForm extends React.Component{
     }
 
     renderError(field){
-        // debugger
+        // 
         const errorLis = this.props.errors.map( (error,i) => {
             return error
         })
         switch(field){
             case 'fname':
-                // debugger
+                // 
                 return this.firstNameError(errorLis);
             case 'lname':
                 return this.lastNameError(errorLis);
@@ -53,7 +53,7 @@ class SignupForm extends React.Component{
         errors.forEach( error => {
             if (error.split(' ')[0] === 'First') errMessage = 'Enter first name';
         })
-        // debugger
+        // 
         return errMessage
     }
 

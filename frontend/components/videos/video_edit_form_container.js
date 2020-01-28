@@ -15,7 +15,7 @@ class EditVideoForm extends React.Component{
 
 
     render(){
-        // debugger
+        // 
         const {video, formType, submitVideo, deleteVideo, clearVideoErrors, clearErrors, errors, history} = this.props
         if (!video) return null
         return (

@@ -12,7 +12,6 @@ const msp = (state) => {
 
 
 const mdp = dispatch => {
-    // debugger
     return {
         updateComment: (comment, videoId) => dispatch(updateComment(comment,videoId)),
         deleteComment: (videoId, commentId) => dispatch(deleteComment(videoId, commentId)),

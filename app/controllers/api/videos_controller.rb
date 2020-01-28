@@ -4,7 +4,6 @@ class Api::VideosController < ApplicationController
         @video = Video.includes(:user,{:comments => :likes},:likes, :thumbnail_url_attachment, :thumbnail_url_blob)
             .find(params[:id])
         @video.update(views: @video.views+1)
-        # debugger
         render :show
     end
 
@@ -57,7 +56,6 @@ class Api::VideosController < ApplicationController
     end
 
     def search
-        # debugger
         @videos = Video.joins(:user)
             .where('lower(users.first_name) LIKE ? OR lower(videos.title) LIKE ?', 
                 '%'+params[:searchInfo].downcase+'%', '%'+params[:searchInfo].downcase+'%' )

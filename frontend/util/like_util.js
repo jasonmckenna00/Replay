@@ -1,7 +1,7 @@
 
 
 export const addCommentLike = comment => {
-    // debugger
+    // 
     return $.ajax({
         method: 'post',
         url: `/api/videos/${comment.video_id}/comments/${comment.id}/likes`,
@@ -10,7 +10,7 @@ export const addCommentLike = comment => {
 }
 
 export const addCommentDisLike = comment => {
-    // debugger
+    // 
     return $.ajax({
         method: 'post',
         url: `/api/videos/${comment.video_id}/comments/${comment.id}/likes`,

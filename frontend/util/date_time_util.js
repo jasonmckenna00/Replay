@@ -1,7 +1,7 @@
 
 
 function convertToOffset (rails_date){
-    // debugger
+    // 
     if (!rails_date) return null
     const postDate = new Date (rails_date).getTime();
     const currDate = Date.now();

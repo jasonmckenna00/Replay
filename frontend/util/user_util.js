@@ -11,7 +11,7 @@ return(
 )}
 
 export const fetchUserById = (userId) => {
-    // debugger
+    // 
     return(
         $.ajax({
             method: 'get',

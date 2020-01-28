@@ -3,7 +3,7 @@
 //deletesession
 
 export const postUser = (user) => {
-    // debugger
+    // 
     return(
     $.ajax({
         method: 'post',
@@ -13,7 +13,7 @@ export const postUser = (user) => {
 )}
 
 export const postSession = user => {
-    // debugger
+    // 
     return(
     $.ajax({
         method: 'post',
@@ -23,7 +23,7 @@ export const postSession = user => {
 )}
 
 export const deleteSession = () => {
-    // debugger
+    // 
     return(
     $.ajax({
         method: 'delete',

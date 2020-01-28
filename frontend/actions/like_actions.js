@@ -8,7 +8,6 @@ export const RECEIVE_VIDEO_LIKE = 'RECEIVE_VIDEO_LIKE';
 export const REMOVE_VIDEO_LIKE = 'REMOVE_VIDEO_LIKE';
 
 const receiveCommentLike = payload =>{
-    // debugger
     return {
         type: RECEIVE_COMMENT_LIKE,
         payload
@@ -16,7 +15,6 @@ const receiveCommentLike = payload =>{
 }
 
 const destroyCommentLike = payload =>{
-    // debugger
     return {
         type: REMOVE_COMMENT_LIKE,
         payload
@@ -24,7 +22,6 @@ const destroyCommentLike = payload =>{
 }
 
 const receiveVideoLike = payload =>{
-    // debugger
     return {
         type: RECEIVE_VIDEO_LIKE,
         payload
@@ -32,7 +29,6 @@ const receiveVideoLike = payload =>{
 }
 
 const destroyVideoLike = payload =>{
-    // debugger
     return {
         type: REMOVE_VIDEO_LIKE,
         payload
@@ -81,7 +77,6 @@ export const addVideoDisLike = (Video) => dispatch =>{
 }
 
 export const removeVideoLike = (VideoId) => dispatch =>{
-    // debugger
     return LikeUtil.removeLike(VideoId, "Video")
         .then( payload => {
 

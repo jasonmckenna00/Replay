@@ -37,7 +37,7 @@ class VideoIndex extends React.Component{
                 })
             
             
-            // debugger  
+            //   
             const videoOutput = searched ? searchLis : videosLis;
             return <>
                 <div className='splashpage'>

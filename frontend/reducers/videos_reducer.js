@@ -7,7 +7,7 @@ export default (state = {}, action) => {
         case RECEIVE_VIDEOS:
             return Object.assign({}, state, action.payload.videos);
         case RECEIVE_VIDEO:
-            // debugger
+            // 
             if (!action.payload.video) return state
             return Object.assign({},state, {[action.payload.video.id]: action.payload.video});
         case REMOVE_VIDEO:
@@ -18,7 +18,7 @@ export default (state = {}, action) => {
             if (!action.payload.video) return state
             return Object.assign({}, state, {[action.payload.video.id]: action.payload.video})
         case REMOVE_VIDEO_LIKE:
-            // debugger
+            // 
             if (!action.payload.video) return state
             return Object.assign({}, state, {[action.payload.video.id]: action.payload.video})
             

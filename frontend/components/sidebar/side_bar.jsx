@@ -37,7 +37,7 @@ class Sidebar extends React.Component{
     // }
 
     render(){
-        // debugger
+        // 
         const display = this.props.isOpen ? 'sidebar-open' : 'sidebar-closed';
         const extended = this.props.isOpen ? 'sidebar-extended' : ''
         return <div className={display}> 

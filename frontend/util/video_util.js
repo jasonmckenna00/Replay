@@ -21,7 +21,7 @@ export const getVideos = () => (
 )
 
 export const postVideo = (video) => {
-    // debugger
+    // 
     return( $.ajax({
         method: 'post',
         url: `/api/videos/`,

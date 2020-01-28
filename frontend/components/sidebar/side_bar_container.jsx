@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import Sidebar from './side_bar'
 
 const msp = state =>{
-    // debugger
+    // 
     return {
         isOpen: state.ui.sidebar.isOpen
 

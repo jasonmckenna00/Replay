@@ -19,7 +19,6 @@ class CommentIndexItem extends React.Component{
     }
 
     componentDidMount(){
-        // debugger
         if (!this.props.currentUser) return null
         Object.values(this.props.comment.likes.likers).forEach( liker => {
             if (liker.user_id === this.props.currentUser.id){

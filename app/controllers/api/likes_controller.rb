@@ -28,7 +28,6 @@ class Api::LikesController < ApplicationController
     end
 
     def removelike
-        # debugger
         if params[:type] == "Comment"
             @like = current_user.find_like(params[:id],params[:type])
             @like.destroy

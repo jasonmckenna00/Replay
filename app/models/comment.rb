@@ -25,7 +25,6 @@ class Comment < ApplicationRecord
     def count_likes
         count = 0
         self.likes.each do |obj|
-            # debugger
             if obj.liked
                 count += 1
             else
