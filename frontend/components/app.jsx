@@ -17,19 +17,23 @@ const App = () =>(
         <NavbarContainer />
         {/* <NavbarContainer />
         <Route exact path="/" component={VideoIndex} />
-        <AuthRoute path='/signup' component= {SignupContainer} /> */}
+    <AuthRoute path='/signup' component= {SignupContainer} /> */}
         {/* <ProtectedRoute path='/createvideo' component= {SignupContainer} />  */}
+        <div className='dom-body'>
+            <SideBarContainer />
 
-        <Switch>
-            <AuthRoute exact path="/login" component={LoginContainer}/>
-            <AuthRoute exact path="/signup" component={SignupContainer}/>
-            <ProtectedRoute path='/uploadvideo' component={VideoCreateFormContainer} />
-            <Route exact path='/videos/:videoId' component={VideoShowContainer} />
-            <Route exact path='/videos/:videoId/edit' component={VideoEditFormContainer} />
-            <Route exact path='/users/:userId' component={UserShowContainer} />
-            <Route exact path='/videos/search' component={VideoIndexContainer} />
-            <Route exact path="/" component={VideoIndexContainer}/>
-        </Switch>
+            <Switch>
+                <AuthRoute exact path="/login" component={LoginContainer}/>
+                <AuthRoute exact path="/signup" component={SignupContainer}/>
+                <ProtectedRoute path='/uploadvideo' component={VideoCreateFormContainer} />
+                <Route exact path='/videos/:videoId' component={VideoShowContainer} />
+                <Route exact path='/videos/:videoId/edit' component={VideoEditFormContainer} />
+                <Route exact path='/users/:userId' component={UserShowContainer} />
+                <Route exact path='/videos/search' component={VideoIndexContainer} />
+                <Route exact path="/" component={VideoIndexContainer}/>
+            </Switch>
+
+        </div>
        
     </>
 )

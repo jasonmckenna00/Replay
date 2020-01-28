@@ -4,7 +4,18 @@
     }
 } */
 
+.dom-body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
 
+.dom{
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+}
 
 .navbar-container{
     height: 56px;
@@ -156,59 +167,56 @@
     background-color: white;
 }
 
-.dropdown-header{
-    display: flex;
-    padding: 16px;
-    align-items: center;
-}
+    .dropdown-header{
+        display: flex;
+        padding: 16px;
+        align-items: center;
+    }
 
-.dropdown-user-icon{
-    font-size: 38px;
-    padding: 10px;
-    color: #7E2115
-}
+    .dropdown-user-icon{
+        font-size: 38px;
+        padding: 10px;
+        color: #7E2115
+    }
 
-.dropdown-header-userinfo{
-    flex-direction: column;
-    padding: 16px 10px;
-}
+    .dropdown-header-userinfo{
+        flex-direction: column;
+        padding: 16px 10px;
+    }
 
-.dropdown-email{
-    margin-top: 5px
-}
-
-.dom{
-    display: flex;
-    position: relative;
-    justify-content: flex-end;
-}
-
-.dropdown-body{
-    border: 1px solid lightgray;
-    display: flex;
-    flex-direction: column;
-    color: gray;
-}
-
-.dropdown-body > div{
-
-    height: 40px;
-    width: 266px;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0px 16px;
-    flex-direction: row;
-    display: flex;
-}
-.dropdown-body > div:hover{
-    background: lightgray;
-    cursor: pointer;
-}
+    .dropdown-email{
+        margin-top: 5px
+    }
 
 
-.dropdown-body > div > .fas{
-    font-size: 25px;
-}
+
+    .dropdown-body{
+        border: 1px solid lightgray;
+        display: flex;
+        flex-direction: column;
+        color: gray;
+        font-family: roboto;
+    }
+
+    .dropdown-body > div{
+
+        height: 40px;
+        width: 266px;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0px 16px;
+        flex-direction: row;
+        display: flex;
+    }
+    .dropdown-body > div:hover{
+        background: lightgray;
+        cursor: pointer;
+    }
+
+
+    .dropdown-body > div > .fas{
+        font-size: 25px;
+    }
 
 .fa-portrait{
     padding-right: 15px;
