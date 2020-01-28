@@ -32,6 +32,7 @@ class VideoForm extends React.Component{
     handleThumbnailFile(e){
         const file = e.target.files[0];
         const fileReader = new FileReader();
+        debugger
         fileReader.onloadend = () => {
 
             this.setState({ thumbnailUrl: file, thumbnailPreview: fileReader.result })
@@ -48,7 +49,7 @@ class VideoForm extends React.Component{
 
     videoForm(){
         const videoPreview = this.state.videoPreview ? 
-                    <video src={this.state.videoPreview} controls autoPlay 
+                    <video src={this.state.videoPreview} controls  
                     className='video-show-video' alt="" /> : 
                     <>
                         <i className="fas fa-file-video"></i>
@@ -76,7 +77,7 @@ class VideoForm extends React.Component{
     handleSubmit(e){
         e.preventDefault()
         const formData = new FormData();
-        if (this.state.thumbnailUrl) {
+        if (typeof this.state.thumbnailUrl === 'object') {
             formData.append('video[thumbnail_url]', this.state.thumbnailUrl)
         }
 
@@ -244,8 +245,9 @@ class VideoForm extends React.Component{
 
     goBack(){
         // debugger
-        this.props.clearVideoErrors()
-        this.setState({videoUrl: ''})
+        this.props.clearVideoErrors();
+        window.history.back()
+        // this.setState({videoUrl: ''})
     }
 
     deleteCurrVideo(videoId){

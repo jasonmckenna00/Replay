@@ -33,9 +33,10 @@ class EditVideoForm extends React.Component{
 
 
 const msp = (state, ownProps) => {
-
-    let video = state.entities.videos[ownProps.match.params.videoId];
-    if (video) (delete video.thumbnailUrl)
+    let video;
+    let videoFetch = state.entities.videos[ownProps.match.params.videoId];
+    if (videoFetch) (video = Object.assign({}, videoFetch, {thumbnailPreview: videoFetch.thumbnailUrl}))
+    
     return {
         video,
         formType: 'Edit Video',
