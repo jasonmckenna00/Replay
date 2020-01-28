@@ -23,7 +23,6 @@
 }
 
 .comment-form input{
-    padding-bottom: 4px;
     font-size: 16px;
     /* border-bottom: 1px solid gray; */
     background-color: transparent;
@@ -34,6 +33,28 @@
     border-bottom: 1px solid gray;
     word-wrap: break-word;
 }
+
+.comment-button{
+    border: none;
+    outline: none;
+    width: 117px;
+    background-color: #1A73E8;
+    font-weight: 500;
+    color: white;
+    border-radius: 6px;
+    font-family: "Roboto";
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-right: 7px;
+}
+
+.comment-button:hover{
+    cursor: pointer;
+}
+
 
 .edit-comment-form{
     margin-top: 10px;

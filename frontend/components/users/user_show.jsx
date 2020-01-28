@@ -1,6 +1,7 @@
 import React from 'react';
 import UserShowIndexItem from './user_show_index_item';
 import convertToOffset from '../../util/date_time_util';
+import {Link} from 'react-router-dom'
 
 class UserShow extends React.Component{
     constructor(props){
@@ -80,7 +81,9 @@ class UserShow extends React.Component{
                             {/* <video src={firstVid.videoUrl} controls autoPlay className='video-show-video' alt="" /> */}
                         </div>
                         <div className='user-show-first-video-info'>
-                            <h2 className='user-show-first-video-title'>{firstVidTitle}</h2>
+                            <Link to={`/videos/${firstVid.id}`}>
+                                <h2 className='user-show-first-video-title'>{firstVidTitle}</h2>
+                            </Link>
                             <h3 className='user-show-first-video-stats'> {firstVidViews + ' views' } • {firstVidCreatedAt}</h3>
                             <p className='user-show-first-video-description'>
                             {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  */}

@@ -21,22 +21,11 @@ json.set! 'user' do
 end
 
 
-# json.comments do 
-#     @video.comments.each do |comment|
-#         json.set! comment.id do
-#             json.extract! comment, :id, :body, :user_id
-#             json.likes do 
-#                 json.counter comment.count_likes
-#                 json.likers comment.likers
-#             end
-#         end
-#     end
-# end
-
 json.comments do 
     @video.comments.each do |comment|
         json.set! comment.id do
             json.extract! comment, :id, :body, :user_id
+            json.created_at comment.created_at.to_s
             json.likes do 
                 json.counter comment.count_likes
                 json.likers comment.likers

@@ -31,7 +31,7 @@ class CommentForm extends React.Component{
                                     placeholder='Add a public comment...'
                                     onChange={this.update('body')}
                                     value={this.state.body}/>
-                            <button type='submit'>Add Comment</button>
+                            <button className='comment-button' type='submit'>Add Comment</button>
                         </form >
                 </div>
     }

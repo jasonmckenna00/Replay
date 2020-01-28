@@ -16,7 +16,8 @@ class VideoShowPreview extends React.Component{
                 <img src={this.props.video.thumbnailUrl} className='video-preview-thumbnail' alt="" />
             </Link>
             <div className='video-preview-info'>
-                <h3 className='video-preview-title'>{title}</h3>
+                <Link to={`/videos/${id}`}><h3 className='video-preview-title'>{title}</h3></Link>
+                
                 <h3 className='video-preview-username'>{name}</h3>
                 <h3 className='video-preview-username'>Recommended for you</h3>
             </div>

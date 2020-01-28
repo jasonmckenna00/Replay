@@ -1,6 +1,8 @@
 import React from 'react'
 // import { updateComment } from '../../actions/comment_actions'
 import EditCommentForm from './edit_comment_form'
+import convertToOffset from '../../util/date_time_util';
+
 
 class CommentIndexItem extends React.Component{
     constructor(props){
@@ -98,7 +100,6 @@ class CommentIndexItem extends React.Component{
         const letter = `${commentAuthor.first_name[0]}`;
         const upVoted = this.state.upVoted ? 'upvoted' : '';
         const downVoted = (this.state.upVoted === false )? 'downvoted' : '';
-        
     return <>
         <div className='comment-index-item'>
             <div className='comment-pro-pic-container'>
@@ -108,7 +109,7 @@ class CommentIndexItem extends React.Component{
             <div className='comment-body-container'>
                 <div className='comment-user-name-container'>
                     <h2 className='comment-user-name'>{commenter}</h2>
-                    <h2 className='comment-date-posted'>2 days ago</h2>
+                    <h2 className='comment-date-posted'>{convertToOffset(comment.created_at)}</h2>
                 </div>
                 {commentBody}
                 <div className='comment-like-reply-container'>

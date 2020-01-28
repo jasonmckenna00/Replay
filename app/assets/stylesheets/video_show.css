@@ -42,6 +42,10 @@
 
 }
 
+.video-preview a {
+    text-decoration: none;
+}
+
 .video-preview-thumbnail-link{
     height: 94px;
     width: 168px;
@@ -68,6 +72,7 @@
     font-size: 15px;
     color: black;
     padding: 5px 0px;
+    text-decoration: none;
 }
 
 .video-preview-username{
@@ -171,6 +176,7 @@
 .video-show-pro-pic{
     height: 48px;
     width: 48px;
+    margin-top: 0px;
     /* border: 1px solid black; */
     
 }
@@ -228,6 +234,9 @@
         flex-direction: column;
     }
 
+    .video-show-right-container{
+        display: none;
+    }
     .video-show-left-container{
         width: 100%;
     }
