@@ -27,6 +27,7 @@ const App = () =>(
             <Route exact path='/videos/:videoId' component={VideoShowContainer} />
             <Route exact path='/videos/:videoId/edit' component={VideoEditFormContainer} />
             <Route exact path='/users/:userId' component={UserShowContainer} />
+            <Route exact path='/videos/search' component={VideoIndexContainer} />
             <Route exact path="/" component={VideoIndexContainer}/>
         </Switch>
        

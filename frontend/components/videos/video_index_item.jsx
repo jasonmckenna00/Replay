@@ -31,8 +31,8 @@ class VideoIndexItem extends React.Component{
                     </Link>
 
                     <div className='video-play-info'>
-                       <h2 className='video-views'>{views} views •</h2>
-                       <h2 className='video-posted'> {convertToOffset(created_at)}</h2>
+                       <h2 className='video-views'>{views} views • </h2>
+                       <h2 className='video-posted'>{' ' +convertToOffset(created_at)}</h2>
                     </div>
                 </div>
             </div>

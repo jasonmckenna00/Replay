@@ -158,7 +158,7 @@ jason4 = Video.new({ title: 'Longest Palindromic Substring P1', description: lor
     jason4.video_url.attach(io: jason4_video_url, filename: 'Longest+Palindromic+Substring+part1.mp4')
     jason4.save!
 
-jason5 = Video.new({ title: 'Longest Palindromic Substring P1', description: lorem,user_id: jason.id})
+jason5 = Video.new({ title: 'Longest Palindromic Substring P2', description: lorem,user_id: jason.id})
     jason5_thumbnail_url = open("https://replay-videos-seeds.s3.amazonaws.com/longest_pal_substr_thumbnail.png")
     jason5_video_url = open("https://replay-videos-seeds.s3.amazonaws.com/Longest+Palindromic+Substring+part2.mp4")
     jason5.thumbnail_url.attach(io: jason5_thumbnail_url, filename: 'longest_pal_substr_thumbnail.png')

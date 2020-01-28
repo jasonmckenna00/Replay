@@ -82,13 +82,17 @@
 
 .video-show-video-container{
     border: 1px solid black;
+    background-color: black;
     width: 100%;
     height: auto;
+    max-height: 750px;
 }
 
 .video-show-video{
     width: 100%;
     height: auto;
+    max-height: 750px;
+
     flex-shrink: 1;
 }
 

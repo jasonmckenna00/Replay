@@ -123,8 +123,15 @@ class Navbar extends React.Component{
     handleSearch(e){
         e.preventDefault();
         // const searchInfo = e.currentTarget.children[0].value;
-        this.props.searchVideos(this.state.search)
-        this.setState({search: ''})
+        if (!!this.state.search){
+            this.props.history.push('/')
+
+            // debugger
+            this.props.searchVideos(this.state.search)
+            
+            this.setState({search: ''})
+        }
+        
 
     }
 
