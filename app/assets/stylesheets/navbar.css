@@ -213,11 +213,21 @@
         cursor: pointer;
     }
 
+    .dropdown-body > div > a{
+        text-decoration: none;
+        color: gray;
+        width: 100%;
+        line-height: 2.5;
+    }
 
-    .dropdown-body > div > .fas{
+    .dropdown-body > div > .fas .fab{
         font-size: 25px;
     }
 
+    .dropdown-body > div > i{
+        font-size: 25px;
+        padding: 8px;
+    }
 .fa-portrait{
     padding-right: 15px;
     font-size: 28px;

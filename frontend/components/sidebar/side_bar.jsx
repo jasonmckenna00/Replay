@@ -41,6 +41,7 @@ class Sidebar extends React.Component{
         const display = this.props.isOpen ? 'sidebar-open' : 'sidebar-closed';
         const extended = this.props.isOpen ? 'sidebar-extended' : ''
         return <div className={display}> 
+                    
                     <a className={`sidebar-item ${extended}`} href="https://www.linkedin.com/in/jason-mckenna-69b5a1117/"  target='_blank'>
                         <i className="fab fa-linkedin sidebar-icon"></i>
                         <h3>LinkedIn</h3>
