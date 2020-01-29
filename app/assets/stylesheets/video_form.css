@@ -245,9 +245,6 @@
     margin-top: 35px;
 }
 
-.vid-errors{
-    border: 2px solid red;
-}
 
 .thumb-err-message{
     font-size: 13px;
@@ -314,3 +311,11 @@
     font-weight: bold;
 }
 
+.video-url-input video{
+    max-height: 150px;
+    background-color: black;
+}
+
+.vid-errors{
+    border: 2px solid red;
+}

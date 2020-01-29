@@ -183,10 +183,10 @@ class Navbar extends React.Component{
                         {/* <div className='apps-icon'>
                             <i className="fas fa-th"></i> 
                         </div> */}
-                        <div className='settings-icon'>
+                        {/* <div className='settings-icon'>
                             
                             <i className="fas fa-ellipsis-v"></i>
-                        </div>
+                        </div> */}
                         {this.loginStatus()}
                     </div>
                 </div>

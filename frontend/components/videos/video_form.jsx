@@ -5,6 +5,8 @@ class VideoForm extends React.Component{
     constructor(props){
         super(props)
         this.state = this.props.video
+        // this.thumbnailErrors = false;
+        // this.videoErrors = false;
         this.handleVideoFile = this.handleVideoFile.bind(this);
         this.handleThumbnailFile = this.handleThumbnailFile.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -13,8 +15,15 @@ class VideoForm extends React.Component{
     }
 
     handleVideoFile(e){
-    
+        debugger
         const file = e.target.files[0];
+        // if (file.type !== 'video/mp4'){
+        //     debugger
+        //     this.videoErrors = true;
+        //     return 
+        // } 
+        this.videoErrors = false;
+
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
             this.setState({ videoUrl: file, videoPreview: fileReader.result })
@@ -24,6 +33,11 @@ class VideoForm extends React.Component{
         }
    
     }
+
+    // checkFileFormat(file){
+    //     const arr = file.name.split('.').split('.');
+    //     file
+    // }
 
     componentWillUnmount(){
         this.props.clearErrors()
@@ -48,23 +62,27 @@ class VideoForm extends React.Component{
 
 
     videoForm(){
+        const videoErr = this.renderError('video')
+        const videoClass = (videoErr) ? 'vid-errors' : ''
         const videoPreview = this.state.videoPreview ? 
                     <video src={this.state.videoPreview} controls  
-                    className='video-show-video' alt="" /> : 
+                    className='video-show-video ' alt="" /> : 
                     <>
                         <i className="fas fa-file-video"></i>
                         <h3>Upload video</h3> 
                     </>
 
         return <>
-                <div className='video-url-upload-container '>
+                <div className={`video-url-upload-container`}>
                     <div className='video-header-text'>
                         <h2>Video</h2>
                     </div>
-                    <label htmlFor='video' className={`video-url-input`}>
+                    <label htmlFor='video' className={` video-url-input ${videoClass} `}>
                             {videoPreview}
                     </label>
                     <input type="file" id='video' onChange={e => this.handleVideoFile(e)}/>
+                    <h4 className='thumb-err-message error-message '><p>{videoErr}</p></h4> 
+
                     {/* <div className='video-url'></div> */}
                 </div>
 
@@ -114,6 +132,8 @@ class VideoForm extends React.Component{
                 return this.descriptionError(errorLis);
             case 'thumb':
                 return this.thumbnail(errorLis);
+            case 'video':
+                return this.videoError(errorLis)
             default: return '';
 
         }
@@ -127,6 +147,16 @@ class VideoForm extends React.Component{
         // debugger
         return errMessage
     }
+
+    videoError(errors){
+        let errMessage =''
+        errors.forEach( error => {
+            if (error.split(' ')[0] === 'Videos') errMessage = "Video can't be blank";
+        })
+        // 
+        return errMessage
+    }
+
     descriptionError(errors){
         let errMessage =''
         errors.forEach( error => {
