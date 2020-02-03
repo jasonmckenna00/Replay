@@ -93,6 +93,7 @@ class VideoForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault()
+        this.props.clearErrors()
         const formData = new FormData();
         if (typeof this.state.thumbnailUrl === 'object') {
             formData.append('video[thumbnail_url]', this.state.thumbnailUrl)
@@ -156,14 +157,13 @@ class VideoForm extends React.Component{
                 if (msg[4] === 'under') {
                     msg.shift()
                     errMessage = msg.join(' ')
-                }   else if (msg[4] === 'mp4'){
+                } else if (msg[4] === 'mp4'){
                     msg.shift()
                     errMessage = msg.join(' ')
                 } else {
                     errMessage = "Video can't be blank"
                 }
             }
-            // if ((error.split(' ')[0] === 'Videos'))
         })
         // 
         return errMessage
@@ -181,7 +181,18 @@ class VideoForm extends React.Component{
     thumbnail(errors){
         let errMessage =''
         errors.forEach( error => {
-            if (error.split(' ')[0] === 'Videos') errMessage = "Thumbnail can't be blank";
+            const msg = error.split(' ');
+
+            if (msg[0] === 'Thumbnail') {
+                if (msg[1] === 'Must'){
+                    errMessage = "Thumbnail can't be blank";
+                } else {
+                    msg.shift()
+                    errMessage = msg.join(' ')
+                }
+            }
+
+            
         })
         // debugger
         return errMessage
