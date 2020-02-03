@@ -1,13 +1,13 @@
-import { SEARCH_VIDEO_CONTENT, RECEIVE_VIDEOS } from "../actions/video_actions";
+import { SEARCH_VIDEO_CONTENT, CLEAR_SEARCH_CONTENT } from "../actions/video_actions";
 
 export default (state = [], action) => {
     switch(action.type){
         case SEARCH_VIDEO_CONTENT:
             return action.searchVids;
-        case RECEIVE_VIDEOS:
-            return state
+        case CLEAR_SEARCH_CONTENT:
+            return []
         default: 
-            return [];
+            return state;
     }
 }
 

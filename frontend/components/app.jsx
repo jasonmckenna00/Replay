@@ -13,13 +13,8 @@ import VideoEditFormContainer from './videos/video_edit_form_container';
 import UserShowContainer from './users/user_show_container';
 import VideoSearchContainer from './videos/video_search_container';
 
-const App = () =>(
-    <>
+const App = () => <>
         <NavbarContainer />
-        {/* <NavbarContainer />
-        <Route exact path="/" component={VideoIndex} />
-    <AuthRoute path='/signup' component= {SignupContainer} /> */}
-        {/* <ProtectedRoute path='/createvideo' component= {SignupContainer} />  */}
         <div className='dom-body'>
             <SideBarContainer />
 
@@ -33,8 +28,7 @@ const App = () =>(
             <Route path='/videos/search/:searchInfo' component={VideoSearchContainer} />
             <Route exact path="/" component={VideoIndexContainer}/>
         </Switch>
-       
+       </div>
     </>
-)
 
 export default App

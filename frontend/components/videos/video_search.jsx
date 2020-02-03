@@ -19,6 +19,10 @@ class VideoSearch extends React.Component{
         }
     }
 
+    componentWillUnmount(){
+        this.props.clearSearchContent()
+    }
+
     render(){
         if (!this.props.videos) return null;
         const {searchVids, users} = this.props;

@@ -12,7 +12,8 @@ export const RECEIVE_VIDEO_ERRORS = 'RECEIVE_VIDEO_ERRORS'
 export const REMOVE_VIDEO = 'REMOVE_VIDEO';
 export const UPDATE_VIDEO = 'UPDATE_VIDEO';
 export const CLEAR_VIDEO_ERRORS = 'CLEAR_VIDEO_ERRORS';
-export const SEARCH_VIDEO_CONTENT = 'SEARCH_VIDEO_CONTENT'
+export const SEARCH_VIDEO_CONTENT = 'SEARCH_VIDEO_CONTENT';
+export const CLEAR_SEARCH_CONTENT = 'CLEAR_SEARCH_CONTENT'
 
 const receiveVideo = (payload) => {
     return {
@@ -44,6 +45,12 @@ const searchVideoContent = (searchVids) => {
     return {
         type: SEARCH_VIDEO_CONTENT,
         searchVids
+    }
+}
+
+export const clearSearchContent = () => {
+    return{
+        type: CLEAR_SEARCH_CONTENT
     }
 }
 

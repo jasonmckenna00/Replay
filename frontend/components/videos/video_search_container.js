@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import * as VidActions from '../../actions/video_actions'
 import VideoSearch from './video_search';
-import {searchVideos} from '../../actions/video_actions'
+import {searchVideos, clearSearchContent} from '../../actions/video_actions'
 
 
 
@@ -20,8 +20,8 @@ const mdp = dispatch => {
 
     return{
         fetchAllVideos: () => dispatch(VidActions.fetchAllVideos()),
-        searchVideos: (searchInfo) => dispatch(searchVideos(searchInfo))
-
+        searchVideos: (searchInfo) => dispatch(searchVideos(searchInfo)),
+        clearSearchContent: () => dispatch(clearSearchContent())
     }
 }
 
