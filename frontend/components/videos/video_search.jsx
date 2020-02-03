@@ -5,12 +5,32 @@ import convertToOffset from '../../util/date_time_util';
 class VideoSearch extends React.Component{
 
     componentDidMount(){
+        const searchInfo = this.props.match.params.searchInfo
+        const that = this;
         this.props.fetchAllVideos()
-            .then( () => this.props.match.params.searchInfo)
+            .then( () => that.props.searchVideos(searchInfo))
 
     }
 
-    searchIndexItem(video){
+    render(){
+        if (!this.props.videos) return null;
+        const {searchVids} = this.props;
+        const searchLis = searchVids.map((video,i) => <SearchIndexItem video={video} key={i}/>)
+        return <div className='video-search-container'>
+            <h3> Related Searches </h3>
+            {searchLis}
+
+        </div>
+    }
+
+}
+
+
+
+class SearchIndexItem extends React.Component{
+
+    render(){
+        const {video} = this.props
         return <div className='video-search-index-item'>
                     <div className= 'video-search-index-thumbnail'>
                         <img src={video.thumbnailUrl} className='video-thumbnail' alt="" />
@@ -28,17 +48,6 @@ class VideoSearch extends React.Component{
                     </div>
                 </div>
     }
-    render(){
-        if (!this.props.videos) return null;
-        const {searchVids} = this.props;
-        const searchLis = searchVids.map(video => this.searchIndexItem(video))
-        return <div className='video-search-container'>
-            <h3> Related Searches </h3>
-            {searchLis}
-
-        </div>
-    }
-
 }
 
 export default VideoSearch

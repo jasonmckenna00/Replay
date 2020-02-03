@@ -11,7 +11,7 @@ import VideoShowContainer from './videos/video_show_container';
 import SideBarContainer from './sidebar/side_bar_container';
 import VideoEditFormContainer from './videos/video_edit_form_container';
 import UserShowContainer from './users/user_show_container';
-import video_search_container from './videos/video_search_container';
+import VideoSearchContainer from './videos/video_search_container';
 
 const App = () =>(
     <>
@@ -28,7 +28,7 @@ const App = () =>(
             <Route exact path='/videos/:videoId' component={VideoShowContainer} />
             <Route exact path='/videos/:videoId/edit' component={VideoEditFormContainer} />
             <Route exact path='/users/:userId' component={UserShowContainer} />
-            <Route path='/videos/?video-OR-user=' component={video_search_container} />
+            <Route path='/videos/search/:searchInfo' component={VideoSearchContainer} />
             <Route exact path="/" component={VideoIndexContainer}/>
         </Switch>
        

@@ -57,7 +57,7 @@ class Api::VideosController < ApplicationController
     end
 
     def search
-        # debugger
+
         @videos = Video.joins(:user)
             .where('lower(users.first_name) LIKE ? OR lower(videos.title) LIKE ?', 
                 '%'+params[:searchInfo].downcase+'%', '%'+params[:searchInfo].downcase+'%' )

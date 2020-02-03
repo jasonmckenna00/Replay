@@ -124,7 +124,7 @@ class Navbar extends React.Component{
         e.preventDefault();
         if (!!this.state.search){
             this.props.searchVideos(this.state.search)
-            this.props.history.push(`/videos/${this.state.search}`)
+            this.props.history.push(`/videos/search/${this.state.search}`)
             this.setState({search: ''})
         }
         
