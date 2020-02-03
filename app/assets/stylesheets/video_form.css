@@ -294,7 +294,6 @@
     height: 150px;
     display: flex;
     border: 1px solid gray;
-    margin-top: 12px;
     color: gray;
     justify-content: center;
     align-items: center;
@@ -305,10 +304,22 @@
     font-size: 50px;
 }
 
+.video-header-text{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
 .video-header-text h2{
     font-size: 18px;
     margin: 0;
-    font-weight: bold;
+    font-weight: bold;    
+}
+
+.video-header-text h3{
+    font-size: 14px;
+    padding: 0px 0px 6px;
+    color: gray;
+    line-height: 15px;
 }
 
 .video-url-input video{

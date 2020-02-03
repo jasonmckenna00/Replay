@@ -75,6 +75,7 @@ class VideoForm extends React.Component{
                 <div className={`video-url-upload-container`}>
                     <div className='video-header-text'>
                         <h2>Video</h2>
+                        <h3>Select or upload a video that is less than 10 Mb and .mp4 format</h3>
                     </div>
                     <label htmlFor='video' className={` video-url-input ${videoClass} `}>
                             {videoPreview}
@@ -275,8 +276,8 @@ class VideoForm extends React.Component{
                     {/* <div className='video-form-channel-container'>
                     </div> */}
                     <div className='video-form-footer-container'>
-                    {optionButton}
-                    <h2 onClick={this.handleSubmit} className='next-button video-form-next-button'><p>Next</p></h2>
+                         {optionButton}
+                        <h2 onClick={this.handleSubmit} className='next-button video-form-next-button'><p>Next</p></h2>
                     </div>
                 </div>
                     
