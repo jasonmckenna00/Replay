@@ -1,0 +1,49 @@
+.video-search-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    background-color: #F9F9F9;
+    font-family: roboto;
+    align-items: center;
+}
+
+.video-search-container h3{
+    font-weight: 500;
+}
+
+.video-search-index-item{
+    width: 50%;
+    height: 138px;
+    display: flex;
+    flex-direction: row;
+    margin: 25px auto;
+    font-family: roboto;
+}
+
+.video-search-index-thumbnail{
+    width: 350px;
+    height: 138px;
+    margin-right: 15px;
+}
+
+.video-search-info-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.vpi-search-video{
+    margin:10px 0px 15px
+}
+.video-search-user{
+    margin-right: 10px;
+}
+.description-container-search{
+    overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

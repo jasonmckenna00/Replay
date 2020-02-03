@@ -3,14 +3,12 @@ import VideoIndex from './video_index'
 import * as VidActions from '../../actions/video_actions'
 import * as UserActions from '../../actions/user_actions'
 const msp = state => {
-    // 
-    const searchVids = Object.values(state.ui.searchVids)
+    // debugger
     return({
     videos: Object.values(state.entities.videos),
     users: state.entities.users,
     loading: state.ui.loading,
-    searchVids,
-    searched: searchVids.length? true: false
+
     
 })}
 
