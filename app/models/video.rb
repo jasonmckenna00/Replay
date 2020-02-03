@@ -3,7 +3,7 @@ class Video < ApplicationRecord
     validates :title, :description, presence: true
     validate :ensure_video
     validate :ensure_thumbnail
-    validate :ensure_format
+    # validate :ensure_format
     has_one_attached :video_url
     has_one_attached :thumbnail_url
     belongs_to :user
@@ -12,13 +12,25 @@ class Video < ApplicationRecord
 
 
     def ensure_video
-        unless self.video_url.attached?
+        # unless self.video_url.attached?
+        #     errors[:video] << 'Must attach a video'
+        # end
+        if !self.video_url.attached?
             errors[:video] << 'Must attach a video'
+        else
+            if self.video_url.blob.byte_size > 10000000
+                errors[:video]  << 'Video must be under 10 Mb'
+            elsif !self.video_url.blob.content_type.include?('mp4')
+                errors[:video]  << 'Video must be mp4 format'
+
+            end
         end
+
+
     end
 
     # def ensure_format
-    #     debugger
+    #     # debugger
     #     if self.video_url.split('.')[-1] != 'mp4'
     #         errors[:video] << 'Video Must be in MP4 format'
     #     end

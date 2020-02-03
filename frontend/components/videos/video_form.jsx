@@ -46,7 +46,6 @@ class VideoForm extends React.Component{
     handleThumbnailFile(e){
         const file = e.target.files[0];
         const fileReader = new FileReader();
-        debugger
         fileReader.onloadend = () => {
 
             this.setState({ thumbnailUrl: file, thumbnailPreview: fileReader.result })
@@ -150,8 +149,21 @@ class VideoForm extends React.Component{
 
     videoError(errors){
         let errMessage =''
+        // debugger
         errors.forEach( error => {
-            if (error.split(' ')[0] === 'Videos') errMessage = "Video can't be blank";
+            const msg = error.split(' ');
+            if (msg[0] === 'Video') {
+                if (msg[4] === 'under') {
+                    msg.shift()
+                    errMessage = msg.join(' ')
+                }   else if (msg[4] === 'mp4'){
+                    msg.shift()
+                    errMessage = msg.join(' ')
+                } else {
+                    errMessage = "Video can't be blank"
+                }
+            }
+            // if ((error.split(' ')[0] === 'Videos'))
         })
         // 
         return errMessage
