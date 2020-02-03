@@ -10,7 +10,7 @@ const msp = (state, ownProps) => {
     const searchVids = Object.values(state.ui.searchVids)
     return{
         videos: Object.values(state.entities.videos),
-        // searchInfo: this.state.
+        users: state.entities.users,
         searchVids,
         searched: searchVids.length? true: false
     }
