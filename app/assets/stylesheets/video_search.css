@@ -38,6 +38,11 @@
 .vpi-search-video{
     margin:10px 0px 15px
 }
+
+.vpi-search-video a{
+    color: black;
+    text-decoration: none;
+}
 .video-search-user{
     margin-right: 10px;
 }

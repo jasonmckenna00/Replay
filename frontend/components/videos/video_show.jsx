@@ -65,6 +65,21 @@ class VideoShow extends React.Component{
         this.setState({isLiked: true, upVoted: false})
     }
 
+    random(amount,videoCount){
+
+        let recommended = new Set();
+        for (let i = 0; i < amount; i++){
+            const rng = Math.floor(Math.random()*videoCount);
+            if (recommended.has(rng)){
+                i -= 1;
+                continue
+            }
+            recommended.add(rng)
+        }
+        return recommended
+        
+    }
+
     render(){
         // if (!!this.props.user) return null
         if (!this.props.video || !this.props.users) return null
@@ -72,7 +87,8 @@ class VideoShow extends React.Component{
         let editOrSub 
         const edit = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
         const subscribe = <h2 className='next-button subscribe-button '>Subscribe</h2>
-    
+        let recommended = this.random(10, this.props.videos.length);
+        // let recommendedLis = [];
 
         if (currentUser){
             (user.id === parseInt(currentUser.id)) ? editOrSub = edit : editOrSub = subscribe;
@@ -82,7 +98,7 @@ class VideoShow extends React.Component{
 
         
         const videosLis = videos.map( video => {
-            if (video.id !== this.props.video.id){
+            if ((video.id !== this.props.video.id )&& recommended.has(video.id)){
                 return <VideoShowPreview 
                         key={video.id} 
                         video={video} 

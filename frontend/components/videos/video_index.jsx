@@ -7,11 +7,15 @@ import SideBarContainer from '../sidebar/side_bar_container'
 class VideoIndex extends React.Component{
     constructor(props){
         super(props)
+        this.recommendedVids;
     }
 
     componentDidMount(){
         // Promise.all([this.props.fetchAllUsers(), this.props.fetchAllVideos()])
-        this.props.fetchAllVideos()
+        this.props.fetchAllVideos().then( () => {
+
+            this.recommendedVids = this.random(8,this.props.videos.length)
+        })
     }
 
     random(amount,videoCount){
