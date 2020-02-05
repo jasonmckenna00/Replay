@@ -15,10 +15,10 @@ class VideoForm extends React.Component{
     }
 
     handleVideoFile(e){
-        debugger
+        
         const file = e.target.files[0];
         // if (file.type !== 'video/mp4'){
-        //     debugger
+        //     
         //     this.videoErrors = true;
         //     return 
         // } 
@@ -151,7 +151,7 @@ class VideoForm extends React.Component{
 
     videoError(errors){
         let errMessage =''
-        // debugger
+        // 
         errors.forEach( error => {
             const msg = error.split(' ');
             if (msg[0] === 'Video') {

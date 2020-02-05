@@ -10,7 +10,8 @@ class VideoShow extends React.Component{
         super(props)
         this.state= {
             isLiked: false,
-            upVoted: null
+            upVoted: null,
+            recommendedVids: null
         }
         this.handleLike = this.handleLike.bind(this)
         this.handleDisLike = this.handleDisLike.bind(this)
@@ -20,6 +21,9 @@ class VideoShow extends React.Component{
             .then( () => this.props.fetchVideo(this.props.match.params.videoId))
             .then( () => {
                 let that = this
+                const rand = that.random(10,that.props.videos.length)
+                that.setState({recommendedVids: rand})
+
                 if (!this.props.currentUser) return
                 return Object.values(this.props.video.likes.likers)
                         .forEach( liker => {
@@ -65,6 +69,7 @@ class VideoShow extends React.Component{
         this.setState({isLiked: true, upVoted: false})
     }
 
+
     random(amount,videoCount){
 
         let recommended = new Set();
@@ -80,9 +85,10 @@ class VideoShow extends React.Component{
         
     }
 
+
     render(){
         // if (!!this.props.user) return null
-        if (!this.props.video || !this.props.users) return null
+        if (!this.props.video || !this.props.users || !this.state.recommendedVids) return null
         const { video, user, comments, currentUser, videos, users} = this.props
         let editOrSub 
         const edit = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
@@ -97,8 +103,8 @@ class VideoShow extends React.Component{
         } 
 
         
-        const videosLis = videos.map( video => {
-            if ((video.id !== this.props.video.id )&& recommended.has(video.id)){
+        const videosLis = videos.map(( video, i) => {
+            if ((video.id !== this.props.video.id ) && this.state.recommendedVids.has(i)){
                 return <VideoShowPreview 
                         key={video.id} 
                         video={video} 

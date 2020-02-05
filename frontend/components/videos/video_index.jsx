@@ -34,7 +34,6 @@ class VideoIndex extends React.Component{
     }
 
     render(){
-        debugger
             if (!this.props.videos.length) return null;
             if (!this.state.recommendedVids) return null;
             const { videos, users, searchVids, loading, searched } = this.props
@@ -48,7 +47,6 @@ class VideoIndex extends React.Component{
             let user2Videos = [];
 
 
-            debugger
             videos.forEach( (video,i) => {
                 const videoLi = <VideoIndexItem 
                                 key={video.id} 
