@@ -7,14 +7,14 @@ import SideBarContainer from '../sidebar/side_bar_container'
 class VideoIndex extends React.Component{
     constructor(props){
         super(props)
-        this.recommendedVids;
+        this.state = { recommendedVids:null}
     }
 
     componentDidMount(){
-        // Promise.all([this.props.fetchAllUsers(), this.props.fetchAllVideos()])
+        let that = this;
         this.props.fetchAllVideos().then( () => {
-
-            this.recommendedVids = this.random(8,this.props.videos.length)
+            const rand = that.random(8,that.props.videos.length)
+            that.setState({recommendedVids: rand})
         })
     }
 
@@ -34,10 +34,11 @@ class VideoIndex extends React.Component{
     }
 
     render(){
+        debugger
             if (!this.props.videos.length) return null;
+            if (!this.state.recommendedVids) return null;
             const { videos, users, searchVids, loading, searched } = this.props
             const allUsersArray = Object.values(users)
-            let recommended = this.random(8, videos.length);
             let recommendedLis = [];
             const user0 = allUsersArray[0];
             const user1 = allUsersArray[1];
@@ -47,15 +48,15 @@ class VideoIndex extends React.Component{
             let user2Videos = [];
 
 
-
-            videos.forEach( video => {
+            debugger
+            videos.forEach( (video,i) => {
                 const videoLi = <VideoIndexItem 
                                 key={video.id} 
                                 video={video} 
                                 user={users[video.user_id]} 
                                 />
 
-                if (recommended.has(video.id)){
+                if (this.state.recommendedVids.has(i)){
                     recommendedLis.push(videoLi)
                 }
     
