@@ -13,7 +13,7 @@ class VideoIndex extends React.Component{
     componentDidMount(){
         let that = this;
         this.props.fetchAllVideos().then( () => {
-            const rand = that.random(8,that.props.videos.length)
+            const rand = that.random(10,that.props.videos.length)
             that.setState({recommendedVids: rand})
         })
     }
@@ -55,17 +55,35 @@ class VideoIndex extends React.Component{
                                 />
 
                 if (this.state.recommendedVids.has(i)){
-                    recommendedLis.push(videoLi)
+                    if (this.props.sideBarOpen && recommendedLis.length < 8){
+                        recommendedLis.push(videoLi)
+                    } else if (!this.props.sideBarOpen){
+                        recommendedLis.push(videoLi)
+                    } 
+                    
                 }
     
-                if (video.user_id === user0.id && user0Videos.length < 9){
-                    user0Videos.push(videoLi)
+                if (video.user_id === user0.id){
+                    if(this.props.sideBarOpen && user0Videos.length < 4){
+                        user0Videos.push(videoLi)
+                    } else if (!this.props.sideBarOpen && user0Videos.length < 5){
+                        user0Videos.push(videoLi)
+                    }
                 }
-                if (video.user_id === user1.id  && user1Videos.length < 9){
-                    user1Videos.push(videoLi)
+
+                if (video.user_id === user1.id){
+                    if(this.props.sideBarOpen && user1Videos.length < 4){
+                        user1Videos.push(videoLi)
+                    } else if (!this.props.sideBarOpen && user1Videos.length < 5){
+                        user1Videos.push(videoLi)
+                    }
                 } 
-                if (video.user_id === user2.id  && user2Videos.length < 9){
-                    user2Videos.push(videoLi)
+                if (video.user_id === user2.id){
+                    if(this.props.sideBarOpen && user2Videos.length < 4){
+                        user2Videos.push(videoLi)
+                    } else if (!this.props.sideBarOpen && user2Videos.length < 5){
+                        user2Videos.push(videoLi)
+                    }
                 }
           
             })

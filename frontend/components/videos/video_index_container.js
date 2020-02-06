@@ -8,6 +8,7 @@ const msp = state => {
     videos: Object.values(state.entities.videos),
     users: state.entities.users,
     loading: state.ui.loading,
+    sideBarOpen: state.ui.sidebar.isOpen
 
     
 })}
