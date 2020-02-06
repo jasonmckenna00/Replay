@@ -1,6 +1,6 @@
 
 json.set! 'video' do 
-    json.extract! @video, :id, :title, :description, :user_id
+    json.extract! @video, :id, :title, :description, :user_id, :created_at
     json.videoUrl url_for(@video.video_url)
     json.thumbnailUrl url_for(@video.thumbnail_url)
     json.views @video.views

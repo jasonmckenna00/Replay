@@ -49,6 +49,7 @@ class User < ApplicationRecord
 
 
     def find_like(id, type)
+        # debugger
         self.likes.find_by({likeable_type: type, likeable_id: id})
     end
 

@@ -1,7 +1,8 @@
 class Api::VideosController < ApplicationController
 
     def show
-        @video = Video.includes(:user,{:comments => :likes},:likes, :thumbnail_url_attachment, :thumbnail_url_blob)
+        @video = Video.includes(:user,{:comments => :likes},
+                :likes, :thumbnail_url_attachment, :thumbnail_url_blob)
             .find(params[:id])
         @video.update(views: @video.views+1)
         render :show
