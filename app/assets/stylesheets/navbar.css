@@ -25,6 +25,9 @@
     overflow: hidden;
 }
 
+.loading * {
+    cursor: wait;
+}
 
 
 .navbar-hidden{

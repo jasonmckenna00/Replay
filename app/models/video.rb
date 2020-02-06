@@ -41,7 +41,7 @@ class Video < ApplicationRecord
         else
             # debugger
             content = self.thumbnail_url.content_type
-            if !content.include?('png') || !content.include?('jpg') ||
+            if !content.include?('png') || !content.include?('jpg')
                 errors[:thumbnail] << 'Thumbnail must be an image'
             end
         end

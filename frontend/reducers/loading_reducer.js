@@ -3,7 +3,7 @@ import {START_LOADING_ALL_VIDEOS,
         START_LOADING_SINGLE_VIDEO,
         START_LOADING_ALL_USERS,
         START_LOADING_USER} from '../actions/loading_action'
-import { RECEIVE_VIDEO, RECEIVE_VIDEOS } from '../actions/video_actions'
+import { RECEIVE_VIDEO, RECEIVE_VIDEOS, RECEIVE_VIDEO_ERRORS } from '../actions/video_actions'
 import { RECEIVE_ALL_USERS, RECEIVE_USER } from '../actions/user_actions';
 
 
@@ -24,6 +24,8 @@ export default (state = loadingStatus, action) => {
         case RECEIVE_VIDEOS:
             return Object.assign({},state, {videoLoading: false})
         case RECEIVE_VIDEO:
+            return Object.assign({},state, {videoLoading: false})
+        case RECEIVE_VIDEO_ERRORS:
             return Object.assign({},state, {videoLoading: false})
         case RECEIVE_ALL_USERS:
             return Object.assign({},state, {userLoading: false})

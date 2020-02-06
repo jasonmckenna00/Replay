@@ -75,7 +75,8 @@ class VideoForm extends React.Component{
                 <div className={`video-url-upload-container`}>
                     <div className='video-header-text'>
                         <h2>Video</h2>
-                        <h3>Select or upload a video that is less than 10 Mb and .mp4 format</h3>
+                        <h3>Select or upload a video that is less than 10 Mb and .mp4 format.</h3>
+                        <h3>Larger files may take longer to upload.</h3>
                     </div>
                     <label htmlFor='video' className={` video-url-input ${videoClass} `}>
                             {videoPreview}
@@ -107,7 +108,7 @@ class VideoForm extends React.Component{
         formData.append('video[title]', this.state.title)
         formData.append('video[description]', this.state.description)
         let videoId = this.state.id ? this.state.id : null
-        
+        this.props.startLoadingSingleVideo();
         this.props.submitVideo(formData,videoId)
             .then( (action) =>{
                 if (this.props.formType === 'Upload Video'){
@@ -210,7 +211,10 @@ class VideoForm extends React.Component{
             videoForm = this.videoForm()
         }
 
+        debugger
 
+        const submitOrLoad = this.props.videoLoading ? null : this.handleSubmit;
+        const loading = this.props.videoLoading ? 'loading' : '';
 
         const titleErr = this.renderError('title')
         const descripErr = this.renderError('descrip')
@@ -275,9 +279,9 @@ class VideoForm extends React.Component{
                     </div>
                     {/* <div className='video-form-channel-container'>
                     </div> */}
-                    <div className='video-form-footer-container'>
+                    <div className={`${loading} video-form-footer-container`}>
                          {optionButton}
-                        <h2 onClick={this.handleSubmit} className='next-button video-form-next-button'><p>Next</p></h2>
+                        <h2 onClick={submitOrLoad} className={`${loading} next-button video-form-next-button `}><p>Next</p></h2>
                     </div>
                 </div>
                     
@@ -317,10 +321,11 @@ class VideoForm extends React.Component{
         //     return error
         // })
         // const renderErrorMsg = errorLis.length ? this.errorMsg() : null
+        const loading = this.props.videoLoading ? 'loading' : '';
 
         return <>
-            <div className='video-create-container'>
-                <div className='video-file-form'>
+            <div className={`video-create-container `}>
+                <div className={`video-file-form ${loading}`}>
                     <div className='video-file-header'>
                         <h2 className='video-file-header-text'>{this.props.formType}</h2>
                         <i className="fas fa-times" onClick={() => this.leavePage()}></i>
