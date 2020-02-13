@@ -68,8 +68,8 @@ class UserShow extends React.Component{
                         </div>
                     </div>
                     {/* <button className='user-show-subscribe-button' >subscribe</button> */}
-                    <div className='user-show-subscribe-button-container'>
-                        <h2 className='user-show-subscribe-button'>SUBSCRIBE</h2>
+                    <div className='subscribe-button user-show-subscribe-button-container'>
+                        <h2 className=' user-show-subscribe-button'>SUBSCRIBE</h2>
 
                     </div>
                 </div>

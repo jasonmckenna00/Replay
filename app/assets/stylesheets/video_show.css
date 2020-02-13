@@ -202,8 +202,12 @@
 }
 
 
-.subscribe-button{
+.edit-button{
     margin-right: 10px
+}
+
+.subscribe-button:hover{
+    cursor: not-allowed;
 }
 
 .video-show-subscribers{

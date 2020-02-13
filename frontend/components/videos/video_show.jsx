@@ -91,8 +91,8 @@ class VideoShow extends React.Component{
         if (!this.props.video || !this.props.users || !this.state.recommendedVids) return null
         const { video, user, comments, currentUser, videos, users} = this.props
         let editOrSub 
-        const edit = <h2 className='next-button subscribe-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
-        const subscribe = <h2 className='next-button subscribe-button '>Subscribe</h2>
+        const edit = <h2 className='next-button edit-button ' onClick={() =>this.goToEditPage() }>Edit</h2>
+        const subscribe = <h2 className='subscribe-button next-button edit-button '>Subscribe</h2>
         let recommended = this.random(10, this.props.videos.length);
         // let recommendedLis = [];
 
