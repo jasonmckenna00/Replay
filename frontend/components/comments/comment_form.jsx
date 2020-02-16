@@ -22,7 +22,7 @@ class CommentForm extends React.Component{
     }
 
     render(){
-        const propic = this.props.currentUser ? this.props.currentUser.first_name[0] :  <i className="fas fa-user-circle comment-loggedout-pro-pic"></i>
+        const propic = this.props.currentUser ? this.props.currentUser.first_name[0] :  <i className="comment-loggedout-pro-pic fas fa-user-circle "></i>
         const propicClass = this.props.currentUser ? 'pro-pic-initial' : '';
         return <div className='video-show-comment-form'>
                         <form className='comment-form' onSubmit={this.handleComment}>

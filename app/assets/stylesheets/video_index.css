@@ -125,6 +125,10 @@
     color: purple;
 }
 
+.comment-loggedout-pro-pic:hover{
+    cursor: default;
+}
+
 .video-details-container a{
     text-decoration: none;
     color: black;
