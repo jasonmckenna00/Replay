@@ -44,6 +44,7 @@ class VideoForm extends React.Component{
     }
 
     handleThumbnailFile(e){
+        debugger
         const file = e.target.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {

@@ -61,7 +61,7 @@ class NavbarDropdown extends React.Component{
 
                         <div> 
                              <i className="fas fa-desktop "></i>
-                             <a className={``} href="https://jasonmckenna00.github.io/jasonmckenna00/"  target='_blank'>Personal Site</a>
+                             <a className={``} href='https://jasonmckenna.tech'  target='_blank'>Personal Site</a>
 
                         </div>
                     {/* <a className={`sidebar-item ${extended}`} href="https://www.linkedin.com/in/jason-mckenna-69b5a1117/"  target='_blank'>

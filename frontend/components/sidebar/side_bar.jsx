@@ -57,7 +57,7 @@ class Sidebar extends React.Component{
                         <i className="fab fa-angellist sidebar-icon"></i>
                         <h3>AngelList</h3>
                     </a>
-                    <a className={`sidebar-item ${extended}`} href="https://jasonmckenna00.github.io/jasonmckenna00/"  target='_blank'>
+                    <a className={`sidebar-item ${extended}`} href="https://jasonmckenna.tech"  target='_blank'>
                         <i className="fas fa-desktop sidebar-icon"></i>
                         <h3>Personal Site</h3>
                     </a>
