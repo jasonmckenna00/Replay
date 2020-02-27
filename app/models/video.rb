@@ -31,17 +31,13 @@ class Video < ApplicationRecord
 
 
     def ensure_thumbnail
-        
-        unless self.thumbnail_url.attached?
-        end
-        
-        
+               
         if !self.thumbnail_url.attached?
             errors[:thumbnail] << 'Must attach a thumbnail'
         else
-            # debugger
             content = self.thumbnail_url.content_type
-            if !content.include?('png') || !content.include?('jpg')
+            
+            unless content.include?('png') || content.include?('jpg') || content.include?('jpeg')
                 errors[:thumbnail] << 'Thumbnail must be an image'
             end
         end
